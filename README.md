@@ -11,7 +11,7 @@ You can install the released version of rigakuXRD from [GitHub](https://github.c
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("thomasgredig/testCube")
+devtools::install_github("thomasgredig/rigakuXRD")
 ```
 
 ## Example

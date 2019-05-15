@@ -1,0 +1,15 @@
+Package: rigakuXRD
+Type: Package
+Title: X-Ray Diffraction Data Analysis
+Version: 0.1.0
+Authors@R: person("Thomas", "Gredig", email = "tgredig@csulb.edu",
+                  role = c("aut", "cre"))
+Maintainer: Thomas Gredig <tgredig@csulb.edu>
+Description: This package loads data from the x-ray diffractometer and
+  allows for analysis.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Suggests: 
+    testthat (>= 2.1.0)

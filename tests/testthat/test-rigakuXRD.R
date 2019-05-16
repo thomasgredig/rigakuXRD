@@ -1,3 +1,8 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+library(testthat)
+
+test_that("ASC test file exists", {
+  fn = system.file("extdata", "2Theta.csv", package = "rigakuXRD")
+  expect_true(
+    file.exists(fn)
+  )
 })

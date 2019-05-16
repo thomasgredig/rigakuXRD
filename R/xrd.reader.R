@@ -40,6 +40,8 @@ xrd.read.TxtWithHeader <- function(filename) {
 #' @param filename filename including path
 #' @return data frame with XRD data
 #' @examples
+#'
+#' filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
 #' xrd.read.ASC(filename)
 #'
 #' @export

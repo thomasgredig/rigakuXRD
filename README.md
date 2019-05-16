@@ -21,5 +21,9 @@ This is a basic example which shows you how to analyze the XRD data:
 ``` r
 library(rigakuXRD)
 ## basic example code
+fn = system.file("extdata", "2Theta.asc", package='rigakuXRD')
+library(stringr)
+d <- xrd.read.ASC(fn)
+plot(d$theta, d$I.meas, log='y')
 ```
 

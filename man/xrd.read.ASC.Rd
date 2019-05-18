@@ -16,6 +16,8 @@ data frame with XRD data
 Reads the ASC Rigaku XRD file with a Header
 }
 \examples{
+
+filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
 xrd.read.ASC(filename)
 
 }

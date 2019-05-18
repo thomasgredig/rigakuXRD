@@ -3,7 +3,7 @@
 #' @param filename filename including path
 #' @return list with data and header
 #' @examples
-#' xrd.read.TxtWithHeader(filename)
+#' d = xrd.read.TxtWithHeader(filename)
 #'
 #' @export
 xrd.read.TxtWithHeader <- function(filename) {
@@ -42,7 +42,10 @@ xrd.read.TxtWithHeader <- function(filename) {
 #' @examples
 #'
 #' filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
-#' xrd.read.ASC(filename)
+#' d = xrd.read.ASC(filename)
+#'
+#' @import utils
+#' @import stringr
 #'
 #' @export
 xrd.read.ASC <- function(filename) {

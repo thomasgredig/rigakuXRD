@@ -21,7 +21,7 @@ Finds a peak
 }
 \examples{
 filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
-xrd.read.ASC(filename)
+d = xrd.read.ASC(filename)
 xrd.find.Peak(d$theta, d$I, 38.2)
 
 }

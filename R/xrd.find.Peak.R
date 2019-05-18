@@ -6,9 +6,10 @@
 #' @return fit peak position
 #' @examples
 #' filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
-#' xrd.read.ASC(filename)
+#' d = xrd.read.ASC(filename)
 #' xrd.find.Peak(d$theta, d$I, 38.2)
 #'
+#' @import stats
 #' @export
 xrd.find.Peak <- function(TwoTheta, Intensity, PeakPos) {
   d = data.frame(TwoTheta, I = Intensity)

@@ -16,6 +16,6 @@ list with data and header
 Reads the Text converted XRD file with a Header
 }
 \examples{
-xrd.read.TxtWithHeader(filename)
+d = xrd.read.TxtWithHeader(filename)
 
 }

@@ -3,3 +3,6 @@
 export(xrd.find.Peak)
 export(xrd.read.ASC)
 export(xrd.read.TxtWithHeader)
+import(stats)
+import(stringr)
+import(utils)

@@ -4,15 +4,15 @@
 \alias{xrd.get.DebyeScherrer}
 \title{Returns size estimate from Debye-Schrerrer Equation}
 \usage{
-xrd.get.DebyeScherrer(PeakStats, Lambda = 0.154)
+xrd.get.DebyeScherrer(PeakStats, Lambda = 1.5406)
 }
 \arguments{
 \item{PeakStats}{vector with the peak statistics}
 
-\item{Lambda}{wavelength of x-ray in (nm)}
+\item{Lambda}{wavelength of x-ray in (A)}
 }
 \value{
-peak width in nanometer
+peak width in Angstrom
 }
 \description{
 Returns size estimate from Debye-Schrerrer Equation

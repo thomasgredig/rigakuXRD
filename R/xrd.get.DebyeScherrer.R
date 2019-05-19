@@ -15,8 +15,8 @@ xrd.get.DebyeScherrer <- function(PeakStats,
   # https://en.wikipedia.org/wiki/Full_width_at_half_maximum
   # https://en.wikipedia.org/wiki/Scherrer_equation
   K = 0.9
-  beta = 2.355*PeakStats[4]    # assuming Gaussian
-  Theta = (PeakStats[3]*pi/180)/2  # in radians
+  beta = 2.355*PeakStats[4]*pi/180    # assuming Gaussian
+  Theta = (PeakStats[3]*pi/180)/2     # in radians
   particle.size = K*Lambda/(beta*cos(Theta))
   particle.size
 }

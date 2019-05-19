@@ -30,7 +30,9 @@ plot(d$theta, d$I.meas, log='y')
 Finding the peak position
 
 ```r
+# is there a Au peak ?
 xrd.find.Peak(d$theta, d$I, 38)
+# is there a Si substrate peak ?
 xrd.find.Peak(d$theta, d$I, 44)
 ```
 

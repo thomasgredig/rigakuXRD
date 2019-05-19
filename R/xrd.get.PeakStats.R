@@ -4,6 +4,7 @@
 #' @param TwoTheta angle
 #' @param Intensity intensity signal
 #' @param PeakPos approximate angle of peak position
+#' @param Try.Sigma vector with peak widths used to start fitting
 #' @return background, amplitude, position, width + 4 std. errors
 #' @examples
 #' filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
@@ -12,14 +13,15 @@
 #'
 #' @import stats
 #' @export
-xrd.get.PeakStats <- function(TwoTheta, Intensity, PeakPos) {
+xrd.get.PeakStats <- function(TwoTheta, Intensity, PeakPos,
+                              Try.Sigma = c(0.1,0.2,0.15)) {
   d = data.frame(TwoTheta, I = Intensity)
   n1 = subset(d, TwoTheta > (PeakPos-1) & TwoTheta < (PeakPos+1))
   if(nrow(n1)<5) { return(NA) }
   p1 = n1$TwoTheta[which.max(n1$I)]
   background = min(n1$I)
   A1 = max(n1$I) - background
-  for(peak.width in c(0.2,0.1,0.3,0.15,0.25)) {
+  for(peak.width in Try.Sigma) {
     fit <- NULL
     try(fit <-
           nls(data = n1,

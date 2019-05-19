@@ -5,7 +5,8 @@
 \title{Fits the peak to a Gaussian, usually run after a peak is
 identified through its location}
 \usage{
-xrd.get.PeakStats(TwoTheta, Intensity, PeakPos)
+xrd.get.PeakStats(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2,
+  0.15))
 }
 \arguments{
 \item{TwoTheta}{angle}
@@ -13,6 +14,8 @@ xrd.get.PeakStats(TwoTheta, Intensity, PeakPos)
 \item{Intensity}{intensity signal}
 
 \item{PeakPos}{approximate angle of peak position}
+
+\item{Try.Sigma}{vector with peak widths used to start fitting}
 }
 \value{
 background, amplitude, position, width + 4 std. errors
@@ -24,6 +27,6 @@ identified through its location
 \examples{
 filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
 d = xrd.read.ASC(filename)
-xrd.get.Peak.Stats(d$theta, d$I, 38.2)
+xrd.get.PeakStats(d$theta, d$I, 38.2)
 
 }

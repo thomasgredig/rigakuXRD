@@ -2,9 +2,11 @@
 % Please edit documentation in R/xrd.find.Peak.R
 \name{xrd.find.Peak}
 \alias{xrd.find.Peak}
-\title{Finds a peak}
+\title{Finds a peak position based on a Gaussian fit with basic
+starting guess}
 \usage{
-xrd.find.Peak(TwoTheta, Intensity, PeakPos)
+xrd.find.Peak(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2,
+  0.15))
 }
 \arguments{
 \item{TwoTheta}{angle}
@@ -12,12 +14,15 @@ xrd.find.Peak(TwoTheta, Intensity, PeakPos)
 \item{Intensity}{intensity signal}
 
 \item{PeakPos}{approximate angle of peak position}
+
+\item{Try.Sigma}{vector with peak widths used to start fitting}
 }
 \value{
 fit peak position
 }
 \description{
-Finds a peak
+Finds a peak position based on a Gaussian fit with basic
+starting guess
 }
 \examples{
 filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')

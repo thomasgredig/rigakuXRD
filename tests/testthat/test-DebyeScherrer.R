@@ -3,6 +3,6 @@ test_that("get Debye-Scherrer width", {
   d <- xrd.read.ASC(fn)
   q = xrd.get.PeakStats(d$theta, d$I, 38.2)
 
-  expect_equivalent(xrd.get.DebyeScherrer(q), 0.3095, tolerance=1e-4)
+  expect_equivalent(xrd.get.DebyeScherrer(q), 2.574, tolerance=1e-3)
 
 })

@@ -33,3 +33,23 @@ Finding the peak position
 xrd.find.Peak(d$theta, d$I, 38)
 xrd.find.Peak(d$theta, d$I, 44)
 ```
+
+Finding all the peaks:
+
+```r
+p=c()
+for(ang in 10:50) {
+  a1 = xrd.find.Peak(d$theta, d$I, ang)
+  if(!is.na(a1)) {
+    p = c(p,a1)
+  }
+}
+```
+
+After finding the peaks, the peak amplitude is compared to the background to check the prominence of the peak, it should rise above 5%:
+
+```r
+q = xrd.get.PeakStats(d$theta, d$I, 38.217)
+paste0("Peak prominence: ",signif(q[2]/q[1]*100,3),"%.")
+```
+

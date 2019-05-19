@@ -30,5 +30,6 @@ plot(d$theta, d$I.meas, log='y')
 Finding the peak position
 
 ```r
-xrd.find.Peak(d$theta, d$I, 38.2)
+xrd.find.Peak(d$theta, d$I, 38)
+xrd.find.Peak(d$theta, d$I, 44)
 ```

@@ -1,5 +1,3 @@
-
-
 #' Reads the ASC Rigaku XRD file with a Header
 #' @param filename filename including path
 #' @return data frame with XRD data

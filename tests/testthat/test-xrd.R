@@ -1,3 +1,7 @@
 test_that("XRD reader", {
-  expect_equal(2 * 2, 4)
+  filename = system.file("extdata", "MnPcTheta.txt", package='rigakuXRD')
+  d = xrd.read.TXTnoheader(filename)
+  d = d[[1]]
+
+  expect_equal(nrow(d), 2201)
 })

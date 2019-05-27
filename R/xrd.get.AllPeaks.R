@@ -14,8 +14,8 @@ empty.list = c()
 #' @export
 xrd.get.AllPeaks <- function(TwoTheta, Intensity,
                              Try.Sigma = c(0.1,0.2,0.15)) {
-  theta.min = min(d$TwoTheta)
-  theta.max = max(d$TwoTheta)
+  theta.min = min(TwoTheta)
+  theta.max = max(TwoTheta)
   if ((theta.max-theta.min)<1) { return(empty.list) }
   peakPos.list = seq(from=theta.min, to=theta.max, by=0.8)
 

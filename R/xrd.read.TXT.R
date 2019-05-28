@@ -33,6 +33,6 @@ xrd.read.TXT <- function(filename) {
     v2 = as.numeric(unlist(lapply(p1, secondValue)))
   )
   names(d) = col.names
-  list('data' = d,
-       'header' = q1)
+  # list('data' = d, 'header' = q1)
+  d
 }

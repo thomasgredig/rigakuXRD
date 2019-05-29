@@ -17,8 +17,8 @@ xrd.get.AllPeaks <- function(TwoTheta, Intensity,
                              Try.Sigma = c(0.1,0.2,0.15),
                              Range = c(0,90)) {
   step.size = 0.7 # search peaks with this step size
-  if (Range[0]==0) { theta.min = min(TwoTheta) + step.size/2 }
-  if (Range[1]==90) { theta.max = max(TwoTheta) - step.size/2 }
+  if (Range[1]==0) { theta.min = min(TwoTheta) + step.size/2 }
+  if (Range[2]==90) { theta.max = max(TwoTheta) - step.size/2 }
   if ((theta.max-theta.min)<1) { return(empty.list) }
   peakPos.list = seq(from=theta.min, to=theta.max, by=step.size)
 

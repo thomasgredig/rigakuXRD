@@ -2,7 +2,7 @@
 % Please edit documentation in R/xrd.read.TXTnoheader.R
 \name{xrd.read.TXTnoheader}
 \alias{xrd.read.TXTnoheader}
-\title{Reads the TXT Rigaku XRD file with a Header}
+\title{Reads the TXT Rigaku XRD file with no header}
 \usage{
 xrd.read.TXTnoheader(filename)
 }
@@ -10,10 +10,10 @@ xrd.read.TXTnoheader(filename)
 \item{filename}{filename including path}
 }
 \value{
-data frame with XRD data
+data frame with XRD data and columns TwoTheta and I
 }
 \description{
-Reads the TXT Rigaku XRD file with a Header
+Reads the TXT Rigaku XRD file with no header
 }
 \examples{
 

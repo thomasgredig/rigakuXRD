@@ -4,14 +4,17 @@
 \alias{xrd.get.AllPeaks}
 \title{Finds all the peaks in a spectrum}
 \usage{
-xrd.get.AllPeaks(TwoTheta, Intensity, Try.Sigma = c(0.1, 0.2, 0.15))
+xrd.get.AllPeaks(TwoTheta, Intensity, Try.Sigma = c(0.1, 0.2, 0.15),
+  Range = c(0, 90))
 }
 \arguments{
 \item{TwoTheta}{angle}
 
 \item{Intensity}{intensity signal}
 
-\item{Try.Sigma}{vector with peak widths used to start fitting}
+\item{Try.Sigma}{vector with peak widths used to start fitting (optional)}
+
+\item{Range}{range to search for peaks (optional)}
 }
 \value{
 vector with peak positions

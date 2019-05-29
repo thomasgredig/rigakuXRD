@@ -3,7 +3,8 @@ empty.list = c()
 #'
 #' @param TwoTheta angle
 #' @param Intensity intensity signal
-#' @param Try.Sigma vector with peak widths used to start fitting
+#' @param Try.Sigma vector with peak widths used to start fitting (optional)
+#' @param Range range to search for peaks (optional)
 #' @return vector with peak positions
 #' @examples
 #'
@@ -13,11 +14,13 @@ empty.list = c()
 #'
 #' @export
 xrd.get.AllPeaks <- function(TwoTheta, Intensity,
-                             Try.Sigma = c(0.1,0.2,0.15)) {
-  theta.min = min(TwoTheta)
-  theta.max = max(TwoTheta)
+                             Try.Sigma = c(0.1,0.2,0.15),
+                             Range = c(0,90)) {
+  step.size = 0.7 # search peaks with this step size
+  if (Range[0]==0) { theta.min = min(TwoTheta) + step.size/2 }
+  if (Range[1]==90) { theta.max = max(TwoTheta) - step.size/2 }
   if ((theta.max-theta.min)<1) { return(empty.list) }
-  peakPos.list = seq(from=theta.min, to=theta.max, by=0.8)
+  peakPos.list = seq(from=theta.min, to=theta.max, by=step.size)
 
   p = c()
   for(ang in peakPos.list) {

@@ -24,9 +24,12 @@ xrd.get.AllPeaks <- function(TwoTheta, Intensity,
 
   p = c()
   for(ang in peakPos.list) {
-    p1 = xrd.find.Peak(TwoTheta, Intensity, ang)
+    #p1 = xrd.find.Peak(TwoTheta, Intensity, ang)
+    p1 = xrd.get.PeakStats(TwoTheta, Intensity, ang)
     if(!is.na(p1)) {
-      p = c(p, p1)
+      if (xrd.get.PeakProminence(p1)>10) {
+        p = c(p, p1[3])
+      }
     }
   }
   p

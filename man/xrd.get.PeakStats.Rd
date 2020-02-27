@@ -5,8 +5,7 @@
 \title{Fits the peak to a Gaussian, usually run after a peak is
 identified through its location}
 \usage{
-xrd.get.PeakStats(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2,
-  0.15))
+xrd.get.PeakStats(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2, 0.15))
 }
 \arguments{
 \item{TwoTheta}{angle}

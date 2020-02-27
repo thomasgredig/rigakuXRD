@@ -12,7 +12,7 @@
 #' @export
 xrd.read.ASC <- function(filename) {
   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
-  data = read.csv(file=filename, stringsAsFactors=FALSE)
+  data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL)
   as.vector(unlist(data))->p
 
   str_extract_all(p, '\\*{1}COUNT\t') -> a

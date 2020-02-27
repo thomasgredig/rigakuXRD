@@ -5,8 +5,7 @@
 \title{Finds a peak position based on a Gaussian fit with basic
 starting guess}
 \usage{
-xrd.find.Peak(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2,
-  0.15))
+xrd.find.Peak(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2, 0.15))
 }
 \arguments{
 \item{TwoTheta}{angle}

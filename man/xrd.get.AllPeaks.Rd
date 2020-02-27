@@ -4,8 +4,13 @@
 \alias{xrd.get.AllPeaks}
 \title{Finds all the peaks in a spectrum}
 \usage{
-xrd.get.AllPeaks(TwoTheta, Intensity, min.Prominence = 5,
-  Try.Sigma = c(0.1, 0.2, 0.15), Range = c(0, 90))
+xrd.get.AllPeaks(
+  TwoTheta,
+  Intensity,
+  min.Prominence = 5,
+  Try.Sigma = c(0.1, 0.2, 0.15),
+  Range = c(0, 90)
+)
 }
 \arguments{
 \item{TwoTheta}{angle}

@@ -32,7 +32,8 @@ xrd.read.RAS <- function(filename) {
 
   d1 %>%
     separate(n, c(label.x,label.y,label.units), " ") %>%
-    sapply(as.numeric)
+    lapply(as.numeric) -> d2
+  as.data.frame(d2)
 }
 
 

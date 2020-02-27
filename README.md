@@ -38,6 +38,18 @@ d = xrd.read.TXTnoheader('xrd.txt')
 plot(d$theta, d$I.meas, log='y')
 ```
 
+## Loading RAS files
+
+In addition to `.ASC` files, `.RAS` files are also text files and contain a header information, followed by the data. Here is an example:
+
+```r
+library(rigakuXRD)
+library(checkRAWfolder)
+
+file.list = raw.findFile('.',instrument='xrd')
+d = xrd.read.RAS(file.list[1])
+```
+
 ## Example for Finding Peaks
 
 Finding the peak position, you need to provide a starting angle, where you expect to find a peak to find. If no peak is found, it may be that the width is unusual and you can specify the **Try.Sigma** parameter with a vector of expected peak widths at that location.

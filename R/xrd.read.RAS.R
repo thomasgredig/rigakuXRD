@@ -31,7 +31,8 @@ xrd.read.RAS <- function(filename) {
   label.units = xrd.rasHeader.value(d.header,'DISP_UNIT_Y')
 
   d1 %>%
-    separate(n, c(label.x,label.y,label.units), " ")
+    separate(n, c(label.x,label.y,label.units), " ") %>%
+    sapply(as.numeric)
 }
 
 

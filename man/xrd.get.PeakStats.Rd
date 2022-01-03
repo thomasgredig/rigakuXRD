@@ -2,8 +2,7 @@
 % Please edit documentation in R/xrd.get.PeakStats.R
 \name{xrd.get.PeakStats}
 \alias{xrd.get.PeakStats}
-\title{Fits the peak to a Gaussian, usually run after a peak is
-identified through its location}
+\title{Fits the peak to a Gaussian}
 \usage{
 xrd.get.PeakStats(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2, 0.15))
 }
@@ -20,7 +19,7 @@ xrd.get.PeakStats(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2, 0.15))
 background, amplitude, position, width + 4 std. errors
 }
 \description{
-Fits the peak to a Gaussian, usually run after a peak is
+usually run after a peak is
 identified through its location
 }
 \examples{

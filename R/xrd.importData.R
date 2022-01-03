@@ -1,0 +1,221 @@
+#' Imports Rigaku XRD data file
+#'
+#' @param filename full filename with path
+#' @return data frame with XRD data
+#' @import tools
+#' @examples
+#'
+#' filename = xrd.getSampleFiles()[1]
+#' d = xrd.importData(filename)
+#' plot(d$theta,d$I,log='y',col='red')
+#'
+#' @export
+xrd.importData <- function(filename) {
+  fileExtension = tolower(file_ext(filename))
+  d <- data.frame()
+  if (fileExtension=='asc') d=xrd.read.ASC(filename)
+  else if (fileExtension=='ras') d=xrd.read.RAS(filename)
+  else if (fileExtension=='txt') d=xrd.read.TXT(filename)
+  else warning('Cannot read XRD file; change extension on file.')
+  d
+}
+
+
+
+# ==========================
+# ASC XRD Reader: preferred
+# ==========================
+
+
+
+#' Reads the ASC Rigaku XRD file with a Header
+#' @param filename filename including path
+#' @return data frame with XRD data
+#' @examples
+#'
+#' filename = dir(xrd.getSamplePath(),patter='asc$')
+#' d = xrd.read.ASC(file.path(xrd.getSamplePath(), filename))
+#' plot(d$theta,d$I,log='y',col='red')
+#'
+#' @import stringr
+#'
+#' @export
+xrd.read.ASC <- function(filename) {
+  if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
+  data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
+
+  # get data only
+  xrd.data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL, comment.char = '*', header = FALSE)
+  x1 = c(xrd.data$V1, xrd.data$V2, xrd.data$V3, xrd.data$V4)
+  ln = nrow(xrd.data)
+  # now re-arrange: 1,ln+1, 2ln+1, 3ln+1 , 2, ln+2 , ...
+  x1p = rep(1:ln, each=4)
+  x1p[(1:ln)*4-2] = x1p[(1:ln)*4-2] + ln
+  x1p[(1:ln)*4-1] = x1p[(1:ln)*4-1] + ln*2
+  x1p[(1:ln)*4] = x1p[(1:ln)*4] + ln*3
+  x2 = x1[x1p]
+  na.omit(x2) -> x2
+
+  as.vector(unlist(data))->p
+
+  str_extract_all(p, '\\*{1}COUNT\t') -> a
+  which(a=="*COUNT\t")->q
+  as.numeric(gsub("\\D", "", p[q]))  -> b
+
+  x.start = q+1
+  x.end = q+b
+
+  str_extract_all(p, '\\*{1}START\t') -> angle
+  which(angle=="*START\t")->q
+
+  seq=1:(length(q))*2
+  as.numeric(unlist(strsplit(p[q],'='))[seq]) -> theta.start
+  q=q+1
+  as.numeric(unlist(strsplit(p[q],'='))[seq]) -> theta.stop
+  q=q+1
+  as.numeric(unlist(strsplit(p[q],'='))[seq]) -> theta.step
+  q=q+2
+  as.numeric(unlist(strsplit(p[q],'='))[seq]) -> theta.speed
+  norm = theta.speed
+
+  data=data.frame()
+  x2p = 1
+  for(num in 1:length(q)) {
+    theta = seq(from=theta.start[num], to=theta.stop[num], by=theta.step[num])
+    I = x2[x2p:(x2p+length(theta)-1)]
+    data = rbind(data, cbind(theta=theta, I = I/norm[num], I.meas = I, loop=num))
+    x2p = x2p + length(theta)
+  }
+  data
+}
+
+
+# ==========================
+# RAS XRD Reader
+# ==========================
+
+
+
+#' Reads the RAS Rigaku XRD data
+#' @param filename filename including path
+#' @return data frame with XRD data
+#' @examples
+#'
+#' library(dplyr)
+#' filename = dir(xrd.getSamplePath(),patter='ras$')
+#' d = xrd.read.RAS(file.path(xrd.getSamplePath(), filename))
+#' plot(d$theta,d$I,log='y',col='red')
+#'
+#' @import dplyr
+#'
+#' @export
+xrd.read.RAS <- function(filename) {
+  if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
+  data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL)
+  p = as.vector(unlist(data))
+  if(p[1]!="*RAS_HEADER_START") { warning(paste("File format is not RAS:",filename))}
+  p.start = grep('*RAS_INT_START',p)
+  p.end = grep('*RAS_INT_END',p)
+  d1 = data.frame(
+    n = p[(p.start+1):(p.end-1)],
+    stringsAsFactors = FALSE
+  )
+
+  lines.comment = grep('^\\*',p)
+  n = gsub('^\\*','',p[lines.comment])
+  d.header = data.frame(n, stringsAsFactors = FALSE) %>%
+    separate(n, c('name','value'), " ")
+  label.x = xrd.rasHeader.value(d.header,'DISP_TAB_NAME')
+  label.y = xrd.rasHeader.value(d.header,'DISP_TITLE_Y')
+  label.units = xrd.rasHeader.value(d.header,'DISP_UNIT_Y')
+
+  d1 %>%
+    separate(n, c(label.x,label.y,label.units), " ") %>%
+    lapply(as.numeric) -> d2
+  as.data.frame(d2)
+}
+
+
+
+xrd.read.rasHeader <- function(filename) {
+  if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
+  data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL,encoding = "UTF-8")
+  p = as.vector(unlist(data))
+  if(p[1]!="*RAS_HEADER_START") { warning(paste("File format is not RAS:",filename))}
+  lines.comment = grep('^\\*',p)
+  d1 = data.frame(n = gsub('^\\*','',p[lines.comment]), stringsAsFactors = FALSE)
+
+  d1 %>%
+    separate(n, c('name','value'), " ")
+}
+
+xrd.rasHeader.value <- function(d,item='FILE_MEMO') {
+  d$value[grep(item,d$name)]
+}
+
+
+# ==========================
+# TXT XRD Reader
+# ==========================
+
+
+
+#' Reads the TXT Rigaku XRD file with a Header
+#' @param filename filename including path
+#' @return data frame with XRD data
+#' @examples
+#'
+#' filename = dir(xrd.getSamplePath(),patter='txt$')[1]
+#' d = xrd.read.TXT(file.path(xrd.getSamplePath(), filename))
+#' plot(d$theta,d$I,log='y',col='red')
+#'
+#' @export
+xrd.read.TXT <- function(filename) {
+  if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
+  data = read.csv(file=filename, stringsAsFactors=FALSE)
+  as.vector(unlist(data))->p
+  p[grep('^\\*',p)] -> d.header
+  strsplit(gsub('^\\*','',d.header),'\t') -> p1
+  secondValue <- function(x) { if(length(x)==2){x[[2]]}else{""} }
+  # this is the header of the file
+  q1 = data.frame(
+    name = unlist(lapply(p1,'[[',1)),
+    value = unlist(lapply(p1, secondValue))
+  )
+  # find column names
+  p1 = p[grep('^#',p)][1]
+  col.names = unlist(strsplit(gsub('^#','',p1),'='))
+  # get data
+  start.row = grep('^#',p)[1]+1
+  if (is.na(start.row)) { d = xrd.read.TXTnoheader(filename) }
+  else {
+    p1 = strsplit(p[start.row:length(p)],'\t')
+    d = data.frame(
+      v1 = as.numeric(unlist(lapply(p1,'[[',1))),
+      v2 = as.numeric(unlist(lapply(p1, secondValue)))
+    )
+    names(d) = col.names
+  }
+  d
+}
+
+
+#' Reads the TXT Rigaku XRD file with no header
+#' @param filename filename including path
+#' @return data frame with XRD data and columns TwoTheta and I
+#' @examples
+#'
+#' filename = dir(xrd.getSamplePath(),patter='txt$')[1]
+#' d = xrd.read.TXTnoheader(file.path(xrd.getSamplePath(), filename))
+#' plot(d$theta,d$I,log='y',col='red')
+#'
+#' @export
+xrd.read.TXTnoheader <- function(filename) {
+  if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
+  d = read.csv(file=filename, sep='\t', stringsAsFactors=FALSE, header=FALSE)
+  #q1 = c()
+  names(d) = c('TwoTheta','I')
+  d
+}
+
+

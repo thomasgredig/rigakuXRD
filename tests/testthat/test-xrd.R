@@ -1,7 +1,19 @@
-test_that("XRD reader", {
-  filename = system.file("extdata", "MnPcTheta.txt", package='rigakuXRD')
-  d = xrd.read.TXT(filename)
-  d = d[[1]]
+context("check XRD sample files")
 
-  expect_equal(nrow(d), 2201)
+test_that("XRD sample files", {
+  file.list = xrd.getSampleFiles()
+  expect_equal(length(file.list),3)
 })
+
+test_that("Load XRD sample file data", {
+  sel.Files=c(1,3)
+  file.list = xrd.getSampleFiles()[sel.Files]
+  nLen=c()
+  for(f in file.list) {
+    print(f)
+    d = xrd.importData(f)
+    nLen=c(nLen,nrow(d))
+  }
+  expect_equal(nLen,c(7601,1401,2201)[sel.Files])
+})
+

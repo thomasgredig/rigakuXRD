@@ -44,9 +44,9 @@ In addition to `.ASC` files, `.RAS` files are also text files and contain a head
 
 ```r
 library(rigakuXRD)
-library(checkRAWfolder)
+library(RAWdataR)
 
-file.list = raw.findFile('.',instrument='xrd')
+file.list = raw.findFile(xrd.getSamplePath(),instrument='xrd')
 d = xrd.read.RAS(file.list[1])
 ```
 

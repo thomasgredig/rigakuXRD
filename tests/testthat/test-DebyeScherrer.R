@@ -4,6 +4,6 @@ test_that("get Debye-Scherrer width", {
   q = xrd.get.PeakStats(d$theta, d$I, 38.2)
 
   # expect Au layer to be 14.7nm
-  expect_equivalent(xrd.get.DebyeScherrer(q), 147.5, tolerance=1e-4)
+  expect_equivalent(xrd.get.DebyeScherrer(q), 152.2, tolerance=1e-3)
 
 })

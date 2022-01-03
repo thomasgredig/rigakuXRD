@@ -2,8 +2,7 @@
 % Please edit documentation in R/xrd.find.Peak.R
 \name{xrd.find.Peak}
 \alias{xrd.find.Peak}
-\title{Finds a peak position based on a Gaussian fit with basic
-starting guess}
+\title{Finds Peak Position from Gaussian}
 \usage{
 xrd.find.Peak(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2, 0.15))
 }
@@ -20,12 +19,14 @@ xrd.find.Peak(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2, 0.15))
 fit peak position
 }
 \description{
-Finds a peak position based on a Gaussian fit with basic
-starting guess
+Fits a Gaussian form to a peak
 }
 \examples{
+library(stringr)
 filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
 d = xrd.read.ASC(filename)
-xrd.find.Peak(d$theta, d$I, 38.2)
+plot(d$theta,d$I,log='y',col='red')
+peak.pos = xrd.find.Peak(d$theta, d$I, 38.2)
+abline(v=peak.pos,col='blue')
 
 }

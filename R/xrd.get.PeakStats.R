@@ -1,4 +1,6 @@
-#' Fits the peak to a Gaussian, usually run after a peak is
+#' Fits the peak to a Gaussian
+#'
+#' usually run after a peak is
 #' identified through its location
 #'
 #' @param TwoTheta angle

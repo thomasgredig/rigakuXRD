@@ -1,4 +1,3 @@
-empty.list = c()
 #' Finds all the peaks in a spectrum
 #'
 #' @param TwoTheta angle
@@ -21,7 +20,7 @@ xrd.get.AllPeaks <- function(TwoTheta, Intensity,
   step.size = 0.4 # search peaks with this step size
   if (Range[1]==0) { theta.min = min(TwoTheta) + step.size/2 }
   if (Range[2]==90) { theta.max = max(TwoTheta) - step.size/2 }
-  if ((theta.max-theta.min)<1) { return(empty.list) }
+  if ((theta.max-theta.min)<1) { return(c()) }
   peakPos.list = seq(from=theta.min, to=theta.max, by=step.size)
 
   p = c()

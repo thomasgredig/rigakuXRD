@@ -2,7 +2,7 @@
 % Please edit documentation in R/xrd.get.DebyeScherrer.R
 \name{xrd.get.DebyeScherrer}
 \alias{xrd.get.DebyeScherrer}
-\title{Returns size estimate from Debye-Schrerrer Equation}
+\title{Scherrer equation}
 \usage{
 xrd.get.DebyeScherrer(PeakStats, Lambda = 1.5406)
 }
@@ -15,11 +15,13 @@ xrd.get.DebyeScherrer(PeakStats, Lambda = 1.5406)
 peak width in Angstrom
 }
 \description{
-Returns size estimate from Debye-Schrerrer Equation
+Returns the particle size or film thickness as calculated with
+the Scherrer equation; units of Angstrom
 }
 \examples{
-filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
+filename = xrd.getSampleFiles()[1]
 d = xrd.read.ASC(filename)
-xrd.get.DebyeScherrer(d$theta, d$I, 38.2)
+ds = xrd.get.PeakStats(d$theta, d$I, 38.2)
+xrd.get.DebyeScherrer(ds)
 
 }

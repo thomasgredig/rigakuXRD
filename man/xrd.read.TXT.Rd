@@ -17,8 +17,8 @@ Reads the TXT Rigaku XRD file with a Header
 }
 \examples{
 
-filename = dir(xrd.getSamplePath(),patter='txt$')[1]
+filename = dir(xrd.getSamplePath(),pattern='txt$')[1]
 d = xrd.read.TXT(file.path(xrd.getSamplePath(), filename))
-plot(d$theta,d$I,log='y',col='red')
+plot(d$TwoTheta,d$I,log='y',col='red')
 
 }

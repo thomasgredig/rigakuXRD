@@ -8,9 +8,11 @@
 #' @return vector with peak positions
 #' @examples
 #'
-#' filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
+#' \donttest{
+#' filename = xrd.getSampleFiles()[1]
 #' d = xrd.read.ASC(filename)
 #' peak.list = xrd.get.AllPeaks(d$theta, d$I)
+#' }
 #'
 #' @export
 xrd.get.AllPeaks <- function(TwoTheta, Intensity,

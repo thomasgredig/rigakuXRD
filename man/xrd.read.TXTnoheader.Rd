@@ -19,6 +19,6 @@ Reads the TXT Rigaku XRD file with no header
 
 filename = dir(xrd.getSamplePath(),patter='txt$')[1]
 d = xrd.read.TXTnoheader(file.path(xrd.getSamplePath(), filename))
-plot(d$theta,d$I,log='y',col='red')
+plot(d$TwoTheta,d$I,log='y',col='red')
 
 }

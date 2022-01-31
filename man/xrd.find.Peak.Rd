@@ -22,7 +22,6 @@ fit peak position
 Fits a Gaussian form to a peak
 }
 \examples{
-library(stringr)
 filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
 d = xrd.read.ASC(filename)
 plot(d$theta,d$I,log='y',col='red')

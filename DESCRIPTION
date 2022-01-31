@@ -18,7 +18,9 @@ VignetteBuilder: knitr
 Suggests: 
     testthat (>= 2.1.0)
 Imports:
+    stats,
     stringr,
     tidyr,
+    tools,
     utils,
-    ggplot2
+    knitr

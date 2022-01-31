@@ -2,13 +2,13 @@
 #'
 #' @param filename full filename with path
 #' @return data frame with XRD data
-#' @import tools
 #' @examples
 #'
 #' filename = xrd.getSampleFiles()[1]
 #' d = xrd.importData(filename)
 #' plot(d$theta,d$I,log='y',col='red')
 #'
+#' @importFrom tools file_ext
 #' @export
 xrd.importData <- function(filename) {
   fileExtension = tolower(file_ext(filename))
@@ -19,7 +19,7 @@ xrd.importData <- function(filename) {
   else warning('Cannot read XRD file; change extension on file.')
   d
 }
-
+ 
 
 
 # ==========================
@@ -33,11 +33,13 @@ xrd.importData <- function(filename) {
 #' @return data frame with XRD data
 #' @examples
 #'
-#' filename = dir(xrd.getSamplePath(),patter='asc$')
+#' filename = dir(xrd.getSamplePath(),pattern='asc$')
 #' d = xrd.read.ASC(file.path(xrd.getSamplePath(), filename))
 #' plot(d$theta,d$I,log='y',col='red')
 #'
-#' @import stringr
+#' @importFrom stringr str_extract_all
+#' @importFrom utils read.csv
+#' @importFrom stats na.omit
 #'
 #' @export
 xrd.read.ASC <- function(filename) {
@@ -101,12 +103,14 @@ xrd.read.ASC <- function(filename) {
 #' @return data frame with XRD data
 #' @examples
 #'
-#' library(dplyr)
-#' filename = dir(xrd.getSamplePath(),patter='ras$')
-#' d = xrd.read.RAS(file.path(xrd.getSamplePath(), filename))
-#' plot(d$theta,d$I,log='y',col='red')
+#' filename = dir(xrd.getSamplePath(),patter='ras$')[1]
+#' fname = file.path(xrd.getSamplePath(), filename)
+#' d = xrd.read.RAS(fname)
+#' plot(d$X2.Theta,d$I,log='y',col='red')
 #'
-#' @import dplyr
+#' @importFrom utils read.csv
+#' @importFrom tidyr separate
+#' @importFrom tidyr "%>%"
 #'
 #' @export
 xrd.read.RAS <- function(filename) {
@@ -125,9 +129,9 @@ xrd.read.RAS <- function(filename) {
   n = gsub('^\\*','',p[lines.comment])
   d.header = data.frame(n, stringsAsFactors = FALSE) %>%
     separate(n, c('name','value'), " ")
-  label.x = xrd.rasHeader.value(d.header,'DISP_TAB_NAME')
-  label.y = xrd.rasHeader.value(d.header,'DISP_TITLE_Y')
-  label.units = xrd.rasHeader.value(d.header,'DISP_UNIT_Y')
+  label.x = .xrdRasHeaderValue(d.header,'DISP_TAB_NAME')
+  label.y = .xrdRasHeaderValue(d.header,'DISP_TITLE_Y')
+  label.units = .xrdRasHeaderValue(d.header,'DISP_UNIT_Y')
 
   d1 %>%
     separate(n, c(label.x,label.y,label.units), " ") %>%
@@ -137,7 +141,7 @@ xrd.read.RAS <- function(filename) {
 
 
 
-xrd.read.rasHeader <- function(filename) {
+.xrdReadRasHeader <- function(filename) {
   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
   data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL,encoding = "UTF-8")
   p = as.vector(unlist(data))
@@ -149,7 +153,7 @@ xrd.read.rasHeader <- function(filename) {
     separate(n, c('name','value'), " ")
 }
 
-xrd.rasHeader.value <- function(d,item='FILE_MEMO') {
+.xrdRasHeaderValue <- function(d,item='FILE_MEMO') {
   d$value[grep(item,d$name)]
 }
 
@@ -165,10 +169,11 @@ xrd.rasHeader.value <- function(d,item='FILE_MEMO') {
 #' @return data frame with XRD data
 #' @examples
 #'
-#' filename = dir(xrd.getSamplePath(),patter='txt$')[1]
+#' filename = dir(xrd.getSamplePath(),pattern='txt$')[1]
 #' d = xrd.read.TXT(file.path(xrd.getSamplePath(), filename))
-#' plot(d$theta,d$I,log='y',col='red')
+#' plot(d$TwoTheta,d$I,log='y',col='red')
 #'
+#' @importFrom utils read.csv
 #' @export
 xrd.read.TXT <- function(filename) {
   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
@@ -207,8 +212,9 @@ xrd.read.TXT <- function(filename) {
 #'
 #' filename = dir(xrd.getSamplePath(),patter='txt$')[1]
 #' d = xrd.read.TXTnoheader(file.path(xrd.getSamplePath(), filename))
-#' plot(d$theta,d$I,log='y',col='red')
+#' plot(d$TwoTheta,d$I,log='y',col='red')
 #'
+#' @importFrom utils read.csv
 #' @export
 xrd.read.TXTnoheader <- function(filename) {
   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
@@ -217,5 +223,3 @@ xrd.read.TXTnoheader <- function(filename) {
   names(d) = c('TwoTheta','I')
   d
 }
-
-

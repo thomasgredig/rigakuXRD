@@ -23,7 +23,7 @@ usually run after a peak is
 identified through its location
 }
 \examples{
-filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
+filename = xrd.getSampleFiles()[1]
 d = xrd.read.ASC(filename)
 xrd.get.PeakStats(d$theta, d$I, 38.2)
 

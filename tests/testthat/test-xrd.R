@@ -1,5 +1,3 @@
-context("check XRD sample files")
-
 test_that("XRD sample files", {
   file.list = xrd.getSampleFiles()
   expect_equal(length(file.list),3)
@@ -10,7 +8,6 @@ test_that("Load XRD sample file data", {
   file.list = xrd.getSampleFiles()[sel.Files]
   nLen=c()
   for(f in file.list) {
-    print(f)
     d = xrd.importData(f)
     nLen=c(nLen,nrow(d))
   }

@@ -9,11 +9,11 @@
 #' @param Try.Sigma vector with peak widths used to start fitting
 #' @return background, amplitude, position, width + 4 std. errors
 #' @examples
-#' filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
+#' filename = xrd.getSampleFiles()[1]
 #' d = xrd.read.ASC(filename)
 #' xrd.get.PeakStats(d$theta, d$I, 38.2)
 #'
-#' @import stats
+#' @importFrom stats nls
 #' @export
 xrd.get.PeakStats <- function(TwoTheta, Intensity, PeakPos,
                               Try.Sigma = c(0.1,0.2,0.15)) {

@@ -1,12 +1,16 @@
-#' Returns size estimate from Debye-Schrerrer Equation
+#' Scherrer equation
+#'
+#' Returns the particle size or film thickness as calculated with
+#' the Scherrer equation; units of Angstrom
 #'
 #' @param PeakStats vector with the peak statistics
 #' @param Lambda wavelength of x-ray in (A)
 #' @return peak width in Angstrom
 #' @examples
-#' filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
+#' filename = xrd.getSampleFiles()[1]
 #' d = xrd.read.ASC(filename)
-#' xrd.get.DebyeScherrer(d$theta, d$I, 38.2)
+#' ds = xrd.get.PeakStats(d$theta, d$I, 38.2)
+#' xrd.get.DebyeScherrer(ds)
 #'
 #' @export
 xrd.get.DebyeScherrer <- function(PeakStats,

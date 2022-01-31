@@ -17,7 +17,7 @@ Reads the ASC Rigaku XRD file with a Header
 }
 \examples{
 
-filename = dir(xrd.getSamplePath(),patter='asc$')
+filename = dir(xrd.getSamplePath(),pattern='asc$')
 d = xrd.read.ASC(file.path(xrd.getSamplePath(), filename))
 plot(d$theta,d$I,log='y',col='red')
 

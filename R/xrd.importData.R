@@ -19,7 +19,7 @@ xrd.importData <- function(filename) {
   else warning('Cannot read XRD file; change extension on file.')
   d
 }
- 
+
 
 
 # ==========================
@@ -141,17 +141,17 @@ xrd.read.RAS <- function(filename) {
 
 
 
-.xrdReadRasHeader <- function(filename) {
-  if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
-  data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL,encoding = "UTF-8")
-  p = as.vector(unlist(data))
-  if(p[1]!="*RAS_HEADER_START") { warning(paste("File format is not RAS:",filename))}
-  lines.comment = grep('^\\*',p)
-  d1 = data.frame(n = gsub('^\\*','',p[lines.comment]), stringsAsFactors = FALSE)
-
-  d1 %>%
-    separate(n, c('name','value'), " ")
-}
+# .xrdReadRasHeader <- function(filename) {
+#   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
+#   data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL,encoding = "UTF-8")
+#   p = as.vector(unlist(data))
+#   if(p[1]!="*RAS_HEADER_START") { warning(paste("File format is not RAS:",filename))}
+#   lines.comment = grep('^\\*',p)
+#   d1 = data.frame(n = gsub('^\\*','',p[lines.comment]), stringsAsFactors = FALSE)
+#
+#   d1 %>%
+#     separate(n, c('name','value'), " ")
+# }
 
 .xrdRasHeaderValue <- function(d,item='FILE_MEMO') {
   d$value[grep(item,d$name)]

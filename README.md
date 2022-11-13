@@ -19,6 +19,14 @@ The first line installs the popular `devtools` package that you can use to insta
 
 ## Example for Loading Data
 
+General example of loading a sample XRD file:
+
+```r
+d = xrd.import(filename = xrd.getSampleFiles()[1])
+
+```
+
+
 This is a basic example which shows you how to analyze the XRD data:
 
 ```r

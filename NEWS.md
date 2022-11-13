@@ -1,3 +1,7 @@
+# rigakuXRD 0.2.1
+
+* adding reader for ASC header: `xrd.readHeader.ASC()`
+
 # rigakuXRD 0.2.0
 
 * clean up help

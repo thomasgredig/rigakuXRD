@@ -40,6 +40,9 @@
     <loc>/reference/xrd.getSamplePath.html</loc>
   </url>
   <url>
+    <loc>/reference/xrd.import.html</loc>
+  </url>
+  <url>
     <loc>/reference/xrd.importData.html</loc>
   </url>
   <url>
@@ -53,5 +56,8 @@
   </url>
   <url>
     <loc>/reference/xrd.read.TXTnoheader.html</loc>
+  </url>
+  <url>
+    <loc>/reference/xrd.readHeader.ASC.html</loc>
   </url>
 </urlset>

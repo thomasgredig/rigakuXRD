@@ -5,12 +5,12 @@
 #' @examples
 #'
 #' filename = xrd.getSampleFiles()[1]
-#' d = xrd.importData(filename)
+#' d = xrd.import(filename)
 #' plot(d$theta,d$I,log='y',col='red')
 #'
 #' @importFrom tools file_ext
 #' @export
-xrd.importData <- function(filename) {
+xrd.import <- function(filename) {
   fileExtension = tolower(file_ext(filename))
   d <- data.frame()
   if (fileExtension=='asc') d=xrd.read.ASC(filename)
@@ -19,7 +19,7 @@ xrd.importData <- function(filename) {
   else warning('Cannot read XRD file; change extension on file.')
   d
 }
- 
+
 
 
 # ==========================
@@ -89,6 +89,39 @@ xrd.read.ASC <- function(filename) {
     x2p = x2p + length(theta)
   }
   data
+}
+
+
+
+#' Reads the header of an XRD ASC file
+#' @param filename filename including path
+#' @return data frame with XRD header
+#' @examples
+#' d = xrd.readHeader.ASC(xrd.getSampleFiles()[1])
+#' head(d)
+#'
+#' @export
+xrd.readHeader.ASC <- function(filename) {
+  if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
+  data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
+
+  # get data only
+  con.File = file(filename, "r")
+  hdata = readLines(con.File)
+  close(con.File)
+  hdata <- hdata[grep("^\\*.*\\t", hdata)]
+  hdata <- gsub('\\t+','=',hdata)
+  f <- strsplit(hdata,'==')
+  d = data.frame(
+    name = sapply(f, '[[',1),
+    val = sapply(f, '[[',2)
+  )
+  d$name = gsub('^\\*','',d$name)
+  d$name = gsub('_',' ',d$name)
+  d$name = tolower(d$name)
+  d$val = gsub('^.*=\\s*','',d$val)
+
+  d
 }
 
 

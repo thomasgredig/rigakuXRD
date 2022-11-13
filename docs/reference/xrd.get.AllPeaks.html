@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rigakuXRD</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.1</span>
       </span>
     </div>
 
@@ -47,40 +47,51 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">xrd.get.AllPeaks</span><span class="op">(</span>
-  <span class="va">TwoTheta</span>,
-  <span class="va">Intensity</span>,
-  min.Prominence <span class="op">=</span> <span class="fl">5</span>,
-  Try.Sigma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.15</span><span class="op">)</span>,
-  Range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">xrd.get.AllPeaks</span><span class="op">(</span></span>
+<span>  <span class="va">TwoTheta</span>,</span>
+<span>  <span class="va">Intensity</span>,</span>
+<span>  min.Prominence <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  Try.Sigma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.15</span><span class="op">)</span>,</span>
+<span>  Range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>TwoTheta</dt>
 <dd><p>angle</p></dd>
+
+
 <dt>Intensity</dt>
 <dd><p>intensity signal</p></dd>
+
+
 <dt>min.Prominence</dt>
 <dd><p>minimum prominence in percent (optional)</p></dd>
+
+
 <dt>Try.Sigma</dt>
 <dd><p>vector with peak widths used to start fitting (optional)</p></dd>
+
+
 <dt>Range</dt>
 <dd><p>range to search for peaks (optional)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>vector with peak positions</p>
+    
+
+<p>vector with peak positions</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="va">filename</span> <span class="op">=</span> <span class="fu"><a href="xrd.getSampleFiles.html">xrd.getSampleFiles</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">d</span> <span class="op">=</span> <span class="fu"><a href="xrd.read.ASC.html">xrd.read.ASC</a></span><span class="op">(</span><span class="va">filename</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">peak.list</span> <span class="op">=</span> <span class="fu">xrd.get.AllPeaks</span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">theta</span>, <span class="va">d</span><span class="op">$</span><span class="va">I</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="va">filename</span> <span class="op">=</span> <span class="fu"><a href="xrd.getSampleFiles.html">xrd.getSampleFiles</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">=</span> <span class="fu"><a href="xrd.read.ASC.html">xrd.read.ASC</a></span><span class="op">(</span><span class="va">filename</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">peak.list</span> <span class="op">=</span> <span class="fu">xrd.get.AllPeaks</span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">theta</span>, <span class="va">d</span><span class="op">$</span><span class="va">I</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
@@ -573,8 +584,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-in"><span class="co"># }</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -589,7 +600,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

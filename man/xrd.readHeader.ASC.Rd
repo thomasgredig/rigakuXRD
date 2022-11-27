@@ -16,7 +16,7 @@ data frame with XRD header
 Reads the header of an XRD ASC file
 }
 \examples{
-d = xrd.readHeader.ASC(xrd.getSampleFiles()[1])
+d = xrd.readHeader.ASC(xrd.getSampleFiles('asc')[1])
 head(d)
 
 }

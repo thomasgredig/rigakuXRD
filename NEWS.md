@@ -1,3 +1,7 @@
+# rigakuXRD 0.2.2
+
+* adding reader for RASX files, which are compresse
+
 # rigakuXRD 0.2.1
 
 * adding reader for ASC header: `xrd.readHeader.ASC()`

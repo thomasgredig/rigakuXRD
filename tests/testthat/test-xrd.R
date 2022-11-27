@@ -1,8 +1,3 @@
-test_that("XRD sample files", {
-  file.list = xrd.getSampleFiles()
-  expect_equal(length(file.list),3)
-})
-
 test_that("Load XRD sample file data", {
   sel.Files=c(1,3)
   file.list = xrd.getSampleFiles()[sel.Files]

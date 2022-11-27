@@ -17,8 +17,8 @@ Reads the TXT Rigaku XRD file with no header
 }
 \examples{
 
-filename = dir(xrd.getSamplePath(),patter='txt$')[1]
-d = xrd.read.TXTnoheader(file.path(xrd.getSamplePath(), filename))
+fname = xrd.getSampleFiles('txt')[1]
+d = xrd.read.TXTnoheader(fname)
 plot(d$TwoTheta,d$I,log='y',col='red')
 
 }

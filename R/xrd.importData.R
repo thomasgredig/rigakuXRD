@@ -1,22 +1,30 @@
 #' Imports Rigaku XRD data file
 #'
+#' Import function recognizes ASC, TXT, RAS, and RASX files from Rigaku XRD
+#' instrument; returns dataframe with 2theta, I (intensity normalized for time),
+#' and I.meas (measured intentsity)
+#'
 #' @param filename full filename with path
 #' @return data frame with XRD data
+#'
+#' @author Thomas Gredig
 #' @examples
 #'
-#' filename = xrd.getSampleFiles()[1]
-#' d = xrd.import(filename)
+#' fname = xrd.getSampleFiles()[1]
+#' d = xrd.import(fname)
 #' plot(d$theta,d$I,log='y',col='red')
 #'
 #' @importFrom tools file_ext
 #' @export
 xrd.import <- function(filename) {
+  if (!file.exists(filename)) stop(paste("File:",filename,"not found. Cannot import XRD data."))
   fileExtension = tolower(file_ext(filename))
   d <- data.frame()
   if (fileExtension=='asc') d=xrd.read.ASC(filename)
   else if (fileExtension=='ras') d=xrd.read.RAS(filename)
   else if (fileExtension=='txt') d=xrd.read.TXT(filename)
-  else warning('Cannot read XRD file; change extension on file.')
+  else if (fileExtension=='rasx') d=xrd.read.RASX(filename)
+  else warning('File extension is not recognized; cannot read the file.')
   d
 }
 
@@ -33,8 +41,8 @@ xrd.import <- function(filename) {
 #' @return data frame with XRD data
 #' @examples
 #'
-#' filename = dir(xrd.getSamplePath(),pattern='asc$')
-#' d = xrd.read.ASC(file.path(xrd.getSamplePath(), filename))
+#' fname = xrd.getSampleFiles('asc')[1]
+#' d = xrd.read.ASC(file.path(fname))
 #' plot(d$theta,d$I,log='y',col='red')
 #'
 #' @importFrom stringr str_extract_all
@@ -97,7 +105,7 @@ xrd.read.ASC <- function(filename) {
 #' @param filename filename including path
 #' @return data frame with XRD header
 #' @examples
-#' d = xrd.readHeader.ASC(xrd.getSampleFiles()[1])
+#' d = xrd.readHeader.ASC(xrd.getSampleFiles('asc')[1])
 #' head(d)
 #'
 #' @export
@@ -136,8 +144,7 @@ xrd.readHeader.ASC <- function(filename) {
 #' @return data frame with XRD data
 #' @examples
 #'
-#' filename = dir(xrd.getSamplePath(),patter='ras$')[1]
-#' fname = file.path(xrd.getSamplePath(), filename)
+#' fname = xrd.getSampleFiles('ras')[1]
 #' d = xrd.read.RAS(fname)
 #' plot(d$X2.Theta,d$I,log='y',col='red')
 #'
@@ -174,17 +181,6 @@ xrd.read.RAS <- function(filename) {
 
 
 
-# .xrdReadRasHeader <- function(filename) {
-#   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
-#   data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL,encoding = "UTF-8")
-#   p = as.vector(unlist(data))
-#   if(p[1]!="*RAS_HEADER_START") { warning(paste("File format is not RAS:",filename))}
-#   lines.comment = grep('^\\*',p)
-#   d1 = data.frame(n = gsub('^\\*','',p[lines.comment]), stringsAsFactors = FALSE)
-#
-#   d1 %>%
-#     separate(n, c('name','value'), " ")
-# }
 
 .xrdRasHeaderValue <- function(d,item='FILE_MEMO') {
   d$value[grep(item,d$name)]
@@ -202,8 +198,8 @@ xrd.read.RAS <- function(filename) {
 #' @return data frame with XRD data
 #' @examples
 #'
-#' filename = dir(xrd.getSamplePath(),pattern='txt$')[1]
-#' d = xrd.read.TXT(file.path(xrd.getSamplePath(), filename))
+#' fname = xrd.getSampleFiles('txt')
+#' d = xrd.read.TXT(fname)
 #' plot(d$TwoTheta,d$I,log='y',col='red')
 #'
 #' @importFrom utils read.csv
@@ -243,8 +239,8 @@ xrd.read.TXT <- function(filename) {
 #' @return data frame with XRD data and columns TwoTheta and I
 #' @examples
 #'
-#' filename = dir(xrd.getSamplePath(),patter='txt$')[1]
-#' d = xrd.read.TXTnoheader(file.path(xrd.getSamplePath(), filename))
+#' fname = xrd.getSampleFiles('txt')[1]
+#' d = xrd.read.TXTnoheader(fname)
 #' plot(d$TwoTheta,d$I,log='y',col='red')
 #'
 #' @importFrom utils read.csv
@@ -256,3 +252,38 @@ xrd.read.TXTnoheader <- function(filename) {
   names(d) = c('TwoTheta','I')
   d
 }
+
+
+
+
+# ==========================
+# RASX XRD Reader
+# ==========================
+
+
+
+#' Reads the RASX Rigaku XRD data
+#' @param filename filename including path
+#' @return data frame with XRD data
+#'
+#' @author Thomas Gredig
+#' @examples
+#' fname = xrd.getSampleFiles('rasx')[1]
+#' d = xrd.read.RASX(fname)
+#' head(d)
+#'
+#' @importFrom utils read.csv unzip
+#'
+#' @export
+xrd.read.RASX <- function(filename) {
+  if (!file.exists(filename)) { stop(paste('File does not exist:',filename)) }
+
+  pTemp = tempdir()
+  unzip(filename, exdir=pTemp)
+  dataFile = file.path(pTemp, 'Data0', 'Profile0.txt')
+
+  data = read.csv(file=dataFile, sep='\t', stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
+  names(data) = c('theta','I.meas','num')
+  data
+}
+

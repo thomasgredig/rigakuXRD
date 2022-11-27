@@ -13,12 +13,17 @@ xrd.import(filename)
 data frame with XRD data
 }
 \description{
-Imports Rigaku XRD data file
+Import function recognizes ASC, TXT, RAS, and RASX files from Rigaku XRD
+instrument; returns dataframe with 2theta, I (intensity normalized for time),
+and I.meas (measured intentsity)
 }
 \examples{
 
-filename = xrd.getSampleFiles()[1]
-d = xrd.import(filename)
+fname = xrd.getSampleFiles()[1]
+d = xrd.import(fname)
 plot(d$theta,d$I,log='y',col='red')
 
+}
+\author{
+Thomas Gredig
 }

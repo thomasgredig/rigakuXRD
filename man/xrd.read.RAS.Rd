@@ -17,8 +17,7 @@ Reads the RAS Rigaku XRD data
 }
 \examples{
 
-filename = dir(xrd.getSamplePath(),patter='ras$')[1]
-fname = file.path(xrd.getSamplePath(), filename)
+fname = xrd.getSampleFiles('ras')[1]
 d = xrd.read.RAS(fname)
 plot(d$X2.Theta,d$I,log='y',col='red')
 

@@ -2,9 +2,12 @@
 % Please edit documentation in R/xrd.getSampleFiles.R
 \name{xrd.getSampleFiles}
 \alias{xrd.getSampleFiles}
-\title{Get sample XRD files}
+\title{Returns XRD sample files}
 \usage{
-xrd.getSampleFiles()
+xrd.getSampleFiles(fileExt = NA)
+}
+\arguments{
+\item{fileExt}{file extension, could be \code{NA} for all, or "asc", "txt", "ras", "rasx"}
 }
 \value{
 vector with path/filename to sample XRD data files
@@ -14,8 +17,9 @@ returns sample XRD  from library
 }
 \examples{
 file.list = xrd.getSampleFiles()
-print(paste("Found",length(file.list),"sample files."))
+print(paste("Found",length(file.list),"sample files:"))
 basename(file.list)
+
 }
 \author{
 Thomas Gredig

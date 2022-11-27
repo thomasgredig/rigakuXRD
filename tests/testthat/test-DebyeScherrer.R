@@ -5,5 +5,4 @@ test_that("get Debye-Scherrer width", {
 
   # expect Au layer to be 14.7nm
   expect_equivalent(xrd.get.DebyeScherrer(q), 152.2, tolerance=1e-3)
-
 })

@@ -167,8 +167,9 @@ xrd.read.RAS <- function(filename) {
 
   lines.comment = grep('^\\*',p)
   n = gsub('^\\*','',p[lines.comment])
+  n = n[grepl(" ",n)]
   d.header = data.frame(n, stringsAsFactors = FALSE) %>%
-    separate(n, c('name','value'), " ")
+    separate(n, c('name','value'), sep=" ", fill="right")
   label.x = .xrdRasHeaderValue(d.header,'DISP_TAB_NAME')
   label.y = .xrdRasHeaderValue(d.header,'DISP_TITLE_Y')
   label.units = .xrdRasHeaderValue(d.header,'DISP_UNIT_Y')
@@ -176,7 +177,7 @@ xrd.read.RAS <- function(filename) {
   d1 %>%
     separate(n, c(label.x,label.y,label.units), " ") %>%
     lapply(as.numeric) -> d2
-  as.data.frame(d2)
+  d3 = as.data.frame(d2)
 }
 
 
@@ -230,6 +231,11 @@ xrd.read.TXT <- function(filename) {
     )
     names(d) = col.names
   }
+
+  # change column names
+  names(d) = c('theta','I')
+  d$I.meas = d$I
+  d$loop = 1
   d
 }
 
@@ -284,6 +290,14 @@ xrd.read.RASX <- function(filename) {
 
   data = read.csv(file=dataFile, sep='\t', stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
   names(data) = c('theta','I.meas','num')
+
+  # change columns
+  data = data.frame(
+    theta = data$theta,
+    I = data$I.meas,
+    I.meas = data$I.meas,
+    loop = data$num
+  )
   data
 }
 

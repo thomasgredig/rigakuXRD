@@ -1,3 +1,7 @@
+# rigakuXRD 0.2.3
+
+* reading of ASC, TXT, RAS, and RASX files should yield the same columns, when using `xrd.import()`, unify columns
+
 # rigakuXRD 0.2.2
 
 * adding reader for RASX files, which are compresse

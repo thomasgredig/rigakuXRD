@@ -1,7 +1,7 @@
 Package: rigakuXRD
 Type: Package
 Title: X-Ray Diffraction Data Analysis
-Version: 0.2.2
+Version: 0.2.3
 Year: 2020
 Authors@R: person("Thomas", "Gredig", email = "thomas.gredig@csulb.edu",
                   role = c("aut", "cre"),

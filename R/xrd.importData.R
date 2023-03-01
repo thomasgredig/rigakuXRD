@@ -149,8 +149,7 @@ xrd.readHeader.ASC <- function(filename) {
 #' plot(d$X2.Theta,d$I,log='y',col='red')
 #'
 #' @importFrom utils read.csv
-#' @importFrom tidyr separate
-#' @importFrom tidyr "%>%"
+#' @importFrom tidyr "%>%"  separate_wider_delim
 #'
 #' @export
 xrd.read.RAS <- function(filename) {
@@ -169,13 +168,14 @@ xrd.read.RAS <- function(filename) {
   n = gsub('^\\*','',p[lines.comment])
   n = n[grepl(" ",n)]
   d.header = data.frame(n, stringsAsFactors = FALSE) %>%
-    separate(n, c('name','value'), sep=" ", fill="right")
+    separate_wider_delim(n, names=c('name','value'), delim=" ", too_many="merge")
   label.x = .xrdRasHeaderValue(d.header,'DISP_TAB_NAME')
   label.y = .xrdRasHeaderValue(d.header,'DISP_TITLE_Y')
   label.units = .xrdRasHeaderValue(d.header,'DISP_UNIT_Y')
 
   d1 %>%
-    separate(n, c(label.x,label.y,label.units), " ") %>%
+    separate_wider_delim(n, names=c(label.x,label.y,label.units),
+                         delim=" ", too_many="merge") %>%
     lapply(as.numeric) -> d2
   d3 = as.data.frame(d2)
 }

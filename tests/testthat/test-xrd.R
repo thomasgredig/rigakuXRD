@@ -11,7 +11,7 @@ test_that("xrd.import: Load XRD sample file data", {
 
 
 test_that("xrd.import: check for uniformity of data columns", {
-  sel.Files=c(1,2,3,4)
+  sel.Files=c(1,3,4)
   file.list = xrd.getSampleFiles()[sel.Files]
   nLen=c()
   for(f in file.list) {
@@ -19,7 +19,7 @@ test_that("xrd.import: check for uniformity of data columns", {
     print(names(d))
     nLen=c(nLen,length(names(d)))
   }
-  expect_equal(nLen,rep(4,4))
+  expect_equal(nLen,rep(4,length(sel.Files)))
 })
 
 

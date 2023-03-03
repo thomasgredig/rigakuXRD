@@ -201,7 +201,7 @@ xrd.read.RAS <- function(filename) {
 #'
 #' fname = xrd.getSampleFiles('txt')
 #' d = xrd.read.TXT(fname)
-#' plot(d$TwoTheta,d$I,log='y',col='red')
+#' plot(d$theta,d$I,log='y',col='red')
 #'
 #' @importFrom utils read.csv
 #' @export

@@ -1,5 +1,6 @@
 # rigakuXRD 0.2.3
 
+* fix examples
 * update RAS file reader
 * reading of ASC, TXT, RAS, and RASX files should yield the same columns, when using `xrd.import()`, unify columns
 

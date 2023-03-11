@@ -4,7 +4,7 @@
 \alias{xrd.find.Peak}
 \title{Finds Peak Position from Gaussian}
 \usage{
-xrd.find.Peak(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2, 0.15))
+xrd.find.Peak(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.4, 0.2, 0.15))
 }
 \arguments{
 \item{TwoTheta}{angle}
@@ -22,7 +22,7 @@ fit peak position
 Fits a Gaussian form to a peak
 }
 \examples{
-filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
+filename = xrd.getSampleFiles(fileExt='asc')[1]
 d = xrd.read.ASC(filename)
 plot(d$theta,d$I,log='y',col='red')
 peak.pos = xrd.find.Peak(d$theta, d$I, 38.2)

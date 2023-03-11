@@ -16,7 +16,7 @@ test_that("xrd.import: check for uniformity of data columns", {
   nLen=c()
   for(f in file.list) {
     d = xrd.import(f)
-    print(names(d))
+    #print(names(d))
     nLen=c(nLen,length(names(d)))
   }
   expect_equal(nLen,rep(4,length(sel.Files)))
@@ -33,3 +33,21 @@ test_that("Load XRD sample file data", {
 
   expect_equal(data.header$val[grep('scan mode', data.header$name)],"  2theta/theta")
 })
+
+
+
+test_that("Test files have data.", {
+  file.list = xrd.getSampleFiles()
+  for(fname in file.list) {
+    d = xrd.import(fname)
+    # print(head(d))
+    expect_true(nrow(d)>1000)
+  }
+})
+
+
+# test_that("check all peaks", {
+#   filename = xrd.getSampleFiles()[1]
+#   d = xrd.read.ASC(filename)
+#   peak.list = xrd.get.AllPeaks(d$theta, d$I)
+# })

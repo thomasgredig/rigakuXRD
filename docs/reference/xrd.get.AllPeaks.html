@@ -51,8 +51,9 @@
 <span>  <span class="va">TwoTheta</span>,</span>
 <span>  <span class="va">Intensity</span>,</span>
 <span>  min.Prominence <span class="op">=</span> <span class="fl">5</span>,</span>
-<span>  Try.Sigma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.15</span><span class="op">)</span>,</span>
-<span>  Range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span><span class="op">)</span></span>
+<span>  Try.Sigma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.15</span><span class="op">)</span>,</span>
+<span>  Range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">90</span><span class="op">)</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -77,6 +78,10 @@
 <dt>Range</dt>
 <dd><p>range to search for peaks (optional)</p></dd>
 
+
+<dt>verbose</dt>
+<dd><p>logical, if <code>TRUE</code> outputs additional info</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -97,39 +102,13 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
@@ -139,11 +118,9 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
@@ -151,67 +128,19 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
@@ -227,11 +156,25 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
@@ -247,6 +190,22 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
@@ -255,39 +214,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
@@ -302,6 +229,22 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
@@ -325,11 +268,13 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
@@ -339,92 +284,72 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
@@ -437,7 +362,9 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
@@ -455,15 +382,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
@@ -471,11 +390,11 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
@@ -495,75 +414,9 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
@@ -577,9 +430,409 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   number of iterations exceeded maximum of 50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   step factor 0.000488281 reduced below 'minFactor' of 0.000976562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in nls(data = n1, I ~ b + A * exp(-(TwoTheta - t0)^2/(2 * sigma *  : </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   singular gradient</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>

@@ -4,7 +4,13 @@
 \alias{xrd.get.PeakStats}
 \title{Fits the peak to a Gaussian}
 \usage{
-xrd.get.PeakStats(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2, 0.15))
+xrd.get.PeakStats(
+  TwoTheta,
+  Intensity,
+  PeakPos,
+  Try.Sigma = c(0.1, 0.4, 0.2, 0.15),
+  verbose = FALSE
+)
 }
 \arguments{
 \item{TwoTheta}{angle}
@@ -14,6 +20,8 @@ xrd.get.PeakStats(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.2, 0.15))
 \item{PeakPos}{approximate angle of peak position}
 
 \item{Try.Sigma}{vector with peak widths used to start fitting}
+
+\item{verbose}{logical, if \code{TRUE} output additional information}
 }
 \value{
 background, amplitude, position, width + 4 std. errors
@@ -23,7 +31,7 @@ usually run after a peak is
 identified through its location
 }
 \examples{
-filename = xrd.getSampleFiles()[1]
+filename = xrd.getSampleFiles(fileExt='asc')
 d = xrd.read.ASC(filename)
 xrd.get.PeakStats(d$theta, d$I, 38.2)
 

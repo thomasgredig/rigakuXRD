@@ -8,7 +8,7 @@
 #' @param Try.Sigma vector with peak widths used to start fitting
 #' @return fit peak position
 #' @examples
-#' filename = system.file("extdata", "2Theta.asc", package='rigakuXRD')
+#' filename = xrd.getSampleFiles(fileExt='asc')[1]
 #' d = xrd.read.ASC(filename)
 #' plot(d$theta,d$I,log='y',col='red')
 #' peak.pos = xrd.find.Peak(d$theta, d$I, 38.2)
@@ -17,7 +17,8 @@
 #' @importFrom stats nls
 #' @export
 xrd.find.Peak <- function(TwoTheta, Intensity, PeakPos,
-                          Try.Sigma = c(0.1,0.2,0.15)) {
+                          Try.Sigma = c(0.1,0.4,0.2,0.15)
+                          ) {
   d = data.frame(TwoTheta, I = Intensity)
   for(peak.width in Try.Sigma) {
     fit <- NULL

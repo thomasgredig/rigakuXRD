@@ -1,5 +1,5 @@
 test_that("get Debye-Scherrer width", {
-  fn = system.file("extdata", "2Theta.asc", package='rigakuXRD')
+  fn = xrd.getSampleFiles(fileExt='asc')
   d <- xrd.read.ASC(fn)
   q = xrd.get.PeakStats(d$theta, d$I, 38.2)
 

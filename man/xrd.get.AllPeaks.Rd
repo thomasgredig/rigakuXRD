@@ -8,8 +8,9 @@ xrd.get.AllPeaks(
   TwoTheta,
   Intensity,
   min.Prominence = 5,
-  Try.Sigma = c(0.1, 0.2, 0.15),
-  Range = c(0, 90)
+  Try.Sigma = c(0.1, 0.4, 0.2, 0.15),
+  Range = c(0, 90),
+  verbose = FALSE
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ xrd.get.AllPeaks(
 \item{Try.Sigma}{vector with peak widths used to start fitting (optional)}
 
 \item{Range}{range to search for peaks (optional)}
+
+\item{verbose}{logical, if \code{TRUE} outputs additional info}
 }
 \value{
 vector with peak positions

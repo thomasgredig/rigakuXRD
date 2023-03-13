@@ -4,16 +4,27 @@
 \alias{xrd.find.Peak}
 \title{Finds Peak Position from Gaussian}
 \usage{
-xrd.find.Peak(TwoTheta, Intensity, PeakPos, Try.Sigma = c(0.1, 0.4, 0.2, 0.15))
+xrd.find.Peak(
+  TwoTheta,
+  Intensity,
+  peakPos = NA,
+  Try.Sigma = c(0.1, 0.4, 0.2, 0.15),
+  thetaDelta = 5,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{TwoTheta}{angle}
 
 \item{Intensity}{intensity signal}
 
-\item{PeakPos}{approximate angle of peak position}
+\item{peakPos}{approximate angle of peak position}
 
 \item{Try.Sigma}{vector with peak widths used to start fitting}
+
+\item{thetaDelta}{width of angle to search peak}
+
+\item{verbose}{logical, if \code{TRUE} provides extra information}
 }
 \value{
 fit peak position
@@ -24,8 +35,8 @@ Fits a Gaussian form to a peak
 \examples{
 filename = xrd.getSampleFiles(fileExt='asc')[1]
 d = xrd.read.ASC(filename)
-plot(d$theta,d$I,log='y',col='red')
 peak.pos = xrd.find.Peak(d$theta, d$I, 38.2)
+plot(d$theta,d$I,log='y',col='red')
 abline(v=peak.pos,col='blue')
 
 }

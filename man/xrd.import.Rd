@@ -2,12 +2,12 @@
 % Please edit documentation in R/xrd.importData.R
 \name{xrd.import}
 \alias{xrd.import}
-\title{Imports Rigaku XRD data file}
+\title{Imports Rigaku XRD Data File}
 \usage{
 xrd.import(filename)
 }
 \arguments{
-\item{filename}{full filename with path}
+\item{filename}{full file name with path}
 }
 \value{
 data frame with XRD data

@@ -3,9 +3,10 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of rigakuXRD is to analyze x-ray diffraction data from the Rigaku Smartlab x-ray diffractometer.
+The goal of rigakuXRD is to analyze x-ray diffraction data from the Rigaku Smartlab x-ray diffractometer; mostly for low-angle reflectivity data and Bragg-Brentano diffractive data sets.
 
-## Installation
+
+# Installation
 
 You can install the released version of rigakuXRD from [GitHub](https://github.com/thomasgredig/rigakuXRD) with:
 
@@ -17,54 +18,54 @@ devtools::install_github("thomasgredig/rigakuXRD")
 The first line installs the popular `devtools` package that you can use to install R packages from (Github)[http://www.github.com]. The second lines installs the latest version of the `rigakuXRD` package.
 
 
-## Example for Loading Data
+# Import XRD Data
 
-General example of loading a sample XRD file:
-
-```r
-d = xrd.import(filename = xrd.getSampleFiles()[1])
-
-```
-
-
-This is a basic example which shows you how to analyze the XRD data:
+The package comes with several sample data files, which can be found with the function `xrd.getSampleFiles()`. A general example of loading a sample XRD file:
 
 ```r
 library(rigakuXRD)
-## basic example code
-fn = system.file("extdata", "2Theta.asc", package='rigakuXRD')
+d = xrd.import(filename = xrd.getSampleFiles()[1])
+```
 
-# load an ASC file
-d <- xrd.read.ASC(fn)
+The data can be graphed, typically on a semi-log graph:
+
+```r
 plot(d$theta, d$I.meas, log='y')
 ```
 
-If you are loading a text file wihtout a header:
+If you are loading a text file without a header, you could use the following approach:
 
 ```r
 d = xrd.read.TXTnoheader('xrd.txt')
 plot(d$theta, d$I.meas, log='y')
 ```
 
-## Loading RAS files
+## Importing RAS or RASX Files
 
-In addition to `.ASC` files, `.RAS` files are also text files and contain a header information, followed by the data. Here is an example:
+In addition to `.asc` files, `.ras` or `.rasx` files are also text files and contain a header information, followed by the data. Here is an example:
 
 ```r
-library(rigakuXRD)
-library(RAWdataR)
-
-file.list = raw.findFile(xrd.getSamplePath(),instrument='xrd')
-d = xrd.read.RAS(file.list[1])
+fileName = xrd.getSampleFiles(fileExt = 'rasx')[1]
+d = xrd.import(fileName)
 ```
 
-## Example for Finding Peaks
+# Peak Analsysis
 
-Finding the peak position, you need to provide a starting angle, where you expect to find a peak to find. If no peak is found, it may be that the width is unusual and you can specify the **Try.Sigma** parameter with a vector of expected peak widths at that location.
+The largest peak in a sub dataset is found with the `xrd.peakEstimate()` function. It is not a fit, but an estimate
+to find the parameters of the largest peak in the data set.
+
+Finding the precise peak position, you need to provide a starting angle (see `xrd.peakEstimate()`). The `xrd.find.Peak()` function attempts to fit a Gaussian function to the main peak. Here is an example:
 
 ```r
+fileName = xrd.getSampleFiles(fileExt = 'asc')[1]
+d = xrd.import(fileName)
+
+library(dplyr)
+d %>% filter(theta < 42 & theta > 32) -> d1
+p = xrd.peakEstimate(d1$theta, d1$I)
+
 # is there a Au peak ?
-xrd.find.Peak(d$theta, d$I, 38)
+xrd.find.Peak(d$theta, d$I, p[3])
 
 # is there a Si substrate peak ?
 xrd.find.Peak(d$theta, d$I, 44, Try.Sigma = c(0.05,0.1) )
@@ -77,7 +78,7 @@ xrd.get.AllPeaks(d$theta, d$I)
 ```
 
 
-## Example for Analyzing Peaks
+## Peak Analysis
 
 After finding the peaks, the peak amplitude is compared to the background to check the prominence of the peak, it should rise above 5%:
 

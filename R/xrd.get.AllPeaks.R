@@ -19,24 +19,36 @@
 #' @export
 xrd.get.AllPeaks <- function(TwoTheta, Intensity,
                              min.Prominence = 5,
-                             Try.Sigma = c(0.1,0.4,0.2,0.15),
+                             Try.Sigma = c(0.2,0.1,0.05,0.3),
+                             deltaTheta = 5,
                              Range = c(0,90),
                              verbose = FALSE) {
-  step.size = 0.5 # search peaks with this step size
+  filename = xrd.getSampleFiles(fileExt='asc')
+  d = xrd.read.ASC(filename)
+  TwoTheta = d$theta
+  Intensity = d$I
+  d = data.frame(TwoTheta, Intensity)
+
+  step.size = 2 # search peaks with this step size
   if (Range[1]==0) { theta.min = min(TwoTheta) + step.size/2 }
   if (Range[2]==90) { theta.max = max(TwoTheta) - step.size/2 }
   if ((theta.max-theta.min)<1) { return(c()) }
   peakPos.list = c(seq(from=theta.min, to=theta.max, by=step.size),
-                   seq(from=theta.min+(step.size/2), to=theta.max+(step.size/2), by=step.size))
+                   seq(from=theta.min+(step.size/2), to=theta.max-(step.size/2), by=step.size))
 
-  p = c()
+  pk = c()
+
   for(ang in peakPos.list) {
-    p1 = xrd.get.PeakStats(TwoTheta, Intensity, ang)
-    if(length(p1)==8) {
-      if (xrd.get.PeakProminence(p1) > min.Prominence) {
-        p = c(p, p1[3])
-      }
+    print(paste("Checking: ",ang,"deg"))
+    n1 = subset(d, TwoTheta >= (ang-deltaTheta) & TwoTheta<= (ang+deltaTheta))
+    # plot(n1$TwoTheta, n1$Intensity)
+    p1 = xrd.find.Peak(n1$TwoTheta, n1$Intensity,
+                       Try.Sigma = Try.Sigma,
+                       peakPos = ang,
+                       verbose = verbose)
+    if(!is.na(p1)) {
+        pk = c(pk, p1)
     }
   }
-  p
+  sort(pk)
 }

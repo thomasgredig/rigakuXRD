@@ -1,5 +1,6 @@
 library(testthat)
 library(rigakuXRD)
+library(dplyr)
 
 test_check("rigakuXRD")
 # usethis::use_test("findPeak")

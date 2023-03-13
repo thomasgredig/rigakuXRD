@@ -1,0 +1,60 @@
+---
+title: "find XRD peaks"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{find XRD peaks}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 6
+)
+```
+
+
+**Objective:** Finding all the XRD peaks can be difficult, if the peaks are not prominent. Let us explore an algorithm, which eliminates areas, where fitting for a peak is not possible, and other areas, where fitting for a peak is straight-forward.
+
+```{r setup}
+library(rigakuXRD)
+library(dplyr)
+library(ggplot2)
+# Loading the date
+filename = xrd.getSampleFiles()[1]
+d = xrd.read.ASC(filename)
+```
+
+
+Plot different ranges, the following plot shows at least 6 peaks that should be found:
+
+```{r}
+d = data.frame(th = d$theta, I = d$I)
+plot(d, log='y', col='red')
+```
+
+## Region
+
+```{r}
+d %>%
+  filter(th>36 & th < 42) %>%
+  ggplot(aes(th, I)) + 
+  geom_point(col='red') + 
+  theme_bw()
+```
+
+
+```{r}
+  d1 = d %>% filter(th>36 & th<43)
+  p = xrd.peakEstimate(d1$th, d1$I, verbose=TRUE)
+  fit <- NULL
+  try(fit <-
+        nls(data = d1,
+            I ~ b + A*exp(-(th-t)^2/(2*s*s)),
+            start = list(b=p$b0, A = p$A0, 
+                         t=p$th0, s=p$s0))
+  ); # does not stop in case of error
+  summary(fit) 
+```

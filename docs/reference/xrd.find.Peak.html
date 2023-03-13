@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rigakuXRD</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.4</span>
       </span>
     </div>
 
@@ -25,6 +25,19 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/estimatePeak.html">Estimate Peak Position</a>
+    </li>
+    <li>
+      <a href="../articles/xrdFindPeaks.html">find XRD peaks</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -47,7 +60,14 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">xrd.find.Peak</span><span class="op">(</span><span class="va">TwoTheta</span>, <span class="va">Intensity</span>, <span class="va">PeakPos</span>, Try.Sigma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.15</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">xrd.find.Peak</span><span class="op">(</span></span>
+<span>  <span class="va">TwoTheta</span>,</span>
+<span>  <span class="va">Intensity</span>,</span>
+<span>  peakPos <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  Try.Sigma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.2</span>, <span class="fl">0.15</span><span class="op">)</span>,</span>
+<span>  thetaDelta <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -60,12 +80,20 @@
 <dd><p>intensity signal</p></dd>
 
 
-<dt>PeakPos</dt>
+<dt>peakPos</dt>
 <dd><p>approximate angle of peak position</p></dd>
 
 
 <dt>Try.Sigma</dt>
 <dd><p>vector with peak widths used to start fitting</p></dd>
+
+
+<dt>thetaDelta</dt>
+<dd><p>width of angle to search peak</p></dd>
+
+
+<dt>verbose</dt>
+<dd><p>logical, if <code>TRUE</code> provides extra information</p></dd>
 
 </dl></div>
     <div id="value">
@@ -79,8 +107,8 @@
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">filename</span> <span class="op">=</span> <span class="fu"><a href="xrd.getSampleFiles.html">xrd.getSampleFiles</a></span><span class="op">(</span>fileExt<span class="op">=</span><span class="st">'asc'</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
 <span class="r-in"><span><span class="va">d</span> <span class="op">=</span> <span class="fu"><a href="xrd.read.ASC.html">xrd.read.ASC</a></span><span class="op">(</span><span class="va">filename</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">theta</span>,<span class="va">d</span><span class="op">$</span><span class="va">I</span>,log<span class="op">=</span><span class="st">'y'</span>,col<span class="op">=</span><span class="st">'red'</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">peak.pos</span> <span class="op">=</span> <span class="fu">xrd.find.Peak</span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">theta</span>, <span class="va">d</span><span class="op">$</span><span class="va">I</span>, <span class="fl">38.2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">theta</span>,<span class="va">d</span><span class="op">$</span><span class="va">I</span>,log<span class="op">=</span><span class="st">'y'</span>,col<span class="op">=</span><span class="st">'red'</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>v<span class="op">=</span><span class="va">peak.pos</span>,col<span class="op">=</span><span class="st">'blue'</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="xrd.find.Peak-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>

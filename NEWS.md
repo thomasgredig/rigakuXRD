@@ -1,3 +1,8 @@
+# rigakuXRD 0.2.4
+
+* add the `xrdFindPeaks` vignette to explain how the peaks are found
+* update the `xrd.find.Peak()` function using a new way to estimate the peak position with `xrd.peakEstimate()`, which will find the largest peak (not necessarily near the value provided as the estimated peak)
+
 # rigakuXRD 0.2.3
 
 * fix examples

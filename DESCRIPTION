@@ -1,14 +1,15 @@
 Package: rigakuXRD
 Type: Package
-Title: X-Ray Diffraction Data Analysis
-Version: 0.2.3
+Title: X-Ray Diffraction Data Analysis Package for Rigaku Data Sets
+Version: 0.2.4
 Year: 2020
 Authors@R: person("Thomas", "Gredig", email = "thomas.gredig@csulb.edu",
                   role = c("aut", "cre"),
                   comment = c(ORCID = "0000-0002-5824-7626"))
 Maintainer: Thomas Gredig <thomas.gredig@csulb.edu>
 Description: This package loads data from the x-ray diffractometer and
-  assists with the x-ray data analysis.
+  assists with the x-ray data analysis. It supports ASC, RAS, RASX, and TXT
+  data files for import. It provides peak finder analysis tools.
 URL: https://thomasgredig.github.io/rigakuXRD/
 License: file LICENSE
 Encoding: UTF-8
@@ -17,8 +18,12 @@ RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 Suggests:
     knitr,
+    rmarkdown,
     testthat (>= 2.1.0)
 Imports:
+    dplyr,
+    ggplot2,
+    graphics,
     stats,
     stringr,
     tidyr,

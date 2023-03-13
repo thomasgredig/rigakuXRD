@@ -8,7 +8,8 @@ xrd.get.AllPeaks(
   TwoTheta,
   Intensity,
   min.Prominence = 5,
-  Try.Sigma = c(0.1, 0.4, 0.2, 0.15),
+  Try.Sigma = c(0.2, 0.1, 0.05, 0.3),
+  deltaTheta = 5,
   Range = c(0, 90),
   verbose = FALSE
 )

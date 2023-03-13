@@ -2,22 +2,22 @@
 % Please edit documentation in R/xrd.get.PeakStats.R
 \name{xrd.get.PeakStats}
 \alias{xrd.get.PeakStats}
-\title{Fits the peak to a Gaussian}
+\title{Fits a Gaussian Function to XRD data}
 \usage{
 xrd.get.PeakStats(
   TwoTheta,
   Intensity,
-  PeakPos,
-  Try.Sigma = c(0.1, 0.4, 0.2, 0.15),
+  peakPos,
+  Try.Sigma = c(0.2, 0.1, 0.05, 0.3),
   verbose = FALSE
 )
 }
 \arguments{
-\item{TwoTheta}{angle}
+\item{TwoTheta}{2q angle}
 
-\item{Intensity}{intensity signal}
+\item{Intensity}{XRD intensity}
 
-\item{PeakPos}{approximate angle of peak position}
+\item{peakPos}{specific 2q angle of peak position}
 
 \item{Try.Sigma}{vector with peak widths used to start fitting}
 
@@ -35,4 +35,7 @@ filename = xrd.getSampleFiles(fileExt='asc')
 d = xrd.read.ASC(filename)
 xrd.get.PeakStats(d$theta, d$I, 38.2)
 
+}
+\author{
+Thomas Gredig
 }

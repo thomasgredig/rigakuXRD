@@ -1,10 +1,10 @@
-#' Imports Rigaku XRD data file
+#' Imports Rigaku XRD Data File
 #'
 #' Import function recognizes ASC, TXT, RAS, and RASX files from Rigaku XRD
 #' instrument; returns dataframe with 2theta, I (intensity normalized for time),
 #' and I.meas (measured intentsity)
 #'
-#' @param filename full filename with path
+#' @param filename full file name with path
 #' @return data frame with XRD data
 #'
 #' @author Thomas Gredig
@@ -17,12 +17,17 @@
 #' @importFrom tools file_ext
 #' @export
 xrd.import <- function(filename) {
-  if (!file.exists(filename)) stop(paste("File:",filename,"not found. Cannot import XRD data."))
   fileExtension = tolower(file_ext(filename))
   d <- data.frame()
-  if (fileExtension=='asc') d=xrd.read.ASC(filename)
-  else if (fileExtension=='ras') d=xrd.read.RAS(filename)
-  else if (fileExtension=='txt') d=xrd.read.TXT(filename)
+
+  if (!file.exists(filename)) {
+    warning(paste("File:",filename,"not found. Cannot import XRD data."))
+    return(d)
+  }
+
+  if (fileExtension=='asc')       d=xrd.read.ASC(filename)
+  else if (fileExtension=='ras')  d=xrd.read.RAS(filename)
+  else if (fileExtension=='txt')  d=xrd.read.TXT(filename)
   else if (fileExtension=='rasx') d=xrd.read.RASX(filename)
   else warning('File extension is not recognized; cannot read the file.')
   d

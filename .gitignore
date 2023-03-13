@@ -7,3 +7,4 @@ inst/.DS_Store
 misc.func.R
 _main.R
 _init.R
+inst/doc

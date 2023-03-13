@@ -1,31 +1,37 @@
-test_that("Test Peak Finder functionality", {
-  fn = system.file("extdata", "2Theta.asc", package='rigakuXRD')
-  d <- xrd.read.ASC(fn)
-  peak.pos = xrd.find.Peak(d$theta, d$I, 38)
-  expect_equivalent(peak.pos, 38.24, tolerance=1e-3)
+filename = xrd.getSampleFiles()[1]
+d = xrd.read.ASC(filename)
+
+test_that("Find largest peak", {
+  peak.pos = xrd.find.Peak(d$theta, d$I, 69)
+  expect_equal(peak.pos, 69.14, tolerance = 1e-4)
 })
 
-
-test_that("Test Peak out of range", {
-  fn = system.file("extdata", "2Theta.asc", package='rigakuXRD')
-  d <- xrd.read.ASC(fn)
-  peak.pos = xrd.find.Peak(d$theta, d$I, 500)
-  expect_equivalent(peak.pos, NA)
-})
-
-
-test_that("Test Peak Width Functionality", {
-  fn = system.file("extdata", "2Theta.asc", package='rigakuXRD')
-  d <- xrd.read.ASC(fn)
+test_that("Test Peak Width Fit", {
   q = xrd.get.PeakStats(d$theta, d$I, 38.2)
-  expect_equivalent(q[4], 0.2346, tolerance=1e-3)
+  expect_equal(q[4], 0.2346, tolerance=1e-3)
 })
 
-test_that("Test Peak Statistics", {
+test_that("Test Peak Position Fit", {
+  q = xrd.get.PeakStats(d$theta, d$I, 38)
+  expect_equal(q[3], 38.21774, Try.Sigma = 0.3, tolerance=1e-4)
+})
+
+test_that("Test Peak Background and Amplitude Fit", {
+  q = xrd.get.PeakStats(d$theta, d$I, 38.2)
+  expect_equal(q[2], 422,Try.Sigma = 0.3, tolerance=1e-3) # peak amplitude
+  expect_equal(q[1], 890,Try.Sigma = 0.3, tolerance=1e-3)# peak background
+})
+
+test_that("No peak at 42 or 72, but warning", {
   filename = xrd.getSampleFiles()[1]
   d = xrd.read.ASC(filename)
-  q = xrd.get.PeakStats(d$theta, d$I, 38.2)
-  expect_equivalent(q[3], 38.20403) # peak pos
-  expect_equivalent(q[2], 440.9358) # peak amplitude
-  expect_equivalent(q[1], 873.5825) # peak background
+
+  # there is no peak in this data
+  expect_warning(xrd.find.Peak(d$theta, d$I,
+                               42, thetaDelta=5))
+
+  # peak is partial on the left
+  expect_warning(xrd.find.Peak(d$theta, d$I, 72,
+                               thetaDelta=5, verbose=TRUE))
 })
+

@@ -45,9 +45,17 @@ test_that("Test files have data.", {
   }
 })
 
+test_that("xrd.import: invalid file", {
+  file.list = file.path(xrd.getSamplePath(),'test.ibw')
+  for(fname in file.list) {
+    expect_warning(xrd.import(fname))
+  }
+})
 
-# test_that("check all peaks", {
-#   filename = xrd.getSampleFiles()[1]
-#   d = xrd.read.ASC(filename)
-#   peak.list = xrd.get.AllPeaks(d$theta, d$I)
-# })
+
+test_that("check all peaks", {
+  filename = xrd.getSampleFiles()[1]
+  d = xrd.read.ASC(filename)
+  peak.list = xrd.get.AllPeaks(d$theta, d$I)
+  expect_length(peak.list,31)
+})

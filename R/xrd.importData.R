@@ -161,6 +161,8 @@ xrd.read.RAS <- function(filename) {
   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
   data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL)
   p = as.vector(unlist(data))
+  p = iconv(p, from = "ISO-8859-1", to = "UTF-8")
+
   if(p[1]!="*RAS_HEADER_START") { warning(paste("File format is not RAS:",filename))}
   p.start = grep('*RAS_INT_START',p)
   p.end = grep('*RAS_INT_END',p)

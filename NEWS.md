@@ -1,3 +1,8 @@
+# rigakuXRD 0.2.5
+
+* geometrical factor in Scherrer equation can be changed, see `xrd.get.Scherrer()`.
+* convert RAS text header to unicode
+
 # rigakuXRD 0.2.4
 
 * add the `xrdFindPeaks` vignette to explain how the peaks are found

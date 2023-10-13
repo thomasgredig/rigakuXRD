@@ -8,3 +8,5 @@ misc.func.R
 _main.R
 _init.R
 inst/doc
+tests/testthat/Rplots.pdf
+tests/testthat/Rplots.pdf

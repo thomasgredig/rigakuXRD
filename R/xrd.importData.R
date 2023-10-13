@@ -231,7 +231,12 @@ xrd.read.TXT <- function(filename) {
   start.row = grep('^#',p)[1]+1
   if (is.na(start.row)) { d = xrd.read.TXTnoheader(filename) }
   else {
-    p1 = strsplit(p[start.row:length(p)],'\t')
+    if (length(grep('\t', p[start.row]))>0) {
+      p1 = strsplit(p[start.row:length(p)],'\t')
+    } else {
+      # separator is space not tab
+      p1 = strsplit(p[start.row:length(p)],' ')
+    }
     d = data.frame(
       v1 = as.numeric(unlist(lapply(p1,'[[',1))),
       v2 = as.numeric(unlist(lapply(p1, secondValue)))

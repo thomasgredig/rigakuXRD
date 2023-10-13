@@ -1,3 +1,7 @@
+# rigakuXRD 0.2.6
+
+* allow space in addition to tab in loading txt XRD files
+
 # rigakuXRD 0.2.5
 
 * geometrical factor in Scherrer equation can be changed, see `xrd.get.Scherrer()`.

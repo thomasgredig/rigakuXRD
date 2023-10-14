@@ -1,6 +1,7 @@
 # rigakuXRD 0.2.6
 
 * allow space in addition to tab in loading txt XRD files
+* add function to export XRD to GenX input format
 
 # rigakuXRD 0.2.5
 

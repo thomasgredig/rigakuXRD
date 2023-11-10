@@ -28,31 +28,31 @@
 #'
 #' @export
 xrd.peakEstimate <- function(twoTheta, I, verbose=FALSE) {
-  n1 = data.frame(th = twoTheta, I)
 
   # approximate the data set, so there is less
   # noise in the data
-  q = approx(n1$th, n1$I, n=20)
+  q <- approx(twoTheta, I, n=20)
 
   # find the position of the largest peak and its angle
-  peakNo = which(q$y == max(q$y))
-  th0 = q$x[peakNo]
+  peakNo <- which(q$y == max(q$y))
+  th0  <- q$x[peakNo]
 
   # find the background position and amplitude
-  b0 = min(q$y)
-  A0 = max(q$y) - b0
+  b0 <- min(q$y)
+  A0 <- max(q$y) - b0
 
   # estimate the peak width
-  ts0 = (q$y[peakNo + 2] - b0) / A0
-  s0 = -(q$x[peakNo+2] - th0)/(sqrt(2)*log(ts0))
+  ts0 <- +(q$y[peakNo + 2] - b0) / A0
+  s0  <- -(q$x[peakNo + 2] - th0) / (sqrt(2)*log(ts0))
 
   if (verbose) {
-    n2 = n1
-    n1$type = 'exp'
-    n2$type = 'fit'
-    n2$I = b0 + A0*exp(-(n2$th-th0)^2/(2*s0*s0))
-    n = rbind(n1,n2)
-    ggplot(n, aes(th,I,col=type)) +
+    n1 <- data.frame(twoTheta, I, tp='exp')
+    n2 <- data.frame(twoTheta, I, tp='fit')
+    n2$I  <-  b0 + A0*exp(-(n2$twoTheta-th0)^2/(2*s0*s0))
+
+    n <- rbind(n1,n2)
+
+    ggplot(n, aes(twoTheta, I,  col=tp)) +
       geom_point() -> g
     print(g)
   }

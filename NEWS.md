@@ -1,5 +1,7 @@
 # rigakuXRD 0.3.0
 
+* cleaned up version
+
 # rigakuXRD 0.2.6
 
 * allow space in addition to tab in loading txt XRD files

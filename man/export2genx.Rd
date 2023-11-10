@@ -4,10 +4,10 @@
 \alias{export2genx}
 \title{Export XRD data to GenX format}
 \usage{
-export2genx(dataXRD, exportPath = ".", minTheta = 0, maxTheta = 4)
+export2genx(data, exportPath = ".", minTheta = 0, maxTheta = 4)
 }
 \arguments{
-\item{dataXRD}{xrd data from a data package}
+\item{data}{XRD data, usually filter(dataXRD, ID==7)}
 
 \item{exportPath}{default is current directory, but can be defined to store output file in a different directory}
 

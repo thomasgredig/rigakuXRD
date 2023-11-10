@@ -9,6 +9,8 @@ export2genx(dataXRD, exportPath = ".", minTheta = 0, maxTheta = 4)
 \arguments{
 \item{dataXRD}{xrd data from a data package}
 
+\item{exportPath}{default is current directory, but can be defined to store output file in a different directory}
+
 \item{minTheta}{minimum 2q to be included}
 
 \item{maxTheta}{maximum 2q to be included in export}
@@ -18,8 +20,4 @@ file name for export
 }
 \description{
 Export XRD data to GenX format
-}
-\examples{
-export2genx(7)
-
 }

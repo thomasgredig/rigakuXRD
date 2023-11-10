@@ -1,12 +1,11 @@
 #' Export XRD data to GenX format
 #'
 #' @param dataXRD xrd data from a data package
+#' @param exportPath default is current directory, but can be defined to store output file in a different directory
 #' @param minTheta minimum 2q to be included
 #' @param maxTheta maximum 2q to be included in export
 #' @return file name for export
 #'
-#' @examples
-#' export2genx(7)
 #'
 #' @importFrom dplyr '%>%' select mutate filter
 #' @importFrom utils write.table

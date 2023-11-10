@@ -4,6 +4,7 @@
 #' @param Intensity intensity signal
 #' @param min.Prominence minimum prominence in percent (optional)
 #' @param Try.Sigma vector with peak widths used to start fitting (optional)
+#' @param deltaTheta search area around main peak
 #' @param Range range to search for peaks (optional)
 #' @param verbose logical, if \code{TRUE} outputs additional info
 #'

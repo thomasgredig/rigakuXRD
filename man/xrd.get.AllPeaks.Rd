@@ -23,6 +23,8 @@ xrd.get.AllPeaks(
 
 \item{Try.Sigma}{vector with peak widths used to start fitting (optional)}
 
+\item{deltaTheta}{search area around main peak}
+
 \item{Range}{range to search for peaks (optional)}
 
 \item{verbose}{logical, if \code{TRUE} outputs additional info}

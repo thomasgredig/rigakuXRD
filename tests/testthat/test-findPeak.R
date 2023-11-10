@@ -12,7 +12,7 @@ test_that("Test Peak Width Fit", {
 })
 
 test_that("Test Peak Position Fit", {
-  q = xrd.get.PeakStats(d$theta, d$I, 38, verbose=TRUE)
+  q <- xrd.get.PeakStats(d$theta, d$I, 38.1, verbose=TRUE)
   expect_equal(q[3], 38.21774, Try.Sigma = 0.3, tolerance=1e-4)
 })
 
@@ -23,7 +23,7 @@ test_that("Test Peak Background and Amplitude Fit", {
 })
 
 test_that("No peak at 42 or 72, but warning", {
-  filename = xrd.getSampleFiles()[1]
+  filename <- xrd.getSampleFiles()[1]
   d = xrd.read.ASC(filename)
 
   # there is no peak in this data

@@ -56,7 +56,7 @@ xrd.get.PeakStats <- function(TwoTheta, Intensity, peakPos,
                 start = list(b=background, A = A1, th1=p1, sigma=pw))
       ); # does not stop in case of error
 
-      if (!is.null(fit)) break;
+      if (!is.null(fit)) break
     }
   }
   if (verbose) {

@@ -1,6 +1,7 @@
 # rigakuXRD 0.3.0
 
 * cleaned up version
+* fixed `xrd.FringeAnalysis` computation
 
 # rigakuXRD 0.2.6
 

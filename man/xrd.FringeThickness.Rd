@@ -2,15 +2,22 @@
 % Please edit documentation in R/xrd.FringeThickness.R
 \name{xrd.FringeThickness}
 \alias{xrd.FringeThickness}
-\title{Fringe Thickness}
+\title{Fringe Thickness Calculation}
 \usage{
 xrd.FringeThickness(theta1, theta2, lambda = 1.5406)
+}
+\arguments{
+\item{theta1}{first Theta angle in degree (not 2 Theta!)}
+
+\item{theta2}{second Theta angle in degree (not 2 Theta!)}
+
+\item{lambda}{wave length of x-ray radiation in units of Angstrom}
 }
 \value{
 thickness in units of Angstrom
 }
 \description{
-Fringe Thickness
+Fringe Thickness Calculation
 }
 \examples{
 xrd.FringeThickness(66.22698, 66.32140)

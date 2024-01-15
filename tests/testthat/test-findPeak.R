@@ -12,7 +12,7 @@ test_that("Test Peak Width Fit", {
 })
 
 test_that("Test Peak Position Fit", {
-  q <- xrd.get.PeakStats(d$theta, d$I, 38.1, verbose=TRUE)
+  q <- xrd.get.PeakStats(d$theta, d$I, 38.1, verbose=FALSE)
   expect_equal(q[3], 38.21774, Try.Sigma = 0.3, tolerance=1e-4)
 })
 

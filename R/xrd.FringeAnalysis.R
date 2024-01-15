@@ -39,7 +39,7 @@ xrd.FringeAnalysis <- function(df) {
   # find thicknesses
   t.nm = c()
   for(n in 1:(nrow(df.peak)-1)) {
-    t.nm = c(t.nm, xrd.FringeThickness(df.peak$th.pos[n],df.peak$th.pos[n+1])/10)
+    t.nm = c(t.nm, xrd.FringeThickness(df.peak$th.pos[n]/2,df.peak$th.pos[n+1]/2)/10)
   }
 
 

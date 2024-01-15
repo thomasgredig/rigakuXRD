@@ -1,4 +1,8 @@
-#' Fringe Thickness
+#' Fringe Thickness Calculation
+#'
+#' @param theta1 first Theta angle in degree (not 2 Theta!)
+#' @param theta2 second Theta angle in degree (not 2 Theta!)
+#' @param lambda wave length of x-ray radiation in units of Angstrom
 #'
 #' @returns thickness in units of Angstrom
 #'

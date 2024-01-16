@@ -1,12 +1,13 @@
 #' Fringe Thickness Calculation
 #'
-#' @param theta1 first Theta angle in degree (not 2 Theta!)
-#' @param theta2 second Theta angle in degree (not 2 Theta!)
+#' @param theta1 first Two Theta angle in degree
+#' @param theta2 second Two Theta angle in degree
 #' @param lambda wave length of x-ray radiation in units of Angstrom
 #'
 #' @returns thickness in units of Angstrom
 #'
 #' @examples
+#' print("Should be 111.64 nm")
 #' xrd.FringeThickness(66.22698, 66.32140)
 #'
 #' @export
@@ -15,10 +16,10 @@ xrd.FringeThickness <- function(theta1, theta2, lambda = 1.5406) {
   n1 = 2
   n2 = 1
 
-  th1.rad = theta1/180*pi
-  th2.rad = theta2/180*pi
+  omega1.rad = (theta1/2)/180*pi
+  omega2.rad = (theta2/2)/180*pi
 
-  t = (n2 - n1)*lambda / (2*(sin(th1.rad/2) - sin(th2.rad/2)))
+  t = (n2 - n1)*lambda / (2*(sin(omega1.rad) - sin(omega2.rad)))
 
   t
 }

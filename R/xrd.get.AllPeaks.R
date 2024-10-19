@@ -16,7 +16,8 @@
 #' @return vector with peak positions
 #'
 #' @seealso [xrd.find.Peak()]
-#' @importFrom dplyr "%>%" filter
+#' @importFrom dplyr filter "%>%"
+#' @importFrom rlang .data
 #'
 #' @examples
 #'
@@ -34,7 +35,7 @@ xrd.get.AllPeaks <- function(data,
   # XRD data
   d <- data.frame(TwoTheta = data$theta,
                   Intensity = data$I) %>%
-    filter(TwoTheta >= Range[1] & TwoTheta <= Range[2])
+    filter(.data$TwoTheta >= Range[1] & .data$TwoTheta <= Range[2])
 
   step.size = 2 # search peaks with this step size
   theta.min = min(d$TwoTheta) + step.size/2
@@ -52,7 +53,7 @@ xrd.get.AllPeaks <- function(data,
   }
 
   for(ang in peakPos.list) {
-    n1 <- d %>% filter(TwoTheta >= (ang-deltaTheta) & TwoTheta<= (ang+deltaTheta))
+    n1 <- d %>% filter(.data$TwoTheta >= (ang-deltaTheta) & .data$TwoTheta<= (ang+deltaTheta))
 
     p1 = xrd.find.Peak(n1$TwoTheta, n1$Intensity,
                        Try.Sigma = Try.Sigma,

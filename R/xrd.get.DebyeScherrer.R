@@ -12,8 +12,8 @@
 #'
 #' @seealso [xrd.get.PeakStats()]
 #' @examples
-#' filename = xrd.getSampleFiles()[1]
-#' d = xrd.read.ASC(filename)
+#' filename = xrd.getSampleFiles('asc')
+#' d = xrd.import(filename)
 #' ds = xrd.get.PeakStats(d$theta, d$I, 38.2)
 #' xrd.get.DebyeScherrer(ds)
 #'

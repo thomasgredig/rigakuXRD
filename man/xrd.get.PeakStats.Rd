@@ -32,7 +32,7 @@ identified through its location
 }
 \examples{
 filename = xrd.getSampleFiles(fileExt='asc')
-d = xrd.read.ASC(filename)
+d = xrd.import(filename)
 xrd.get.PeakStats(d$theta, d$I, 38.2)
 
 }

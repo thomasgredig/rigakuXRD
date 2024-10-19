@@ -22,7 +22,7 @@
 #' @examples
 #'
 #' filename = xrd.getSampleFiles('asc')
-#' d = xrd.read.ASC(filename)
+#' d = xrd.import(filename)
 #' xrd.get.AllPeaks(d, deltaTheta = 2, Try.Sigma = c(0.1),  Range = c(42, 46))
 #'
 #' @export

@@ -23,8 +23,8 @@ library(rigakuXRD)
 library(dplyr)
 library(ggplot2)
 # Loading the date
-filename = xrd.getSampleFiles()[1]
-d = xrd.read.ASC(filename)
+filename = xrd.getSampleFiles('asc')
+d = xrd.import(filename)
 ```
 
 

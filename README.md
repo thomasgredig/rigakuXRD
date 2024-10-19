@@ -1,6 +1,7 @@
 # rigakuXRD
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/rigakuXRD)](https://CRAN.R-project.org/package=rigakuXRD)
 <!-- badges: end -->
 
 The goal of rigakuXRD is to analyze x-ray diffraction data from the Rigaku Smartlab x-ray diffractometer; mostly for low-angle reflectivity data and Bragg-Brentano diffractive data sets.

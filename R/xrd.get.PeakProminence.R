@@ -3,8 +3,8 @@
 #' @param PeakStats vector with the peak statistics
 #' @return percentage of the peak height with respect to background
 #' @examples
-#' filename = xrd.getSampleFiles()[1]
-#' d = xrd.read.ASC(filename)
+#' filename = xrd.getSampleFiles('asc')
+#' d = xrd.import(filename)
 #' q = xrd.get.PeakStats(d$theta, d$I, 38.2)
 #' xrd.get.PeakProminence(q)
 #'

@@ -33,8 +33,8 @@ fit peak position
 Fits a Gaussian form to a peak
 }
 \examples{
-filename = xrd.getSampleFiles(fileExt='asc')[1]
-d = xrd.read.ASC(filename)
+filename = xrd.getSampleFiles(fileExt='asc')
+d = xrd.import(filename)
 peak.pos = xrd.find.Peak(d$theta, d$I, 38.2)
 plot(d$theta,d$I,log='y',col='red')
 abline(v=peak.pos,col='blue')

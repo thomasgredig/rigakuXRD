@@ -15,7 +15,7 @@
 #' @return background, amplitude, position, width + 4 std. errors
 #' @examples
 #' filename = xrd.getSampleFiles(fileExt='asc')
-#' d = xrd.read.ASC(filename)
+#' d = xrd.import(filename)
 #' xrd.get.PeakStats(d$theta, d$I, 38.2)
 #'
 #' @importFrom stats nls sd predict

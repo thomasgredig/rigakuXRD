@@ -29,7 +29,7 @@ Create subsets of the data with about 10 degrees of data:
 
 ```{r}
   filename = xrd.getSampleFiles(fileExt = 'asc')[1]
-  d = xrd.read.ASC(filename)
+  d = xrd.import(filename)
 
   peakPos = c()
   for(j in 1:7) {

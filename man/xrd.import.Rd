@@ -18,8 +18,7 @@ instrument; returns dataframe with 2theta, I (intensity normalized for time),
 and I.meas (measured intentsity)
 }
 \examples{
-
-fname = xrd.getSampleFiles()[1]
+fname = xrd.getSampleFiles('rasx')
 d = xrd.import(fname)
 plot(d$theta,d$I,log='y',col='red')
 

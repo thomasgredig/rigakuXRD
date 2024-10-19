@@ -1,5 +1,7 @@
 #' Imports Rigaku XRD Data File
 #'
+#' @description
+#'
 #' Import function recognizes ASC, TXT, RAS, and RASX files from Rigaku XRD
 #' instrument; returns dataframe with 2theta, I (intensity normalized for time),
 #' and I.meas (measured intentsity)
@@ -9,8 +11,7 @@
 #'
 #' @author Thomas Gredig
 #' @examples
-#'
-#' fname = xrd.getSampleFiles()[1]
+#' fname = xrd.getSampleFiles('rasx')
 #' d = xrd.import(fname)
 #' plot(d$theta,d$I,log='y',col='red')
 #'
@@ -45,7 +46,6 @@ xrd.import <- function(filename) {
 #' @param filename filename including path
 #' @return data frame with XRD data
 #' @examples
-#'
 #' fname = xrd.getSampleFiles('asc')[1]
 #' d = xrd.read.ASC(file.path(fname))
 #' plot(d$theta,d$I,log='y',col='red')
@@ -53,8 +53,7 @@ xrd.import <- function(filename) {
 #' @importFrom stringr str_extract_all
 #' @importFrom utils read.csv
 #' @importFrom stats na.omit
-#'
-#' @export
+#' @noRd
 xrd.read.ASC <- function(filename) {
   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
   data <- read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
@@ -113,7 +112,7 @@ xrd.read.ASC <- function(filename) {
 #' d = xrd.readHeader.ASC(xrd.getSampleFiles('asc')[1])
 #' head(d)
 #'
-#' @export
+#' @noRd
 xrd.readHeader.ASC <- function(filename) {
   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
   data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
@@ -156,7 +155,7 @@ xrd.readHeader.ASC <- function(filename) {
 #' @importFrom utils read.csv
 #' @importFrom tidyr "%>%"  separate_wider_delim
 #'
-#' @export
+#' @noRd
 xrd.read.RAS <- function(filename) {
   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
   data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL)
@@ -211,7 +210,7 @@ xrd.read.RAS <- function(filename) {
 #' plot(d$theta,d$I,log='y',col='red')
 #'
 #' @importFrom utils read.csv
-#' @export
+#' @noRd
 xrd.read.TXT <- function(filename) {
   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
   data = read.csv(file=filename, stringsAsFactors=FALSE)
@@ -266,7 +265,6 @@ xrd.read.TXT <- function(filename) {
 xrd.read.TXTnoheader <- function(filename) {
   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
   d = read.csv(file=filename, sep='\t', stringsAsFactors=FALSE, header=FALSE)
-  #q1 = c()
   names(d) = c('TwoTheta','I')
   d
 }
@@ -292,7 +290,7 @@ xrd.read.TXTnoheader <- function(filename) {
 #'
 #' @importFrom utils read.csv unzip
 #'
-#' @export
+#' @noRd
 xrd.read.RASX <- function(filename) {
   if (!file.exists(filename)) { stop(paste('File does not exist:',filename)) }
 

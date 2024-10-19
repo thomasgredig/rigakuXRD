@@ -3,12 +3,13 @@
 #' @param df data frame with theta (2q) and I (intensity)
 #'
 #' @importFrom stats loess
+#' @importFrom rlang .data
 #' @importFrom ggplot2 aes ggplot geom_point geom_vline scale_y_log10 ylab xlab theme_bw geom_smooth scale_x_continuous
 #'
 #' @export
 xrd.FringeAnalysis <- function(df) {
   # smoothen function
-  lo <- loess(data = df, I~theta, span = round(20/nrow(df),2))
+  lo <- loess(data = df, I~.data$theta, span = round(20/nrow(df),2))
   # find derivative
   df$dI.lo = c(0, diff(predict(lo)))
   df$peak.loc = c(0, diff(sign(df$dI.lo)))
@@ -16,7 +17,7 @@ xrd.FringeAnalysis <- function(df) {
   peaks = df$theta[which(df$peak.loc < 0)][-1]
 
   g1 <- df %>%
-    ggplot(aes(theta, I)) +
+    ggplot(aes(.data$theta, I)) +
     geom_point(col='blue') +
     geom_vline(xintercept = peaks, col='red') +
     scale_y_log10() + xlab('2\U03B8 (\U00B0)') + ylab("I (a.u.)") +
@@ -28,7 +29,7 @@ xrd.FringeAnalysis <- function(df) {
   )
 
   g2 <- df.peak %>%
-    ggplot(aes(n, th.pos)) +
+    ggplot(aes(n, .data$th.pos)) +
     geom_smooth(alpha=0.5, col='grey') +
     geom_point(col='black', size=4) +
     geom_point(col='red', size=3) +

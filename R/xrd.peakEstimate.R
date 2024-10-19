@@ -28,7 +28,6 @@
 #'
 #' @export
 xrd.peakEstimate <- function(twoTheta, I, verbose=FALSE) {
-
   # approximate the data set, so there is less
   # noise in the data
   q <- approx(twoTheta, I, n=20)
@@ -52,7 +51,7 @@ xrd.peakEstimate <- function(twoTheta, I, verbose=FALSE) {
 
     n <- rbind(n1,n2)
 
-    ggplot(n, aes(twoTheta, I,  col=tp)) +
+    ggplot(n, aes(twoTheta, I,  col=.data$tp)) +
       geom_point() -> g
     print(g)
   }

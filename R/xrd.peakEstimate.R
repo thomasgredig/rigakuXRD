@@ -51,9 +51,9 @@ xrd.peakEstimate <- function(twoTheta, I, verbose=FALSE) {
 
     n <- rbind(n1,n2)
 
-    ggplot(n, aes(twoTheta, I,  col=.data$tp)) +
-      geom_point() -> g
-    print(g)
+    # ggplot(n, aes(twoTheta, I,  col=.data$tp)) +
+    #   geom_point() -> g
+    # print(g)
   }
 
 

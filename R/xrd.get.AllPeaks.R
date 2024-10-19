@@ -52,7 +52,8 @@ xrd.get.AllPeaks <- function(data,
   }
 
   for(ang in peakPos.list) {
-    n1 = subset(d, TwoTheta >= (ang-deltaTheta) & TwoTheta<= (ang+deltaTheta))
+    n1 <- d %>% filter(TwoTheta >= (ang-deltaTheta) & TwoTheta<= (ang+deltaTheta))
+
     p1 = xrd.find.Peak(n1$TwoTheta, n1$Intensity,
                        Try.Sigma = Try.Sigma,
                        peakPos = ang,

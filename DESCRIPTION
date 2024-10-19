@@ -2,7 +2,6 @@ Package: rigakuXRD
 Type: Package
 Title: X-Ray Diffraction Data Analysis Package for Rigaku Data Sets
 Version: 0.3.1
-Year: 2024
 Authors@R: person("Thomas", "Gredig", email = "thomas.gredig@csulb.edu",
                   role = c("aut", "cre","cph"),
                   comment = c(ORCID = "0000-0002-5824-7626"))
@@ -10,7 +9,7 @@ Maintainer: Thomas Gredig <thomas.gredig@csulb.edu>
 Description: Imports x-ray diffractometer (XRD) data and
   assists with the x-ray data analysis. It supports ASC, RAS, RASX, and TXT
   data files for import and provides tools to find / fit XRD peaks.
-URL: https://thomasgredig.github.io/rigakuXRD/, https://github.com/thomasgredig/rigakuXRD
+URL: https://github.com/thomasgredig/rigakuXRD
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true

@@ -7,10 +7,3 @@ test_that("check peak prominence", {
   expect_equal(p, 50, tolerance = 0.01)
 })
 
-#
-# test_that("get all peaks", {
-#   filename <- xrd.getSampleFiles()[1]
-#   d <- xrd.read.ASC(filename)
-#   q <- xrd.get.AllPeaks(d$theta, d$)
-# })
-

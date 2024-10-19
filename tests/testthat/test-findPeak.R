@@ -23,7 +23,7 @@ test_that("Test Peak Background and Amplitude Fit", {
 })
 
 test_that("No peak at 42 or 72, but warning", {
-  filename <- xrd.getSampleFiles()[1]
+  filename <- xrd.getSampleFiles("asc")
   d = xrd.read.ASC(filename)
 
   # there is no peak in this data

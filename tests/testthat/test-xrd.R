@@ -53,9 +53,3 @@ test_that("xrd.import: invalid file", {
 })
 
 
-# test_that("check all peaks", {
-#   filename = xrd.getSampleFiles()[1]
-#   d = xrd.read.ASC(filename)
-#   peak.list = xrd.get.AllPeaks(d$theta, d$I)
-#   expect_length(peak.list,31)
-# })

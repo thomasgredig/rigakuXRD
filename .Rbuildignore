@@ -4,3 +4,4 @@
 docs/
 ^cran-comments\.md$
 ^revdep$
+^_pkgdown.yml

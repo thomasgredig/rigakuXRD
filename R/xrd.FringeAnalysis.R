@@ -1,15 +1,32 @@
 #' XRD / XRR Fringe Analysis
 #'
+#' @description
+#' Searches for fringes in the XRD or XRR spectrum and
+#' returns a list with the thickness, a peak table, and
+#' two graphs displaying the results.
+#'
+#'
 #' @param df data frame with theta (2q) and I (intensity)
 #'
 #' @importFrom stats loess
 #' @importFrom rlang .data
 #' @importFrom ggplot2 aes ggplot geom_point geom_vline scale_y_log10 ylab xlab theme_bw geom_smooth scale_x_continuous
 #'
+#' @returns list with thickness, table of peaks, and two ggplot graphs
+#' @author Thomas Gredig
+#'
+#' @examples
+#'   filename <- xrd.getSampleFiles('rasx')
+#'   data <- xrd.import(filename)
+#'   analysis <- xrd.FringeAnalysis(data)
+#'   print(analysis$t.nm)
+#'
 #' @export
 xrd.FringeAnalysis <- function(df) {
   # smoothen function
-  lo <- loess(data = df, I~.data$theta, span = round(20/nrow(df),2))
+  lo <- loess(data = df,
+              I ~ theta,
+              span = round(20/nrow(df),2))
   # find derivative
   df$dI.lo = c(0, diff(predict(lo)))
   df$peak.loc = c(0, diff(sign(df$dI.lo)))

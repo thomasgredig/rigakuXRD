@@ -1,5 +1,10 @@
 #' Fringe Thickness Calculation
 #'
+#' @description
+#' Given two angles (2 theta) and the x-ray wavelength, it computes the
+#' corresponding thickness in units of Angstrom
+#'
+#'
 #' @param theta1 first Two Theta angle in degree
 #' @param theta2 second Two Theta angle in degree
 #' @param lambda wave length of x-ray radiation in units of Angstrom

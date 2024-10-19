@@ -2,11 +2,10 @@
 % Please edit documentation in R/xrd.get.AllPeaks.R
 \name{xrd.get.AllPeaks}
 \alias{xrd.get.AllPeaks}
-\title{Finds all the peaks in a spectrum}
+\title{Finds All Peaks in a Spectrum}
 \usage{
 xrd.get.AllPeaks(
-  TwoTheta,
-  Intensity,
+  data,
   min.Prominence = 5,
   Try.Sigma = c(0.2, 0.1, 0.05, 0.3),
   deltaTheta = 5,
@@ -15,9 +14,7 @@ xrd.get.AllPeaks(
 )
 }
 \arguments{
-\item{TwoTheta}{angle}
-
-\item{Intensity}{intensity signal}
+\item{data}{data frame with intensity and 2 theta angle}
 
 \item{min.Prominence}{minimum prominence in percent (optional)}
 
@@ -33,14 +30,17 @@ xrd.get.AllPeaks(
 vector with peak positions
 }
 \description{
-Finds all the peaks in a spectrum
+Attempts to find peaks in an XRD spectrum and return a list of angles with
+the peak locations. (This function is highly experimental and does not
+work well.)
 }
 \examples{
 
-\donttest{
-filename = xrd.getSampleFiles()[1]
+filename = xrd.getSampleFiles('asc')
 d = xrd.read.ASC(filename)
-peak.list = xrd.get.AllPeaks(d$theta, d$I)
-}
+xrd.get.AllPeaks(d, deltaTheta = 2, Try.Sigma = c(0.1),  Range = c(42, 46))
 
+}
+\seealso{
+[xrd.find.Peak()]
 }

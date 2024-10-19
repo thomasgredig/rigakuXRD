@@ -2,22 +2,41 @@
 % Please edit documentation in R/export2genx.R
 \name{export2genx}
 \alias{export2genx}
-\title{Export XRD data to GenX format}
+\title{Export XRD Data into GenX format}
 \usage{
-export2genx(data, exportPath = ".", minTheta = 0, maxTheta = 4)
+export2genx(
+  data,
+  exportPath = ".",
+  minTheta = 0,
+  maxTheta = 4,
+  GenX_filename = "xrd_data_genx_format.txt"
+)
 }
 \arguments{
-\item{data}{XRD data, usually filter(dataXRD, ID==7)}
+\item{data}{XRD data frame, see rawData package}
 
 \item{exportPath}{default is current directory, but can be defined to store output file in a different directory}
 
 \item{minTheta}{minimum 2q to be included}
 
 \item{maxTheta}{maximum 2q to be included in export}
+
+\item{GenX_filename}{filename for output file}
 }
 \value{
 file name for export
 }
 \description{
-Export XRD data to GenX format
+GenX uses the differential evolution algorithm for fitting X-ray
+reflectivity data. The data is normalized and saved to a text (.txt)
+file.
+}
+\examples{
+filename <- xrd.getSampleFiles('txt')
+data <- xrd.import(filename)
+genx_file = export2genx(data, tempdir())
+lines <- readLines(genx_file)
+print(lines[1:4])
+
+
 }

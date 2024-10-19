@@ -9,6 +9,21 @@ xrd.FringeAnalysis(df)
 \arguments{
 \item{df}{data frame with theta (2q) and I (intensity)}
 }
+\value{
+list with thickness, table of peaks, and two ggplot graphs
+}
 \description{
-XRD / XRR Fringe Analysis
+Searches for fringes in the XRD or XRR spectrum and
+returns a list with the thickness, a peak table, and
+two graphs displaying the results.
+}
+\examples{
+  filename <- xrd.getSampleFiles('rasx')
+  data <- xrd.import(filename)
+  analysis <- xrd.FringeAnalysis(data)
+  print(analysis$t.nm)
+
+}
+\author{
+Thomas Gredig
 }

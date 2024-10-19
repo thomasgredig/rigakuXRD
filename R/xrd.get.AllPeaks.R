@@ -1,7 +1,12 @@
-#' Finds all the peaks in a spectrum
+#' Finds All Peaks in a Spectrum
 #'
-#' @param TwoTheta angle
-#' @param Intensity intensity signal
+#' @description
+#' Attempts to find peaks in an XRD spectrum and return a list of angles with
+#' the peak locations. (This function is highly experimental and does not
+#' work well.)
+#'
+#'
+#' @param data data frame with intensity and 2 theta angle
 #' @param min.Prominence minimum prominence in percent (optional)
 #' @param Try.Sigma vector with peak widths used to start fitting (optional)
 #' @param deltaTheta search area around main peak
@@ -9,40 +14,45 @@
 #' @param verbose logical, if \code{TRUE} outputs additional info
 #'
 #' @return vector with peak positions
+#'
+#' @seealso [xrd.find.Peak()]
+#' @importFrom dplyr "%>%" filter
+#'
 #' @examples
 #'
-#' \donttest{
-#' filename = xrd.getSampleFiles()[1]
+#' filename = xrd.getSampleFiles('asc')
 #' d = xrd.read.ASC(filename)
-#' peak.list = xrd.get.AllPeaks(d$theta, d$I)
-#' }
+#' xrd.get.AllPeaks(d, deltaTheta = 2, Try.Sigma = c(0.1),  Range = c(42, 46))
 #'
 #' @export
-xrd.get.AllPeaks <- function(TwoTheta, Intensity,
+xrd.get.AllPeaks <- function(data,
                              min.Prominence = 5,
                              Try.Sigma = c(0.2,0.1,0.05,0.3),
                              deltaTheta = 5,
                              Range = c(0,90),
                              verbose = FALSE) {
-  filename = xrd.getSampleFiles(fileExt='asc')
-  d = xrd.read.ASC(filename)
-  TwoTheta = d$theta
-  Intensity = d$I
-  d = data.frame(TwoTheta, Intensity)
+  # XRD data
+  d <- data.frame(TwoTheta = data$theta,
+                  Intensity = data$I) %>%
+    filter(TwoTheta >= Range[1] & TwoTheta <= Range[2])
 
   step.size = 2 # search peaks with this step size
-  if (Range[1]==0) { theta.min = min(TwoTheta) + step.size/2 }
-  if (Range[2]==90) { theta.max = max(TwoTheta) - step.size/2 }
-  if ((theta.max-theta.min)<1) { return(c()) }
+  theta.min = min(d$TwoTheta) + step.size/2
+  theta.max = max(d$TwoTheta) - step.size/2
+
+
   peakPos.list = c(seq(from=theta.min, to=theta.max, by=step.size),
                    seq(from=theta.min+(step.size/2), to=theta.max-(step.size/2), by=step.size))
 
   pk = c()
 
+  if ((theta.max-theta.min)<1) {
+    warning("Data has insufficient angle range.")
+    return(pk)
+  }
+
   for(ang in peakPos.list) {
-    print(paste("Checking: ",ang,"deg"))
     n1 = subset(d, TwoTheta >= (ang-deltaTheta) & TwoTheta<= (ang+deltaTheta))
-    # plot(n1$TwoTheta, n1$Intensity)
     p1 = xrd.find.Peak(n1$TwoTheta, n1$Intensity,
                        Try.Sigma = Try.Sigma,
                        peakPos = ang,

@@ -1,3 +1,8 @@
+# rigakuXRD 0.3.1
+
+* minor code updates to make CRAN compatible, add comments
+* adding more examples
+
 # rigakuXRD 0.3.0
 
 * cleaned up version

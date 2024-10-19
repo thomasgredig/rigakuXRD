@@ -17,7 +17,8 @@ xrd.FringeThickness(theta1, theta2, lambda = 1.5406)
 thickness in units of Angstrom
 }
 \description{
-Fringe Thickness Calculation
+Given two angles (2 theta) and the x-ray wavelength, it computes the
+corresponding thickness in units of Angstrom
 }
 \examples{
 print("Should be 111.64 nm")

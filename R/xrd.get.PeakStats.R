@@ -48,8 +48,6 @@ xrd.get.PeakStats <- function(TwoTheta, Intensity, peakPos,
                     " t0=",p1,
                     " sigma=",peak.width))
       }
-      # if ((min(n1$TwoTheta)==p1) | (min(n1$TwoTheta)==p1)) break;
-      # if (sd(n1$I)*4 > A1) break;
       try(fit <-
             nls(data = n1,
                 I ~ b + A*exp(-(TwoTheta-th1)^2/(2*sigma*sigma)),

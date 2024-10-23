@@ -1,4 +1,4 @@
-#' Returns XRD sample files
+#' Get XRD File Names with Sample Data
 #'
 #' @description
 #' returns sample XRD  from library
@@ -14,24 +14,9 @@
 #'
 #' @export
 xrd.getSampleFiles <- function(fileExt = NA) {
-  pfad = xrd.getSamplePath()
+  pfad = system.file("extdata",package="rigakuXRD")
   file.list = dir(pfad)
   if (!is.na(fileExt)) file.list = file.list[grep(paste0(fileExt,"$"), file.list)]
   file.path(pfad, file.list)
 }
 
-
-#' Return sample path for XRD data files
-#'
-#' @description
-#' returns sample XRD path from library
-#'
-#' @return path for sample XRD data files
-#'
-#' @author Thomas Gredig
-#' @examples
-#' pfad = xrd.getSamplePath()
-#' @export
-xrd.getSamplePath <- function() {
-  system.file("extdata",package="rigakuXRD")
-}

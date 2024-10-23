@@ -1,4 +1,4 @@
-#' Returns the Peak Prominence
+#' Find Peak Prominence in Spectrum
 #'
 #' @param PeakStats vector with the peak statistics
 #' @return percentage of the peak height with respect to background

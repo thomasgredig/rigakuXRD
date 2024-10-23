@@ -2,7 +2,7 @@
 % Please edit documentation in R/xrd.getSampleFiles.R
 \name{xrd.getSampleFiles}
 \alias{xrd.getSampleFiles}
-\title{Returns XRD sample files}
+\title{Get XRD File Names with Sample Data}
 \usage{
 xrd.getSampleFiles(fileExt = NA)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/xrd.get.PeakProminence.R
 \name{xrd.get.PeakProminence}
 \alias{xrd.get.PeakProminence}
-\title{Returns the Peak Prominence}
+\title{Find Peak Prominence in Spectrum}
 \usage{
 xrd.get.PeakProminence(PeakStats)
 }
@@ -13,7 +13,7 @@ xrd.get.PeakProminence(PeakStats)
 percentage of the peak height with respect to background
 }
 \description{
-Returns the Peak Prominence
+Find Peak Prominence in Spectrum
 }
 \examples{
 filename = xrd.getSampleFiles('asc')

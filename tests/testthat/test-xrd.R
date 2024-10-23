@@ -39,17 +39,14 @@ test_that("Load XRD sample file data", {
 test_that("Test files have data.", {
   file.list = xrd.getSampleFiles()
   for(fname in file.list) {
-    # cat(fname,"\n")
     d = xrd.import(fname)
     expect_true(nrow(d)>1000)
   }
 })
 
 test_that("xrd.import: invalid file", {
-  file.list = file.path(xrd.getSamplePath(),'test.ibw')
-  for(fname in file.list) {
-    expect_warning(xrd.import(fname))
-  }
+  xrd_filename = tempfile()
+  expect_warning(xrd.import(xrd_filename))
 })
 
 

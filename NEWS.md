@@ -1,3 +1,5 @@
+# rigakuXRD 0.4.0
+
 # rigakuXRD 0.3.1
 
 * minor code updates to make CRAN compatible, add comments

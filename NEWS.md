@@ -2,6 +2,7 @@
 
 * minor code updates to make CRAN compatible, add comments
 * adding more examples
+* spell out abbreviations and remove local file writing
 
 # rigakuXRD 0.3.0
 

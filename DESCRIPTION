@@ -2,16 +2,15 @@ Package: rigakuXRD
 Type: Package
 Title: X-Ray Diffraction Data Analysis Package for Rigaku Data Sets
 Version: 0.3.1
-Author: Thomas Gredig [aut, cre, cph] (<https://orcid.org/0000-0002-5824-7626>)
 Authors@R: person("Thomas", "Gredig", email = "tgredig@csulb.edu",
                   role = c("aut", "cre","cph"),
                   comment = c(ORCID = "0000-0002-5824-7626"))
 Maintainer: Thomas Gredig <tgredig@csulb.edu>
-Description: Imports x-ray diffraction data and
-  assists with the x-ray data analysis. It supports several 
-  data file formats for import and provides tools to find / fit XRD peaks.
+Description: Imports x-ray diffraction data and assists with the 
+  x-ray data analysis. It supports several data file formats for 
+  import and provides tools to find and fit spectra peaks.
 URL: https://github.com/thomasgredig/rigakuXRD
-License: GPL (>= 3)
+License: GPL (>= 3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2

@@ -39,14 +39,7 @@ d = xrd.read.TXTnoheader('xrd.txt')
 plot(d$theta, d$I.meas, log='y')
 ```
 
-## Importing RAS or RASX Files
 
-In addition to `.asc` files, `.ras` or `.rasx` files are also text files and contain a header information, followed by the data. Here is an example:
-
-``` r
-fileName = xrd.getSampleFiles(fileExt = 'rasx')[1]
-d = xrd.import(fileName)
-```
 
 # Peak Analsysis
 

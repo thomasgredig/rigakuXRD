@@ -7,9 +7,9 @@
 xrd.FringeThickness(theta1, theta2, lambda = 1.5406)
 }
 \arguments{
-\item{theta1}{first Two Theta angle in degree}
+\item{theta1}{first Two Theta (2Theta) angle in degree}
 
-\item{theta2}{second Two Theta angle in degree}
+\item{theta2}{second Two Theta (2Theta) angle in degree}
 
 \item{lambda}{wave length of x-ray radiation in units of Angstrom}
 }
@@ -17,11 +17,11 @@ xrd.FringeThickness(theta1, theta2, lambda = 1.5406)
 thickness in units of Angstrom
 }
 \description{
-Given two angles (2 theta) and the x-ray wavelength, it computes the
-corresponding thickness in units of Angstrom
+Given two angles (2Theta) and the x-ray wavelength, the
+corresponding thickness in units of Angstrom is returned
 }
 \examples{
-print("Should be 111.64 nm")
+# Should be 111.64 nm
 xrd.FringeThickness(66.22698, 66.32140)
 
 }

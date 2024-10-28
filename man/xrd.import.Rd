@@ -4,10 +4,12 @@
 \alias{xrd.import}
 \title{Imports Rigaku XRD Data File}
 \usage{
-xrd.import(filename)
+xrd.import(filename, dataXRD = FALSE)
 }
 \arguments{
 \item{filename}{full file name with path}
+
+\item{dataXRD}{logical, if \code{TRUE} new xrd S3 class is returned}
 }
 \value{
 data frame with XRD data
@@ -15,7 +17,7 @@ data frame with XRD data
 \description{
 Import function recognizes ASC, TXT, RAS, and RASX files from Rigaku XRD
 instrument; returns dataframe with 2theta, I (intensity normalized for time),
-and I.meas (measured intentsity)
+and I.meas (measured intensity)
 }
 \examples{
 fname = xrd.getSampleFiles('rasx')

@@ -4,21 +4,21 @@
 \alias{xrd.peakEstimate}
 \title{Estimate Highest Peak in Selected Data Set}
 \usage{
-xrd.peakEstimate(twoTheta, I, verbose = FALSE)
+xrd.peakEstimate(TwoTheta, Intensity = NULL, verbose = FALSE)
 }
 \arguments{
-\item{twoTheta}{XRD 2q angle}
+\item{TwoTheta}{vector of Bragg angle (2Theta)}
 
-\item{I}{intensity}
+\item{Intensity}{intensity}
 
 \item{verbose}{logical, if \code{TRUE}, prints a graph of the data and fit}
 }
 \value{
-4 estimated parameters: background (b0), amplitude (A0), peakposition (th0), and half-width (s0)
+4 estimated parameters: background (b0), amplitude (A0), peak position (th0), and half-width (s0)
 }
 \description{
-Simple peak position estimate, yields largest peak only
-in a particular data set. This is not a fit, just an
+Simple peak position estimate, yields largest peak
+in a data set. This is not a fit, just an
 estimate based on the data at hand.
 It returns the background (b0), the amplitude (A0), the
 peak position (th0), and the half-width sigma (s0). In

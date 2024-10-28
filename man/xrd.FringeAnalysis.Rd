@@ -4,10 +4,10 @@
 \alias{xrd.FringeAnalysis}
 \title{XRD / XRR Fringe Analysis}
 \usage{
-xrd.FringeAnalysis(df)
+xrd.FringeAnalysis(dataXRD)
 }
 \arguments{
-\item{df}{data frame with theta (2q) and I (intensity)}
+\item{dataXRD}{data frame with theta (2Theta) and I (intensity)}
 }
 \value{
 list with thickness, table of peaks, and two ggplot graphs

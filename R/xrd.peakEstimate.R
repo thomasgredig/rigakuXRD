@@ -1,19 +1,19 @@
 #' Estimate Highest Peak in Selected Data Set
 #'
 #' @description
-#' Simple peak position estimate, yields largest peak only
-#' in a particular data set. This is not a fit, just an
+#' Simple peak position estimate, yields largest peak
+#' in a data set. This is not a fit, just an
 #' estimate based on the data at hand.
 #' It returns the background (b0), the amplitude (A0), the
 #' peak position (th0), and the half-width sigma (s0). In
 #' order to learn more, turn on the *verbose* output.
 #'
-#' @param twoTheta XRD 2q angle
-#' @param I intensity
+#' @param TwoTheta vector of Bragg angle (2Theta)
+#' @param Intensity intensity
 #' @param verbose logical, if \code{TRUE}, prints a graph of the data and fit
 #'
 #' @returns
-#' 4 estimated parameters: background (b0), amplitude (A0), peakposition (th0), and half-width (s0)
+#' 4 estimated parameters: background (b0), amplitude (A0), peak position (th0), and half-width (s0)
 #'
 #' @examples
 #' d = xrd.import(xrd.getSampleFiles()[1])
@@ -27,7 +27,12 @@
 #' @importFrom ggplot2 ggplot geom_point aes
 #'
 #' @export
-xrd.peakEstimate <- function(twoTheta, I, verbose=FALSE) {
+xrd.peakEstimate <- function(TwoTheta, Intensity = NULL, verbose=FALSE) {
+  dXRD <- check_dataXRD(TwoTheta, Intensity)
+
+  twoTheta <- dXRD$theta
+  I <- dXRD$I
+
   # approximate the data set, so there is less
   # noise in the data
   q <- approx(twoTheta, I, n=20)

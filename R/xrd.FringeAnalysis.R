@@ -6,7 +6,7 @@
 #' two graphs displaying the results.
 #'
 #'
-#' @param df data frame with theta (2q) and I (intensity)
+#' @param dataXRD data frame with theta (2Theta) and I (intensity)
 #'
 #' @importFrom stats loess
 #' @importFrom rlang .data
@@ -22,19 +22,20 @@
 #'   print(analysis$t.nm)
 #'
 #' @export
-xrd.FringeAnalysis <- function(df) {
+xrd.FringeAnalysis <- function(dataXRD) {
+  df <- check_dataXRD(dataXRD)
   # smoothen function
   lo <- loess(data = df,
-              I ~ theta,
+              I ~ TwoTheta,
               span = round(20/nrow(df),2))
   # find derivative
   df$dI.lo = c(0, diff(predict(lo)))
   df$peak.loc = c(0, diff(sign(df$dI.lo)))
 
-  peaks = df$theta[which(df$peak.loc < 0)][-1]
+  peaks = df$TwoTheta[which(df$peak.loc < 0)][-1]
 
   g1 <- df %>%
-    ggplot(aes(.data$theta, I)) +
+    ggplot(aes(.data$TwoTheta, I)) +
     geom_point(col='blue') +
     geom_vline(xintercept = peaks, col='red') +
     scale_y_log10() + xlab('2\U03B8 (\U00B0)') + ylab("I (a.u.)") +

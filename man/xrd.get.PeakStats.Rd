@@ -6,29 +6,30 @@
 \usage{
 xrd.get.PeakStats(
   TwoTheta,
-  Intensity,
+  Intensity = NULL,
   peakPos,
   Try.Sigma = c(0.2, 0.1, 0.05, 0.3),
   verbose = FALSE
 )
 }
 \arguments{
-\item{TwoTheta}{2q angle}
+\item{TwoTheta}{vector of 2Theta angles}
 
-\item{Intensity}{XRD intensity}
+\item{Intensity}{vector of XRD intensities}
 
-\item{peakPos}{specific 2q angle of peak position}
+\item{peakPos}{specific 2Theta angle of peak position}
 
 \item{Try.Sigma}{vector with peak widths used to start fitting}
 
-\item{verbose}{logical, if \code{TRUE} output additional information}
+\item{verbose}{logical, if \code{TRUE} output additional information
+x}
 }
 \value{
 background, amplitude, position, width + 4 std. errors
 }
 \description{
-usually run after a peak is
-identified through its location
+Given an XRD peak, a Gaussian fit at the provided location \code{peakPos}
+a Gaussian fit is made to find the exact location, width, and background.
 }
 \examples{
 filename = xrd.getSampleFiles(fileExt='asc')

@@ -1,5 +1,8 @@
 # rigakuXRD 0.4.0
 
+* clean up documentation, functions
+* allow import to create either data frame or xrd class
+
 # rigakuXRD 0.3.1
 
 * minor code updates to make CRAN compatible, add comments

@@ -4,9 +4,10 @@
 #'
 #' Import function recognizes ASC, TXT, RAS, and RASX files from Rigaku XRD
 #' instrument; returns dataframe with 2theta, I (intensity normalized for time),
-#' and I.meas (measured intentsity)
+#' and I.meas (measured intensity)
 #'
 #' @param filename full file name with path
+#' @param dataXRD logical, if \code{TRUE} new xrd S3 class is returned
 #' @return data frame with XRD data
 #'
 #' @author Thomas Gredig
@@ -17,7 +18,7 @@
 #'
 #' @importFrom tools file_ext
 #' @export
-xrd.import <- function(filename) {
+xrd.import <- function(filename, dataXRD = FALSE) {
   fileExtension = tolower(file_ext(filename))
   d <- data.frame()
 
@@ -31,9 +32,20 @@ xrd.import <- function(filename) {
   else if (fileExtension=='txt')  d <- xrd.read.TXT(filename)
   else if (fileExtension=='rasx') d <- xrd.read.RASX(filename)
   else warning('File extension is not recognized; cannot read the file.')
+
+  if (dataXRD) class(d) <- "xrd"
   d
 }
 
+#' Plots xrd class
+#'
+#' @param x xrd S3 object
+#' @param ... dots
+#' @export
+
+plot.xrd <- function(x, ...) {
+  plot(x$theta, x$I.meas, log='y', col='red', xlab='2q', ylab="log I (a.u.)")
+}
 
 
 # ==========================
@@ -153,7 +165,7 @@ xrd.readHeader.ASC <- function(filename) {
 #' plot(d$X2.Theta,d$I,log='y',col='red')
 #'
 #' @importFrom utils read.csv
-#' @importFrom tidyr "%>%"  separate_wider_delim
+#' @importFrom tidyr separate_wider_delim
 #'
 #' @noRd
 xrd.read.RAS <- function(filename) {
@@ -179,11 +191,10 @@ xrd.read.RAS <- function(filename) {
   label.y = .xrdRasHeaderValue(d.header,'DISP_TITLE_Y')
   label.units = .xrdRasHeaderValue(d.header,'DISP_UNIT_Y')
 
-  d1 %>%
-    separate_wider_delim(n, names=c(label.x,label.y,label.units),
-                         delim=" ", too_many="merge") %>%
-    lapply(as.numeric) -> d2
-  d3 = as.data.frame(d2)
+  d2 <- separate_wider_delim(d1,n, names=c(label.x,label.y,label.units),
+                         delim=" ", too_many="merge")
+  d3 <- lapply(d2, as.numeric)
+  as.data.frame(d3)
 }
 
 
@@ -254,14 +265,9 @@ xrd.read.TXT <- function(filename) {
 #' Reads the TXT Rigaku XRD file with no header
 #' @param filename filename including path
 #' @return data frame with XRD data and columns TwoTheta and I
-#' @examples
-#'
-#' fname = xrd.getSampleFiles('txt')[1]
-#' d = xrd.read.TXTnoheader(fname)
-#' plot(d$TwoTheta,d$I,log='y',col='red')
 #'
 #' @importFrom utils read.csv
-#' @export
+#' @noRd
 xrd.read.TXTnoheader <- function(filename) {
   if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
   d = read.csv(file=filename, sep='\t', stringsAsFactors=FALSE, header=FALSE)

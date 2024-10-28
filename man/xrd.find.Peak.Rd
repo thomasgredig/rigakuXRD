@@ -6,7 +6,7 @@
 \usage{
 xrd.find.Peak(
   TwoTheta,
-  Intensity,
+  Intensity = NULL,
   peakPos = NA,
   Try.Sigma = c(0.1, 0.4, 0.2, 0.15),
   thetaDelta = 5,
@@ -14,11 +14,11 @@ xrd.find.Peak(
 )
 }
 \arguments{
-\item{TwoTheta}{angle}
+\item{TwoTheta}{vector of 2Theta angles}
 
-\item{Intensity}{intensity signal}
+\item{Intensity}{vector of XRD intensities}
 
-\item{peakPos}{approximate angle of peak position}
+\item{peakPos}{approximate angle (2Theta) of peak position}
 
 \item{Try.Sigma}{vector with peak widths used to start fitting}
 
@@ -27,7 +27,7 @@ xrd.find.Peak(
 \item{verbose}{logical, if \code{TRUE} provides extra information}
 }
 \value{
-fit peak position
+peak position angle obtained from fit
 }
 \description{
 Fits a Gaussian form to a peak

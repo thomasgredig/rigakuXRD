@@ -2,14 +2,14 @@
 #'
 #' Fits a Gaussian form to a peak
 #'
-#' @param TwoTheta angle
-#' @param Intensity intensity signal
-#' @param peakPos approximate angle of peak position
+#' @param TwoTheta vector of 2Theta angles
+#' @param Intensity vector of XRD intensities
+#' @param peakPos approximate angle (2Theta) of peak position
 #' @param Try.Sigma vector with peak widths used to start fitting
 #' @param thetaDelta width of angle to search peak
 #' @param verbose logical, if \code{TRUE} provides extra information
 #'
-#' @return fit peak position
+#' @return peak position angle obtained from fit
 #' @examples
 #' filename = xrd.getSampleFiles(fileExt='asc')
 #' d = xrd.import(filename)
@@ -18,18 +18,17 @@
 #' abline(v=peak.pos,col='blue')
 #'
 #' @importFrom stats nls
-#' @importFrom dplyr filter
 #' @export
-xrd.find.Peak <- function(TwoTheta, Intensity,
+xrd.find.Peak <- function(TwoTheta,
+                          Intensity = NULL,
                           peakPos = NA,
                           Try.Sigma = c(0.1,0.4,0.2,0.15),
                           thetaDelta = 5,
                           verbose=FALSE
                           ) {
-  d = data.frame(TwoTheta, I = Intensity)
-  if (!is.na(peakPos)) { d <- d %>%
-      dplyr::filter(TwoTheta > peakPos - thetaDelta/2 &
-               TwoTheta < peakPos + thetaDelta/2) }
+  d <- check_dataXRD(TwoTheta, Intensity)
+
+  if (!is.na(peakPos)) d <- xrd_filter(d, peakPos - thetaDelta/2, peakPos + thetaDelta/2)
 
   p = xrd.peakEstimate(d$TwoTheta, d$I, verbose)
   if (sd(d$I) > p$A0) { warning("Amplitude drowned in noise."); return(NA) }

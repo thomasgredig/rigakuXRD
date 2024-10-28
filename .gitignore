@@ -3,10 +3,6 @@
 .RData
 .Ruserdata
 .DS_Store
-_main.R
-_init.R
+_*.R
 inst/doc
-tests/testthat/Rplots.pdf
-
-/docs
 /docs

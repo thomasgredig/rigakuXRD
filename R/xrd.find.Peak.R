@@ -13,8 +13,8 @@
 #' @examples
 #' filename = xrd.getSampleFiles(fileExt='asc')
 #' d = xrd.import(filename)
-#' peak.pos = xrd.find.Peak(d$theta, d$I, 38.2)
-#' plot(d$theta,d$I,log='y',col='red')
+#' peak.pos = xrd.find.Peak(d$TwoTheta, d$I, 38.2)
+#' plot(d$TwoTheta,d$I,log='y',col='red')
 #' abline(v=peak.pos,col='blue')
 #'
 #' @importFrom stats nls

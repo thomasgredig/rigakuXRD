@@ -14,6 +14,7 @@
 #' @param GenX_filename filename for output file
 #' @returns file name of the exported GenX text file
 #'
+#' @importFrom rlang .data
 #' @importFrom dplyr "%>%" select mutate filter
 #' @importFrom utils write.table
 #'
@@ -39,10 +40,10 @@ export2genx <- function(dataXRD, exportPath = NULL,
   max_Intensity <- max(dataXRD$I)
   #export
   dataXRD %>%
-    select(TwoTheta, I) %>%
-    filter(TwoTheta > minTheta) %>%
-    filter(TwoTheta < maxTheta) %>%
-    mutate(I = I/max_Intensity) %>%
+    dplyr::select(TwoTheta, I) %>%
+    dplyr::filter(TwoTheta > minTheta) %>%
+    dplyr::filter(TwoTheta < maxTheta) %>%
+    dplyr::mutate(I = I/max_Intensity) %>%
     write.table(file=fileExport,
                 sep = '\t',
               row.names = FALSE,
@@ -52,7 +53,3 @@ export2genx <- function(dataXRD, exportPath = NULL,
   fileExport
 }
 
-NULL
-
-## quiets concerns of R CMD check re: the .'s that appear in pipelines
-if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))

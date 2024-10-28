@@ -13,10 +13,7 @@ URL: https://github.com/thomasgredig/rigakuXRD
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-VignetteBuilder: knitr
 Suggests:
-    knitr,
-    rmarkdown,
     roxygen2,
     testthat (>= 2.1.0)
 Imports:

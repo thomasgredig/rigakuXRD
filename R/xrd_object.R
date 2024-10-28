@@ -24,7 +24,7 @@ xrd_filter <- function(x, th_min, th_max) {
   }
   isXRD <- inherits(x, "xrd")
   x <- as.data.frame(x)
-  x <- x %>% filter(TwoTheta >= th_min & TwoTheta <= th_max)
+  x <- x %>% filter(.data$TwoTheta >= th_min & .data$TwoTheta <= th_max)
   if(isXRD) class(x) <- 'xrd'
   x
 }

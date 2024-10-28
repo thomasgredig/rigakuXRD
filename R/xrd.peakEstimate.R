@@ -16,10 +16,10 @@
 #' 4 estimated parameters: background (b0), amplitude (A0), peak position (th0), and half-width (s0)
 #'
 #' @examples
-#' d = xrd.import(xrd.getSampleFiles()[1])
-#' d = subset(d, theta > 30 & theta < 42)
-#' p = xrd.peakEstimate(d$theta, d$I)
-#' plot(d$theta, d$I, col='red'); abline(v=p[3], lwd=2)
+#' d = xrd.import(xrd.getSampleFiles('asc'), TRUE)
+#' d = xrd_filter(d, 30,42)
+#' p = xrd.peakEstimate(d)
+#' plot(d); abline(v=p[3], lwd=2)
 #' abline(h=p[1], col='darkgrey')
 #' p
 #'

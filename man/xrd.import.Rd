@@ -21,8 +21,8 @@ and I.meas (measured intensity)
 }
 \examples{
 fname = xrd.getSampleFiles('rasx')
-d = xrd.import(fname)
-plot(d$theta,d$I,log='y',col='red')
+d = xrd.import(fname, TRUE)
+plot(d)
 
 }
 \author{

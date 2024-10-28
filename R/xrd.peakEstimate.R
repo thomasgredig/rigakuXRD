@@ -30,12 +30,12 @@
 xrd.peakEstimate <- function(TwoTheta, Intensity = NULL, verbose=FALSE) {
   dXRD <- check_dataXRD(TwoTheta, Intensity)
 
-  twoTheta <- dXRD$theta
+  TwoTheta <- dXRD$TwoTheta
   I <- dXRD$I
 
   # approximate the data set, so there is less
   # noise in the data
-  q <- approx(twoTheta, I, n=20)
+  q <- approx(TwoTheta, I, n=20)
 
   # find the position of the largest peak and its angle
   peakNo <- which(q$y == max(q$y))
@@ -50,13 +50,13 @@ xrd.peakEstimate <- function(TwoTheta, Intensity = NULL, verbose=FALSE) {
   s0  <- -(q$x[peakNo + 2] - th0) / (sqrt(2)*log(ts0))
 
   if (verbose) {
-    n1 <- data.frame(twoTheta, I, tp='exp')
-    n2 <- data.frame(twoTheta, I, tp='fit')
-    n2$I  <-  b0 + A0*exp(-(n2$twoTheta-th0)^2/(2*s0*s0))
+    n1 <- data.frame(TwoTheta, I, tp='exp')
+    n2 <- data.frame(TwoTheta, I, tp='fit')
+    n2$I  <-  b0 + A0*exp(-(n2$TwoTheta-th0)^2/(2*s0*s0))
 
     n <- rbind(n1,n2)
 
-    # ggplot(n, aes(twoTheta, I,  col=.data$tp)) +
+    # ggplot(n, aes(TwoTheta, I,  col=.data$tp)) +
     #   geom_point() -> g
     # print(g)
   }

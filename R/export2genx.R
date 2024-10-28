@@ -7,27 +7,30 @@
 #' code. The data is saved to a text file. More details are found at:
 #' https://doi.org/10.1107/S1600576722006653
 #'
-#' @param dataXRD XRD data frame, see rawData package
+#' @param dataXRD xrd Object
 #' @param exportPath default is a temporary direction, stores the output file in this directory
 #' @param minTheta minimum 2Theta to be included
 #' @param maxTheta maximum 2Theta to be included in export
 #' @param GenX_filename filename for output file
-#' @returns file name for export
+#' @returns file name of the exported GenX text file
 #'
 #' @importFrom dplyr "%>%" select mutate filter
 #' @importFrom utils write.table
-#' @importFrom rlang .data
+#'
+#' @seealso [xrd.import()]
 #' @examples
-#' filename <- xrd.getSampleFiles('txt')
-#' data <- xrd.import(filename)
-#' genx_file = export2genx(data)
+#' filename = xrd.getSampleFiles(fileExt='asc')
+#' d = xrd.import(filename, dataXRD=TRUE)
+#' peak.pos = xrd.find.Peak(d, peakPos = 38.2)
+#' plot(d)
+#' abline(v=peak.pos,col='blue')
 #'
 #' @export
 export2genx <- function(dataXRD, exportPath = NULL,
                         minTheta=0, maxTheta=4,
                         GenX_filename = 'xrd_data_genx_format.txt') {
 
-  # dataXRD <- check_dataXRD(dataXRD)
+  dataXRD <- check_dataXRD(dataXRD)
   if(is.null(exportPath)) exportPath = tempdir()
   # create filename for export
   fileExport <- file.path(exportPath, GenX_filename)
@@ -36,9 +39,9 @@ export2genx <- function(dataXRD, exportPath = NULL,
   max_Intensity <- max(dataXRD$I)
   #export
   dataXRD %>%
-    select(theta, I) %>%
-    filter(theta > minTheta) %>%
-    filter(theta < maxTheta) %>%
+    select(TwoTheta, I) %>%
+    filter(TwoTheta > minTheta) %>%
+    filter(TwoTheta < maxTheta) %>%
     mutate(I = I/max_Intensity) %>%
     write.table(file=fileExport,
                 sep = '\t',

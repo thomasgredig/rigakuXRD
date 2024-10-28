@@ -4,7 +4,7 @@
 #' @export
 as.data.frame.xrd <- function(x, ...) {
   if(!inherits(x,"xrd")) return(x)
-  data.frame(theta = x$theta,
+  data.frame(TwoTheta = x$TwoTheta,
                 I = x$I,
                 I.meas = x$I.meas,
                 loop = x$loop)
@@ -18,9 +18,13 @@ as.data.frame.xrd <- function(x, ...) {
 #' @importFrom rlang .data
 #' @export
 xrd_filter <- function(x, th_min, th_max) {
+  if(th_max <= th_min) {
+    temp <- th_max; th_max = th_min; th_min = temp
+    warning("max theta is smaller than min theta.")
+  }
   isXRD <- inherits(x, "xrd")
   x <- as.data.frame(x)
-  x <- x %>% filter(.data$theta >= th_min & .data$theta <= th_max)
+  x <- x %>% filter(TwoTheta >= th_min & TwoTheta <= th_max)
   if(isXRD) class(x) <- 'xrd'
   x
 }
@@ -31,14 +35,50 @@ xrd_filter <- function(x, th_min, th_max) {
 #' @noRd
 check_dataXRD <- function(TwoTheta, Intensity=NULL) {
   if(inherits(TwoTheta,"xrd")) {
-    d = data.frame(theta = TwoTheta$theta, I = TwoTheta$I)
+    d = data.frame(TwoTheta = TwoTheta$TwoTheta, I = TwoTheta$I)
   } else {
     if(inherits(TwoTheta, "data.frame")) {
-      d = data.frame(theta = TwoTheta$theta, I = TwoTheta$I)
+      d = data.frame(TwoTheta = TwoTheta$TwoTheta, I = TwoTheta$I)
     } else {
       if (length(Intensity) != length(TwoTheta)) warning("TwoTheta and Intensity must have same length.")
-      d = data.frame(theta = TwoTheta, I = Intensity)
+      d = data.frame(TwoTheta = TwoTheta, I = Intensity)
     }
   }
   d
+}
+
+
+
+#' Create an xrd S3 object
+#'
+#' @param TwoTheta angle
+#' @param I intensity (counts per second)
+#' @param I.meas measured intentisty
+#' @param loop integer of a specific loop
+#' @export
+create_xrd <- function(TwoTheta, I, I.meas, loop) {
+  # Ensure the parameters are of the correct type
+  if (!is.numeric(TwoTheta)) stop("TwoTheta must be numeric")
+  if (!is.numeric(I)) stop("I must be numeric")
+  if (!is.numeric(I.meas)) stop("I.meas must be numeric")
+  if (!is.integer(loop)) stop("loop must be integer")
+
+  # Create the object
+  obj <- list(TwoTheta = TwoTheta, I = I, I.meas = I.meas, loop = loop)
+
+  # Assign the class name
+  class(obj) <- "xrd"
+
+  return(obj)
+}
+
+#' Print xrd object
+#'
+#' @param x xrd object
+#' @param ... dots
+#' @export
+print.xrd <- function(x, ...) {
+  cat("xrd object:\n")
+  df_x <- as.data.frame(x)
+  print(df_x, row.names=FALSE)
 }

@@ -34,7 +34,7 @@ a Gaussian fit is made to find the exact location, width, and background.
 \examples{
 filename = xrd.getSampleFiles(fileExt='asc')
 d = xrd.import(filename)
-xrd.get.PeakStats(d$theta, d$I, 38.2)
+xrd.get.PeakStats(d$TwoTheta, d$I, 38.2)
 
 }
 \author{

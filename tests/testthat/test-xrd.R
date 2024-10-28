@@ -16,7 +16,7 @@ test_that("xrd.import: check for uniformity of data columns", {
   nLen=c()
   for(f in file.list) {
     d = xrd.import(f)
-    #print(names(d))
+    # print(names(d))
     nLen=c(nLen,length(names(d)))
   }
   expect_equal(nLen,rep(4,length(sel.Files)))

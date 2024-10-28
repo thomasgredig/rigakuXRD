@@ -14,7 +14,7 @@
 #' @examples
 #' filename = xrd.getSampleFiles('asc')
 #' d = xrd.import(filename)
-#' ds = xrd.get.PeakStats(d$theta, d$I, 38.2)
+#' ds = xrd.get.PeakStats(d$TwoTheta, d$I, 38.2)
 #' xrd.get.DebyeScherrer(ds)
 #'
 #' @export

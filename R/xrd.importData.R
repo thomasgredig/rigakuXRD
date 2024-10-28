@@ -13,8 +13,8 @@
 #' @author Thomas Gredig
 #' @examples
 #' fname = xrd.getSampleFiles('rasx')
-#' d = xrd.import(fname)
-#' plot(d$theta,d$I,log='y',col='red')
+#' d = xrd.import(fname, TRUE)
+#' plot(d)
 #'
 #' @importFrom tools file_ext
 #' @export
@@ -27,11 +27,13 @@ xrd.import <- function(filename, dataXRD = FALSE) {
     return(d)
   }
 
-  if (fileExtension=='asc')       d <- xrd.read.ASC(filename)
-  else if (fileExtension=='ras')  d <- xrd.read.RAS(filename)
-  else if (fileExtension=='txt')  d <- xrd.read.TXT(filename)
-  else if (fileExtension=='rasx') d <- xrd.read.RASX(filename)
-  else warning('File extension is not recognized; cannot read the file.')
+  d <- switch(fileExtension,
+              'asc' = xrd.read.ASC(filename),
+              'ras' = xrd.read.RAS(filename),
+              'txt' = xrd.read.TXT(filename),
+              'rasx' = xrd.read.RASX(filename),
+              warning('File extension is not recognized; cannot read the file.')
+  )
 
   if (dataXRD) class(d) <- "xrd"
   d
@@ -44,7 +46,7 @@ xrd.import <- function(filename, dataXRD = FALSE) {
 #' @export
 
 plot.xrd <- function(x, ...) {
-  plot(x$theta, x$I.meas, log='y', col='red', xlab='2q', ylab="log I (a.u.)")
+  plot(x$TwoTheta, x$I, log='y', col='red', xlab='2q', ylab="log I (cps)")
 }
 
 
@@ -57,11 +59,6 @@ plot.xrd <- function(x, ...) {
 #' Reads the ASC Rigaku XRD file with a Header
 #' @param filename filename including path
 #' @return data frame with XRD data
-#' @examples
-#' fname = xrd.getSampleFiles('asc')[1]
-#' d = xrd.read.ASC(file.path(fname))
-#' plot(d$theta,d$I,log='y',col='red')
-#'
 #' @importFrom stringr str_extract_all
 #' @importFrom utils read.csv
 #' @importFrom stats na.omit
@@ -94,14 +91,24 @@ xrd.read.ASC <- function(filename) {
   str_extract_all(p, '\\*{1}START\t') -> angle
   which(angle=="*START\t") -> q
 
-  seq=1:(length(q))*2
-  as.numeric(unlist(strsplit(p[q],'='))[seq]) -> theta.start
-  q=q+1
-  as.numeric(unlist(strsplit(p[q],'='))[seq]) -> theta.stop
-  q=q+1
-  as.numeric(unlist(strsplit(p[q],'='))[seq]) -> theta.step
-  q=q+2
-  as.numeric(unlist(strsplit(p[q],'='))[seq]) -> theta.speed
+  # Define a function to extract numeric values from the string
+  extract_numeric <- function(p, q, seq) {
+    as.numeric(unlist(strsplit(p[q], '='))[seq])
+  }
+
+  # Initialize sequence
+  seq <- 1:(length(q)) * 2
+
+  # Extract values using the function
+  theta.start <- extract_numeric(p, q, seq)
+  q <- q + 1
+  theta.stop <- extract_numeric(p, q, seq)
+  q <- q + 1
+  theta.step <- extract_numeric(p, q, seq)
+  q <- q + 2
+  theta.speed <- extract_numeric(p, q, seq)
+
+  # Assign theta.speed to norm
   norm <- theta.speed
 
   data <- data.frame()
@@ -109,7 +116,7 @@ xrd.read.ASC <- function(filename) {
   for(num in 1:length(q)) {
     theta = seq(from=theta.start[num], to=theta.stop[num], by=theta.step[num])
     I <- x2[x2p:(x2p+length(theta)-1)]
-    data <- rbind(data, cbind(theta=theta, I = I/norm[num], I.meas = I, loop=num))
+    data <- rbind(data, cbind(TwoTheta=theta, I = I/norm[num], I.meas = I, loop=num))
     x2p <- x2p + length(theta)
   }
   data
@@ -120,9 +127,6 @@ xrd.read.ASC <- function(filename) {
 #' Reads the header of an XRD ASC file
 #' @param filename filename including path
 #' @return data frame with XRD header
-#' @examples
-#' d = xrd.readHeader.ASC(xrd.getSampleFiles('asc')[1])
-#' head(d)
 #'
 #' @noRd
 xrd.readHeader.ASC <- function(filename) {
@@ -158,11 +162,6 @@ xrd.readHeader.ASC <- function(filename) {
 #' Reads the RAS Rigaku XRD data
 #' @param filename filename including path
 #' @return data frame with XRD data
-#' @examples
-#'
-#' fname = xrd.getSampleFiles('ras')[1]
-#' d = xrd.read.RAS(fname)
-#' plot(d$X2.Theta,d$I,log='y',col='red')
 #'
 #' @importFrom utils read.csv
 #' @importFrom tidyr separate_wider_delim
@@ -214,11 +213,6 @@ xrd.read.RAS <- function(filename) {
 #' Reads the TXT Rigaku XRD file with a Header
 #' @param filename filename including path
 #' @return data frame with XRD data
-#' @examples
-#'
-#' fname = xrd.getSampleFiles('txt')
-#' d = xrd.read.TXT(fname)
-#' plot(d$theta,d$I,log='y',col='red')
 #'
 #' @importFrom utils read.csv
 #' @noRd
@@ -255,7 +249,7 @@ xrd.read.TXT <- function(filename) {
   }
 
   # change column names
-  names(d) = c('theta','I')
+  names(d) = c('TwoTheta','I')
   d$I.meas = d$I
   d$loop = 1
   d
@@ -289,11 +283,6 @@ xrd.read.TXTnoheader <- function(filename) {
 #' @return data frame with XRD data
 #'
 #' @author Thomas Gredig
-#' @examples
-#' fname = xrd.getSampleFiles('rasx')[1]
-#' d = xrd.read.RASX(fname)
-#' head(d)
-#'
 #' @importFrom utils read.csv unzip
 #'
 #' @noRd
@@ -305,11 +294,11 @@ xrd.read.RASX <- function(filename) {
   dataFile = file.path(pTemp, 'Data0', 'Profile0.txt')
 
   data = read.csv(file=dataFile, sep='\t', stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
-  names(data) = c('theta','I.meas','num')
+  names(data) = c('TwoTheta','I.meas','num')
 
   # change columns
   data = data.frame(
-    theta = data$theta,
+    TwoTheta = data$TwoTheta,
     I = data$I.meas,
     I.meas = data$I.meas,
     loop = data$num

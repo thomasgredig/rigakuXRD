@@ -18,10 +18,11 @@ returns a list with the thickness, a peak table, and
 two graphs displaying the results.
 }
 \examples{
-  filename <- xrd.getSampleFiles('rasx')
-  data <- xrd.import(filename)
-  analysis <- xrd.FringeAnalysis(data)
-  print(analysis$t.nm)
+filename <- xrd.getSampleFiles('asc')
+data <- xrd.import(filename, dataXRD=TRUE)
+data_35 = xrd_filter(data, 35,50)
+plot(data_35)
+analysis <- xrd.FringeAnalysis(data_35)
 
 }
 \author{

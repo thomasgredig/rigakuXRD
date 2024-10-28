@@ -17,7 +17,6 @@ returns sample XRD  from library
 }
 \examples{
 file.list = xrd.getSampleFiles()
-print(paste("Found",length(file.list),"sample files:"))
 basename(file.list)
 
 }

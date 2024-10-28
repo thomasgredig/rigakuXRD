@@ -81,7 +81,7 @@ cat("Debye-Scherrer size from peak:", signif(peak.d/10,4), "nm")
 
 The `xrd S3 class` contains x-ray diffraction spectrum data with a data frame that has the following columns:
 
--   **theta**: Bragg angle (two theta)
+-   **TwoTheta**: Bragg angle (two theta)
 
 -   **I**: intensity (counts per seconds)
 

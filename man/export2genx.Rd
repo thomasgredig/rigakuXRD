@@ -13,7 +13,7 @@ export2genx(
 )
 }
 \arguments{
-\item{dataXRD}{XRD data frame, see rawData package}
+\item{dataXRD}{xrd Object}
 
 \item{exportPath}{default is a temporary direction, stores the output file in this directory}
 
@@ -24,7 +24,7 @@ export2genx(
 \item{GenX_filename}{filename for output file}
 }
 \value{
-file name for export
+file name of the exported GenX text file
 }
 \description{
 GenX uses the differential evolution algorithm for fitting X-ray
@@ -34,8 +34,13 @@ code. The data is saved to a text file. More details are found at:
 https://doi.org/10.1107/S1600576722006653
 }
 \examples{
-filename <- xrd.getSampleFiles('txt')
-data <- xrd.import(filename)
-genx_file = export2genx(data)
+filename = xrd.getSampleFiles(fileExt='asc')
+d = xrd.import(filename, dataXRD=TRUE)
+peak.pos = xrd.find.Peak(d, peakPos = 38.2)
+plot(d)
+abline(v=peak.pos,col='blue')
 
+}
+\seealso{
+[xrd.import()]
 }

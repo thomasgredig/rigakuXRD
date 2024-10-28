@@ -16,10 +16,11 @@
 #' @author Thomas Gredig
 #'
 #' @examples
-#'   filename <- xrd.getSampleFiles('rasx')
-#'   data <- xrd.import(filename)
-#'   analysis <- xrd.FringeAnalysis(data)
-#'   print(analysis$t.nm)
+#' filename <- xrd.getSampleFiles('asc')
+#' data <- xrd.import(filename, dataXRD=TRUE)
+#' data_35 = xrd_filter(data, 35,50)
+#' plot(data_35)
+#' analysis <- xrd.FringeAnalysis(data_35)
 #'
 #' @export
 xrd.FringeAnalysis <- function(dataXRD) {
@@ -60,7 +61,6 @@ xrd.FringeAnalysis <- function(dataXRD) {
   for(n in 1:(nrow(df.peak)-1)) {
     t.nm = c(t.nm, xrd.FringeThickness(df.peak$th.pos[n]/2,df.peak$th.pos[n+1]/2)/10)
   }
-
 
   list(t.nm = t.nm,
        df.peak = df.peak,

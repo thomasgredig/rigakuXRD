@@ -16,7 +16,7 @@
 #' @examples
 #' filename = xrd.getSampleFiles(fileExt='asc')
 #' d = xrd.import(filename)
-#' xrd.get.PeakStats(d$theta, d$I, 38.2)
+#' xrd.get.PeakStats(d$TwoTheta, d$I, 38.2)
 #'
 #' @importFrom stats nls sd predict
 #' @importFrom graphics lines
@@ -34,7 +34,7 @@ xrd.get.PeakStats <- function(TwoTheta,
     n1 = subset(d, TwoTheta > (peakPos-deltaPeak) &
                   TwoTheta < (peakPos+deltaPeak))
     if (verbose) plot(n1)
-    if (verbose) cat("Fit from 2 theta =",
+    if (verbose) cat("Fit from 2theta =",
                              min(n1$TwoTheta), "to",
                              max(n1$TwoTheta),"\n")
     if(nrow(n1)>5) {

@@ -5,7 +5,7 @@
 #' @examples
 #' filename = xrd.getSampleFiles('asc')
 #' d = xrd.import(filename)
-#' q = xrd.get.PeakStats(d$theta, d$I, 38.2)
+#' q = xrd.get.PeakStats(d$TwoTheta, d$I, 38.2)
 #' xrd.get.PeakProminence(q)
 #'
 #' @export

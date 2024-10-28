@@ -2,6 +2,8 @@
 
 S3method(as.data.frame,xrd)
 S3method(plot,xrd)
+S3method(print,xrd)
+export(create_xrd)
 export(export2genx)
 export(xrd.FringeAnalysis)
 export(xrd.FringeThickness)

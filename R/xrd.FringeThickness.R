@@ -1,4 +1,4 @@
-#' Fringe Thickness Calculation
+#' Fringe thickness calculation
 #'
 #' @description
 #' Given two angles (2Theta) and the x-ray wavelength, the

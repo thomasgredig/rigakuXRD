@@ -2,7 +2,7 @@
 % Please edit documentation in R/xrd.find.Peak.R
 \name{xrd.find.Peak}
 \alias{xrd.find.Peak}
-\title{Finds Peak Position from Gaussian}
+\title{Finds peak position from gaussian fit}
 \usage{
 xrd.find.Peak(
   TwoTheta,
@@ -13,15 +13,15 @@ xrd.find.Peak(
 )
 }
 \arguments{
-\item{TwoTheta}{vector of 2Theta angles}
+\item{TwoTheta}{vector of two theta angles from xrd spectrum.}
 
-\item{Intensity}{vector of XRD intensities}
+\item{Intensity}{\code{NULL} if xrd S3 object, otherwise xrd intensity vector.}
 
-\item{peakPos}{approximate angle (2Theta) of peak position}
+\item{peakPos}{approximate angle (2Theta) of peak position.}
 
-\item{Try.Sigma}{vector with peak widths used to start fitting}
+\item{Try.Sigma}{vector with peak widths used to start fitting.}
 
-\item{thetaDelta}{width of angle to search peak}
+\item{thetaDelta}{approximate width of angle to search peak.}
 }
 \value{
 peak position angle obtained from fit

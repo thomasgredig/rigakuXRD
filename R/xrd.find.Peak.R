@@ -1,12 +1,12 @@
-#' Finds Peak Position from Gaussian
+#' Finds peak position from gaussian fit
 #'
 #' Fits a Gaussian form to a peak
 #'
-#' @param TwoTheta vector of 2Theta angles
-#' @param Intensity vector of XRD intensities
-#' @param peakPos approximate angle (2Theta) of peak position
-#' @param Try.Sigma vector with peak widths used to start fitting
-#' @param thetaDelta width of angle to search peak
+#' @param TwoTheta vector of two theta angles from xrd spectrum.
+#' @param Intensity \code{NULL} if xrd S3 object, otherwise xrd intensity vector.
+#' @param peakPos approximate angle (2Theta) of peak position.
+#' @param Try.Sigma vector with peak widths used to start fitting.
+#' @param thetaDelta approximate width of angle to search peak.
 #'
 #' @return peak position angle obtained from fit
 #' @examples

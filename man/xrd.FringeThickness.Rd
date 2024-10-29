@@ -2,7 +2,7 @@
 % Please edit documentation in R/xrd.FringeThickness.R
 \name{xrd.FringeThickness}
 \alias{xrd.FringeThickness}
-\title{Fringe Thickness Calculation}
+\title{Fringe thickness calculation}
 \usage{
 xrd.FringeThickness(theta1, theta2, lambda = 1.5406)
 }

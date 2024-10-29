@@ -2,15 +2,15 @@
 % Please edit documentation in R/xrd_object.R
 \name{print.xrd}
 \alias{print.xrd}
-\title{Print xrd object}
+\title{Print xrd object as table}
 \usage{
 \method{print}{xrd}(x, ...)
 }
 \arguments{
-\item{x}{xrd object}
+\item{x}{xrd object.}
 
-\item{...}{dots}
+\item{...}{further arguments passed to or from other methods.}
 }
 \description{
-Print xrd object
+Print xrd object as table
 }

@@ -1,4 +1,4 @@
-#' Estimate Highest Peak in Selected Data Set
+#' Estimate highest peak in selected spectrum
 #'
 #' @description
 #' Simple peak position estimate, yields largest peak
@@ -7,8 +7,8 @@
 #' It returns the background (b0), the amplitude (A0), the
 #' peak position (th0), and the half-width sigma (s0).
 #'
-#' @param TwoTheta vector of Bragg angle (2Theta)
-#' @param Intensity intensity
+#' @param TwoTheta vector of two theta angles from xrd spectrum
+#' @param Intensity \code{NULL} if xrd S3 object, otherwise xrd intensity vector
 #'
 #' @returns
 #' 4 estimated parameters: background (b0), amplitude (A0), peak position (th0), and half-width (s0)

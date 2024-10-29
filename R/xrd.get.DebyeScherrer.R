@@ -1,4 +1,4 @@
-#' Applies Scherrer Equation to PeakStats
+#' Applies Scherrer equation to PeakStats
 #'
 #' Returns the particle size or film thickness as calculated with
 #' the Scherrer equation; units of Angstrom, for more information
@@ -13,14 +13,15 @@
 #' @seealso [xrd.get.PeakStats()]
 #' @examples
 #' filename = xrd.getSampleFiles('asc')
-#' d = xrd.import(filename)
-#' ds = xrd.get.PeakStats(d$TwoTheta, d$I, 38.2)
+#' d = xrd.import(filename, TRUE)
+#' ds = xrd.get.PeakStats(d, peakPos = 38.2)
 #' xrd.get.DebyeScherrer(ds)
 #'
 #' @export
 xrd.get.DebyeScherrer <- function(PeakStats,
                                   Lambda = 1.5406,
                                   K = 0.9) {
+  check_peak_stats(PeakStats)
   # https://en.wikipedia.org/wiki/Full_width_at_half_maximum
   # https://en.wikipedia.org/wiki/Scherrer_equation
 

@@ -1,4 +1,4 @@
-#' Fits a Gaussian Function to XRD data
+#' Fits a Gaussian function to XRD data
 #'
 #' @description
 #' Given an XRD peak, a Gaussian fit at the provided location \code{peakPos}
@@ -6,12 +6,12 @@
 #'
 #' @author Thomas Gredig
 #'
-#' @param TwoTheta vector of 2Theta angles
-#' @param Intensity vector of XRD intensities
-#' @param peakPos specific 2Theta angle of peak position
-#' @param Try.Sigma vector with peak widths used to start fitting
+#' @param TwoTheta vector of two theta angles from xrd spectrum.
+#' @param Intensity \code{NULL} if xrd S3 object, otherwise xrd intensity vector.
+#' @param peakPos approximate 2Theta angle of peak position.
+#' @param Try.Sigma vector with peak widths used to start fitting.
 #'
-#' @return background, amplitude, position, width + 4 std. errors
+#' @return background, amplitude, position, width + 4 std. errors from peak fit
 #' @examples
 #' filename = xrd.getSampleFiles(fileExt='asc')
 #' d = xrd.import(filename)
@@ -52,12 +52,6 @@ xrd.get.PeakStats <- function(TwoTheta,
       if (!is.null(fit)) break
     }
   }
-  # if (verbose) {
-  #   if (!is.null(fit)) {
-  #     plot(n1)
-  #     lines(n1$TwoTheta, predict(fit),col='red')
-  #   }
-  # }
 
   if(is.null(fit)) { return(NA) }
   summary(fit)$coeff[1:8]

@@ -2,7 +2,7 @@
 % Please edit documentation in R/export2genx.R
 \name{export2genx}
 \alias{export2genx}
-\title{Export XRD Data into GenX Format}
+\title{Export XRD data into GenX format}
 \usage{
 export2genx(
   dataXRD,
@@ -35,7 +35,7 @@ https://doi.org/10.1107/S1600576722006653
 }
 \examples{
 filename = xrd.getSampleFiles(fileExt='asc')
-d = xrd.import(filename, dataXRD=TRUE)
+d = xrd.import(filename, xrd=TRUE)
 peak.pos = xrd.find.Peak(d, peakPos = 38.2)
 plot(d)
 abline(v=peak.pos,col='blue')

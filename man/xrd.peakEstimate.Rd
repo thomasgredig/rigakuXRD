@@ -2,14 +2,14 @@
 % Please edit documentation in R/xrd.peakEstimate.R
 \name{xrd.peakEstimate}
 \alias{xrd.peakEstimate}
-\title{Estimate Highest Peak in Selected Data Set}
+\title{Estimate highest peak in selected spectrum}
 \usage{
 xrd.peakEstimate(TwoTheta, Intensity = NULL)
 }
 \arguments{
-\item{TwoTheta}{vector of Bragg angle (2Theta)}
+\item{TwoTheta}{vector of two theta angles from xrd spectrum}
 
-\item{Intensity}{intensity}
+\item{Intensity}{\code{NULL} if xrd S3 object, otherwise xrd intensity vector}
 }
 \value{
 4 estimated parameters: background (b0), amplitude (A0), peak position (th0), and half-width (s0)

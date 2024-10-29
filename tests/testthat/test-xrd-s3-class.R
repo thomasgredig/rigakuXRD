@@ -1,6 +1,6 @@
 test_that("xrd S3 class", {
   f <- xrd.getSampleFiles('asc')
-  d <- xrd.import(f, dataXRD = TRUE)
+  d <- xrd.import(f, xrd = TRUE)
   expect_true(inherits(d,"xrd"))
 
   # library(dplyr)

@@ -13,7 +13,23 @@ test_that("XRD Analysis", {
 
 test_that("XRD All Peak Search", {
   filename = xrd.getSampleFiles('asc')
-  d = xrd.read.ASC(filename)
+  d = xrd.import(filename)
   peak.list = xrd.get.AllPeaks(d, deltaTheta = 2, Try.Sigma = c(0.1),  Range = c(42, 46))
-  expect_equal(length(peak.list), 3)
+  expect_equal(length(peak.list), 1)
+
+  d42 = xrd_filter(d, 42.0, 42.8) # not enough coverage
+  expect_warning(xrd.get.AllPeaks(d42),"XRD data has insufficient angular range.")
+
+  expect_warning(xrd_filter(d42, 10,8), "max theta is smaller than min theta.")
+})
+
+test_that("xrd object creation", {
+  filename <- xrd.getSampleFiles('rasx')
+  data <- xrd.import(filename, xrd=FALSE)
+  expect_true(inherits(data,"data.frame"))
+
+  dataXRD <- create_xrd(data$TwoTheta, data$I, data$I.meas, data$loop)
+  expect_true(inherits(dataXRD,"xrd"))
+  df <- as.data.frame(dataXRD)
+  expect_equal(nrow(df), nrow(data))
 })

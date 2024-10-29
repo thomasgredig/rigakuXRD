@@ -25,7 +25,7 @@ test_that("xrd.import: check for uniformity of data columns", {
 
 
 test_that("Load XRD sample file data", {
-  fname = xrd.getSampleFiles()[1]
+  fname = xrd.getSampleFiles('asc')
   expect_true(grepl('asc$',fname))
 
   data.header = xrd.readHeader.ASC(fname)
@@ -44,9 +44,19 @@ test_that("Test files have data.", {
   }
 })
 
-test_that("xrd.import: invalid file", {
-  xrd_filename = tempfile()
+test_that("xrd.import: invalid file or invalid data", {
+  # test importing a file that does not exist
+  xrd_filename = tempfile(fileext = ".abc")
+  expect_error(xrd.import(xrd_filename))
+
+  # test importing a file with unrecognized file extension
+  writeLines("not an XRD data file", xrd_filename)
   expect_warning(xrd.import(xrd_filename))
+
+  # test importing a file with recognized file extension, but incorrect data
+  xrd_filename = tempfile(fileext = ".txt")
+  writeLines("not an XRD data file, but TXT extension", xrd_filename)
+  expect_error(xrd.import(xrd_filename))
 })
 
 

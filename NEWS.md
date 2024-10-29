@@ -2,7 +2,7 @@
 
 * clean up documentation, functions
 * allow import to create either data frame or xrd class
-* use `options(rlib_message_verbosity = "quiet")` to silence using `cli::cli_inform()`
+* use `options(verbose = TRUE)` for functions to return verbose output
 
 # rigakuXRD 0.3.1
 

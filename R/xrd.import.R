@@ -1,14 +1,15 @@
-#' Imports Rigaku XRD Data File
+#' Imports Rigaku x-ray diffraction data
 #'
 #' @description
 #'
-#' Import function recognizes ASC, TXT, RAS, and RASX files from Rigaku XRD
-#' instrument; returns dataframe with 2theta, I (intensity normalized for time),
-#' and I.meas (measured intensity)
+#' Import function recognizes ASC, TXT, RAS, and RASX files from Rigaku x-ray diffraction
+#' instrument; returns an xrd object or data frame with 2theta,
+#' I (intensity normalized for time) and I.meas (measured intensity).
 #'
 #' @param filename full file name with path
-#' @param dataXRD logical, if \code{TRUE} new xrd S3 class is returned
-#' @return data frame with XRD data
+#' @param xrd logical, if \code{TRUE} an xrd object is returned
+#'
+#' @return xrd object or data frame with XRD data
 #'
 #' @author Thomas Gredig
 #' @examples
@@ -17,36 +18,41 @@
 #' plot(d)
 #'
 #' @importFrom tools file_ext
+#' @importFrom cli cli_warn
 #' @export
-xrd.import <- function(filename, dataXRD = FALSE) {
+xrd.import <- function(filename, xrd = FALSE) {
+  check_file_exists(filename)
+
   fileExtension = tolower(file_ext(filename))
   d <- data.frame()
 
-  if (!file.exists(filename)) {
-    warning(paste("File:",filename,"not found. Cannot import XRD data."))
-    return(d)
-  }
-
   d <- switch(fileExtension,
-              'asc' = xrd.read.ASC(filename),
-              'ras' = xrd.read.RAS(filename),
-              'txt' = xrd.read.TXT(filename),
-              'rasx' = xrd.read.RASX(filename),
-              warning('File extension is not recognized; cannot read the file.')
+              'asc' = xrd_read_ASC(filename),
+              'ras' = xrd_read_RAS(filename),
+              'txt' = xrd_read_TXT(filename),
+              'rasx' = xrd_read_RASX(filename),
+              cli_warn('XRD file extension ({fileExtension}) is not recognized; file cannot be imported.')
   )
 
-  if (dataXRD) class(d) <- "xrd"
+  if (xrd) class(d) <- "xrd"
   d
+}
+
+#' @importFrom cli cli_abort
+#' @noRd
+check_file_exists <- function(filename) {
+  if (!file.exists(filename)) {
+    cli_abort("File {filename} does not exist.")
+  }
 }
 
 #' Plots xrd class
 #'
 #' @param x xrd S3 object
-#' @param ... dots
+#' @param ... Optional graphical parameters to adjust different components of the performance plot
 #' @export
-
 plot.xrd <- function(x, ...) {
-  plot(x$TwoTheta, x$I, log='y', col='red', xlab='2q', ylab="log I (cps)")
+  plot(x$TwoTheta, x$I, log='y', col='red', xlab='2q', ylab="log I (cps)", ...)
 }
 
 
@@ -63,8 +69,9 @@ plot.xrd <- function(x, ...) {
 #' @importFrom utils read.csv
 #' @importFrom stats na.omit
 #' @noRd
-xrd.read.ASC <- function(filename) {
-  if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
+xrd_read_ASC <- function(filename) {
+  check_file_exists(filename)
+
   data <- read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
 
   # get data only
@@ -128,9 +135,9 @@ xrd.read.ASC <- function(filename) {
 #' @param filename filename including path
 #' @return data frame with XRD header
 #'
-#' @noRd
+#' @export
 xrd.readHeader.ASC <- function(filename) {
-  if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
+  check_file_exists(filename)
   data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
 
   # get data only
@@ -167,8 +174,8 @@ xrd.readHeader.ASC <- function(filename) {
 #' @importFrom tidyr separate_wider_delim
 #'
 #' @noRd
-xrd.read.RAS <- function(filename) {
-  if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
+xrd_read_RAS <- function(filename) {
+  check_file_exists(filename)
   data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL)
   p = as.vector(unlist(data))
   p = iconv(p, from = "ISO-8859-1", to = "UTF-8")
@@ -176,6 +183,7 @@ xrd.read.RAS <- function(filename) {
   if(p[1]!="*RAS_HEADER_START") { warning(paste("File format is not RAS:",filename))}
   p.start = grep('*RAS_INT_START',p)
   p.end = grep('*RAS_INT_END',p)
+  if (length(p.start)==0L | length(p.end)==0L) { stop("RAS file data start and end not found.") }
   d1 = data.frame(
     n = p[(p.start+1):(p.end-1)],
     stringsAsFactors = FALSE
@@ -193,6 +201,12 @@ xrd.read.RAS <- function(filename) {
   d2 <- separate_wider_delim(d1,n, names=c(label.x,label.y,label.units),
                          delim=" ", too_many="merge")
   d3 <- lapply(d2, as.numeric)
+  names(d3) <- c("TwoTheta","I","cps")
+
+  d3$I.meas = d3$I / d3$cps
+  d3$loop = 1
+  d3$cps <- NULL
+
   as.data.frame(d3)
 }
 
@@ -216,8 +230,8 @@ xrd.read.RAS <- function(filename) {
 #'
 #' @importFrom utils read.csv
 #' @noRd
-xrd.read.TXT <- function(filename) {
-  if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
+xrd_read_TXT <- function(filename) {
+  check_file_exists(filename)
   data = read.csv(file=filename, stringsAsFactors=FALSE)
   as.vector(unlist(data))->p
   p[grep('^\\*',p)] -> d.header
@@ -233,7 +247,7 @@ xrd.read.TXT <- function(filename) {
   col.names = unlist(strsplit(gsub('^#','',p1),'='))
   # get data
   start.row = grep('^#',p)[1]+1
-  if (is.na(start.row)) { d = xrd.read.TXTnoheader(filename) }
+  if (is.na(start.row)) { d = xrd_read_TXTnoheader(filename) }
   else {
     if (length(grep('\t', p[start.row]))>0) {
       p1 = strsplit(p[start.row:length(p)],'\t')
@@ -262,9 +276,10 @@ xrd.read.TXT <- function(filename) {
 #'
 #' @importFrom utils read.csv
 #' @noRd
-xrd.read.TXTnoheader <- function(filename) {
-  if(file.exists(filename)==FALSE) { warning(paste('File does not exist:',filename)) }
+xrd_read_TXTnoheader <- function(filename) {
+  check_file_exists(filename)
   d = read.csv(file=filename, sep='\t', stringsAsFactors=FALSE, header=FALSE)
+  if(ncol(d)!=2) cli_abort("Format of data in XRD file {filename} is not recognized.")
   names(d) = c('TwoTheta','I')
   d
 }
@@ -286,8 +301,8 @@ xrd.read.TXTnoheader <- function(filename) {
 #' @importFrom utils read.csv unzip
 #'
 #' @noRd
-xrd.read.RASX <- function(filename) {
-  if (!file.exists(filename)) { stop(paste('File does not exist:',filename)) }
+xrd_read_RASX <- function(filename) {
+  check_file_exists(filename)
 
   pTemp = tempdir()
   unzip(filename, exdir=pTemp)

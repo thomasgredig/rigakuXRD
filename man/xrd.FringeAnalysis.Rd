@@ -2,7 +2,7 @@
 % Please edit documentation in R/xrd.FringeAnalysis.R
 \name{xrd.FringeAnalysis}
 \alias{xrd.FringeAnalysis}
-\title{XRD / XRR Fringe Analysis}
+\title{XRD / XRR fringe analysis}
 \usage{
 xrd.FringeAnalysis(dataXRD)
 }
@@ -10,7 +10,7 @@ xrd.FringeAnalysis(dataXRD)
 \item{dataXRD}{data frame with theta (2Theta) and I (intensity)}
 }
 \value{
-list with thickness, table of peaks, and two ggplot graphs
+list with thickness (`t.nm`), table of peaks (`df.peak`), and two ggplot graphs (`g.peaks` and `g.thickness`)
 }
 \description{
 Searches for fringes in the XRD or XRR spectrum and
@@ -18,11 +18,11 @@ returns a list with the thickness, a peak table, and
 two graphs displaying the results.
 }
 \examples{
-filename <- xrd.getSampleFiles('asc')
-data <- xrd.import(filename, dataXRD=TRUE)
-data_35 = xrd_filter(data, 35,50)
-plot(data_35)
-analysis <- xrd.FringeAnalysis(data_35)
+filename <- xrd.getSampleFiles('ras')
+data <- xrd.import(filename, xrd=TRUE)
+data_5 = xrd_filter(data, 5,10)
+analysis <- xrd.FringeAnalysis(data_5)
+analysis$t.nm
 
 }
 \author{

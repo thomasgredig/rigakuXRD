@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{xrd S3 class}
 
-\item{...}{dots}
+\item{...}{additional arguments passed to as.data.frame}
 }
 \description{
 Convert xrd data to a data frame

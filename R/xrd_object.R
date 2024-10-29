@@ -1,13 +1,12 @@
 #' Convert xrd data to a data frame
 #' @param x xrd S3 class
-#' @param ... dots
+#' @param ... additional arguments passed to as.data.frame
 #' @export
-as.data.frame.xrd <- function(x, ...) {
-  if(!inherits(x,"xrd")) return(x)
+as.data.frame.xrd <- function(x,...) {
   data.frame(TwoTheta = x$TwoTheta,
                 I = x$I,
                 I.meas = x$I.meas,
-                loop = x$loop)
+                loop = x$loop, ...)
 }
 
 #' Filters XRD data
@@ -36,7 +35,7 @@ xrd_filter <- function(x, th_min, th_max) {
 
 #' Create an xrd S3 object
 #'
-#' @param TwoTheta angle
+#' @param TwoTheta vector of two theta angles from xrd spectrum
 #' @param I intensity (counts per second)
 #' @param I.meas measured intentisty
 #' @param loop integer of a specific loop
@@ -58,13 +57,13 @@ create_xrd <- function(TwoTheta, I, I.meas, loop) {
 }
 
 
-#' Print xrd object
+#' Print xrd object as table
 #'
-#' @param x xrd object
-#' @param ... dots
+#' @param x xrd object.
+#' @param ... further arguments passed to or from other methods.
 #' @export
 print.xrd <- function(x, ...) {
-  message("xrd object:\n")
+  message("xrd object:")
   df_x <- as.data.frame(x)
   print(df_x, row.names=FALSE)
 }

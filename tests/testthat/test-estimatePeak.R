@@ -1,6 +1,6 @@
 test_that("Estimate Peak Positions", {
-  filename  <-  xrd.getSampleFiles(fileExt = 'asc')[1]
-  d <- xrd.import(filename, dataXRD = TRUE)
+  filename  <-  xrd.getSampleFiles(fileExt = 'asc')
+  d <- xrd.import(filename, xrd = TRUE)
 
   peakPos <- c()
   for(j in 1:7) {

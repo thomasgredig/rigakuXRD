@@ -7,7 +7,7 @@
 create_xrd(TwoTheta, I, I.meas, loop)
 }
 \arguments{
-\item{TwoTheta}{angle}
+\item{TwoTheta}{vector of two theta angles from xrd spectrum}
 
 \item{I}{intensity (counts per second)}
 

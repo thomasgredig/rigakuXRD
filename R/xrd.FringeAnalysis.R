@@ -1,4 +1,4 @@
-#' XRD / XRR Fringe Analysis
+#' XRD / XRR fringe analysis
 #'
 #' @description
 #' Searches for fringes in the XRD or XRR spectrum and
@@ -12,15 +12,15 @@
 #' @importFrom rlang .data
 #' @importFrom ggplot2 aes ggplot geom_point geom_vline scale_y_log10 ylab xlab theme_bw geom_smooth scale_x_continuous
 #'
-#' @returns list with thickness, table of peaks, and two ggplot graphs
+#' @returns list with thickness (`t.nm`), table of peaks (`df.peak`), and two ggplot graphs (`g.peaks` and `g.thickness`)
 #' @author Thomas Gredig
 #'
 #' @examples
-#' filename <- xrd.getSampleFiles('asc')
-#' data <- xrd.import(filename, dataXRD=TRUE)
-#' data_35 = xrd_filter(data, 35,50)
-#' plot(data_35)
-#' analysis <- xrd.FringeAnalysis(data_35)
+#' filename <- xrd.getSampleFiles('ras')
+#' data <- xrd.import(filename, xrd=TRUE)
+#' data_5 = xrd_filter(data, 5,10)
+#' analysis <- xrd.FringeAnalysis(data_5)
+#' analysis$t.nm
 #'
 #' @export
 xrd.FringeAnalysis <- function(dataXRD) {

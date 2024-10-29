@@ -2,7 +2,7 @@
 % Please edit documentation in R/xrd.get.PeakStats.R
 \name{xrd.get.PeakStats}
 \alias{xrd.get.PeakStats}
-\title{Fits a Gaussian Function to XRD data}
+\title{Fits a Gaussian function to XRD data}
 \usage{
 xrd.get.PeakStats(
   TwoTheta,
@@ -12,16 +12,16 @@ xrd.get.PeakStats(
 )
 }
 \arguments{
-\item{TwoTheta}{vector of 2Theta angles}
+\item{TwoTheta}{vector of two theta angles from xrd spectrum.}
 
-\item{Intensity}{vector of XRD intensities}
+\item{Intensity}{\code{NULL} if xrd S3 object, otherwise xrd intensity vector.}
 
-\item{peakPos}{specific 2Theta angle of peak position}
+\item{peakPos}{approximate 2Theta angle of peak position.}
 
-\item{Try.Sigma}{vector with peak widths used to start fitting}
+\item{Try.Sigma}{vector with peak widths used to start fitting.}
 }
 \value{
-background, amplitude, position, width + 4 std. errors
+background, amplitude, position, width + 4 std. errors from peak fit
 }
 \description{
 Given an XRD peak, a Gaussian fit at the provided location \code{peakPos}

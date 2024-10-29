@@ -2,7 +2,7 @@
 % Please edit documentation in R/xrd.get.DebyeScherrer.R
 \name{xrd.get.DebyeScherrer}
 \alias{xrd.get.DebyeScherrer}
-\title{Applies Scherrer Equation to PeakStats}
+\title{Applies Scherrer equation to PeakStats}
 \usage{
 xrd.get.DebyeScherrer(PeakStats, Lambda = 1.5406, K = 0.9)
 }
@@ -23,8 +23,8 @@ see [Scherrer Equation](https://en.wikipedia.org/wiki/Scherrer_equation)
 }
 \examples{
 filename = xrd.getSampleFiles('asc')
-d = xrd.import(filename)
-ds = xrd.get.PeakStats(d$TwoTheta, d$I, 38.2)
+d = xrd.import(filename, TRUE)
+ds = xrd.get.PeakStats(d, peakPos = 38.2)
 xrd.get.DebyeScherrer(ds)
 
 }

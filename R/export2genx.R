@@ -1,4 +1,4 @@
-#' Export XRD Data into GenX Format
+#' Export XRD data into GenX format
 #'
 #' @description
 #' GenX uses the differential evolution algorithm for fitting X-ray
@@ -19,7 +19,7 @@
 #' @seealso [xrd.import()]
 #' @examples
 #' filename = xrd.getSampleFiles(fileExt='asc')
-#' d = xrd.import(filename, dataXRD=TRUE)
+#' d = xrd.import(filename, xrd=TRUE)
 #' peak.pos = xrd.find.Peak(d, peakPos = 38.2)
 #' plot(d)
 #' abline(v=peak.pos,col='blue')

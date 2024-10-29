@@ -2,23 +2,25 @@
 % Please edit documentation in R/xrd.get.PeakProminence.R
 \name{xrd.get.PeakProminence}
 \alias{xrd.get.PeakProminence}
-\title{Find Peak Prominence in Spectrum}
+\title{Find peak prominence in XRD spectrum}
 \usage{
 xrd.get.PeakProminence(PeakStats)
 }
 \arguments{
-\item{PeakStats}{vector with the peak statistics}
+\item{PeakStats}{vector with the peak statistics.}
 }
 \value{
-percentage of the peak height with respect to background
+percentage of the peak height with respect to background.
 }
 \description{
-Find Peak Prominence in Spectrum
+Find peak prominence in XRD spectrum
 }
 \examples{
 filename = xrd.getSampleFiles('asc')
 d = xrd.import(filename)
 q = xrd.get.PeakStats(d$TwoTheta, d$I, 38.2)
 xrd.get.PeakProminence(q)
-
+}
+\seealso{
+[xrd.get.PeakStats()]
 }

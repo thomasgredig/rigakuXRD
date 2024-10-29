@@ -6,11 +6,11 @@
 
 <!-- badges: end -->
 
-The goal of the rigakuXRD package is to import and analyze x-ray diffraction data from the Rigaku Smartlab x-ray diffractometer; mostly for data sets with low-angle reflectivity data or [Bragg-Brentano](https://en.wikipedia.org/wiki/Powder_diffraction) configuration. X-ray diffraction data contains a spectrum with angles and intensities. This package extracts the spectral data from different types of files and provides tools to visualize and analyze that data.
+The goal of the rigakuXRD R package is to import and analyze x-ray diffraction (XRD) and reflectivity (XRR) data from the Rigaku Smartlab x-ray diffractometer; mostly for data sets with low-angle reflectivity data or [Bragg-Brentano](https://en.wikipedia.org/wiki/Powder_diffraction) configuration. X-ray diffraction data contains a spectrum with angles and intensities. This package extracts the spectral data from different types of files and provides tools to visualize and analyze that data.
 
 # Installation
 
-You can install the latest version of rigakuXRD from [GitHub](https://github.com/thomasgredig/rigakuXRD) with:
+You can install the latest version of the [rigakuXRD R package](https://github.com/thomasgredig/rigakuXRD) from GitHub with:
 
 ``` r
 # install.packages("devtools")
@@ -19,14 +19,15 @@ devtools::install_github("thomasgredig/rigakuXRD")
 
 # Import XRD Data
 
-The package comes with several sample data files, which can be found with the function `xrd.getSampleFiles()`. X-ray data can be imported from several data formats using `xrd.import()`, which has a filename that includes a path as the argument. A general example of loading a sample x-ray diffraction (XRD) file:
+The package comes with several sample data files, which can be found with the function `xrd.getSampleFiles()`. The data file extensions are .ASC, .RAS or .RASX. X-ray diffraction data can be imported from different data formats using `xrd.import()`, which uses the file extension to implement the corresponding data loader. An example of loading a sample x-ray diffraction (XRD) file:
 
 ``` r
 library(rigakuXRD)
-dXRD = xrd.import(filename = xrd.getSampleFiles('asc'), dataXRD = TRUE)
+filename = xrd.getSampleFiles('asc')
+dXRD = xrd.import(filename, xrd = TRUE)
 ```
 
-If `dataXRD` is TRUE, then an `xrd S3 object` is returned, otherwise a data frame with the same data. In the case, of the xrd S3 object, it is more convenient to graph the data quickly on a logarithmic scale:
+If `xrd` is TRUE, then an `xrd S3 object` is returned, otherwise a data frame with the same data. In the case, of the xrd S3 object, it is more convenient to graph the data quickly on a logarithmic scale:
 
 ``` r
 plot(dXRD)
@@ -35,7 +36,7 @@ plot(dXRD)
 Alternatively, the data frame can also be graphed using the **TwoTheta** and **I** columns.
 
 ``` r
-df = xrd.import(filename = xrd.getSampleFiles('asc'))
+df = xrd.import(filename)
 plot(df$TwoTheta, df$I, log='y')
 ```
 
@@ -72,17 +73,17 @@ xrd.get.AllPeaks(dXRD_60)
 After finding the peaks, the peak amplitude is compared to the background to check the prominence of the peak, it should rise above 5%:
 
 ``` r
-dXRD_30 = xrd_filter(dXRD, 35,40)
-peak.stats = xrd.get.PeakStats(dXRD_30, peakPos = 38.217)
-peak.prom = xrd.get.PeakProminence(peak.stats)
-paste0("Peak prominence: ",signif(peak.prom,3),"%.")
+dXRD_35 = xrd_filter(dXRD, 35,40)
+peak_stats = xrd.get.PeakStats(dXRD_35, peakPos = 38.217)
+peak_prom = xrd.get.PeakProminence(peak_stats)
+paste0("Peak prominence: ",signif(peak_prom,3),"%.")
 ```
 
 You can also get the thickness or grain size using the Debye-Scherrer analysis. The Debye-Scherrer size may be related to the thickness of the film, given that the film is thin enough.
 
 ``` r
-peak.d = xrd.get.DebyeScherrer(peak.stats)
-cat("Debye-Scherrer size from peak:", signif(peak.d/10,4), "nm")
+peak_d = xrd.get.DebyeScherrer(peak_stats)
+cat("Debye-Scherrer size from peak:", signif(peak_d/10,4), "nm")
 ```
 
 ## xrd object
@@ -96,6 +97,8 @@ The `xrd S3 class` contains x-ray diffraction spectrum data with a data frame th
 -   **I.meas**: measured intensity
 
 -   **loop**: separate multiple measurements with a number
+
+You can convert the object to a data frame use `as.data.frame()` and also `print` the object. Passing an `xrd` object to several other functions, makes it easy to analyze the data.
 
 ## Options
 

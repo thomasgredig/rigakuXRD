@@ -2,18 +2,21 @@
 % Please edit documentation in R/xrd.getSampleFiles.R
 \name{xrd.getSampleFiles}
 \alias{xrd.getSampleFiles}
-\title{Get XRD File Names with Sample Data}
+\title{XRD Filenames with Sample Data}
 \usage{
-xrd.getSampleFiles(fileExt = NA)
+xrd.getSampleFiles(fileExt = NULL)
 }
 \arguments{
-\item{fileExt}{file extension, could be \code{NA} for all, or "asc", "txt", "ras", "rasx"}
+\item{fileExt}{XRD filename extension: "asc", "txt", "ras", "rasx"}
 }
 \value{
-vector with path/filename to sample XRD data files
+vector with path and filename to sample XRD data files
 }
 \description{
-returns sample XRD  from library
+Returns filenames with XRD sample data stored in different formats.
+These data sets help the user quickly get started with example codes
+for this package. It can also be used for testing and debugging purposes.
+d
 }
 \examples{
 file.list = xrd.getSampleFiles()

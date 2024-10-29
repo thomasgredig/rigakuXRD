@@ -26,10 +26,17 @@ library(rigakuXRD)
 dXRD = xrd.import(filename = xrd.getSampleFiles('asc'), dataXRD = TRUE)
 ```
 
-If `dataXRD` is TRUE, then an `xrd S3 object` is returned, otherwise a data frame with the same data. In the case, of the xrd S3 object, the data can be easily graphed:
+If `dataXRD` is TRUE, then an `xrd S3 object` is returned, otherwise a data frame with the same data. In the case, of the xrd S3 object, it is more convenient to graph the data quickly on a logarithmic scale:
 
 ``` r
 plot(dXRD)
+```
+
+Alternatively, the data frame can also be graphed using the **TwoTheta** and **I** columns.
+
+``` r
+df = xrd.import(filename = xrd.getSampleFiles('asc'))
+plot(df$TwoTheta, df$I, log='y')
 ```
 
 # Peak Finder
@@ -39,6 +46,7 @@ The largest peak in a sub data set is found with the `xrd.peakEstimate()` functi
 Finding the precise peak position, you need to provide a starting angle (see `xrd.peakEstimate()`). The `xrd.find.Peak()` function attempts to fit a Gaussian function to the main peak. Here is an example:
 
 ``` r
+# select the data range from 2theta = 10 - 60o
 dXRD_60 = xrd_filter(dXRD, 10,60)
 p = xrd.peakEstimate(dXRD_60)
 # fit the main peak between 10 deg and 60 deg
@@ -77,7 +85,7 @@ peak.d = xrd.get.DebyeScherrer(peak.stats)
 cat("Debye-Scherrer size from peak:", signif(peak.d/10,4), "nm")
 ```
 
-## xrd S3 class
+## xrd object
 
 The `xrd S3 class` contains x-ray diffraction spectrum data with a data frame that has the following columns:
 
@@ -88,3 +96,11 @@ The `xrd S3 class` contains x-ray diffraction spectrum data with a data frame th
 -   **I.meas**: measured intensity
 
 -   **loop**: separate multiple measurements with a number
+
+## Options
+
+For verbose output, set the `verbose` option to TRUE.
+
+``` r
+options(verbose=TRUE)
+```

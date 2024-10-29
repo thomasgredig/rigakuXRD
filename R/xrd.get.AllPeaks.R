@@ -11,7 +11,6 @@
 #' @param Try.Sigma vector with peak widths used to start fitting (optional)
 #' @param deltaTheta search area around main peak
 #' @param Range range to search for peaks (optional)
-#' @param verbose logical, if \code{TRUE} outputs additional info
 #'
 #' @return vector with peak positions
 #'
@@ -28,8 +27,7 @@ xrd.get.AllPeaks <- function(data,
                              min.Prominence = 5,
                              Try.Sigma = c(0.2,0.1,0.05,0.3),
                              deltaTheta = 5,
-                             Range = c(0,90),
-                             verbose = FALSE) {
+                             Range = c(0,90)) {
   dataXRD <- check_dataXRD(data)
   # XRD data
   d <- xrd_filter(dataXRD, Range[1], Range[2])
@@ -54,8 +52,7 @@ xrd.get.AllPeaks <- function(data,
 
     p1 = xrd.find.Peak(n1$TwoTheta, n1$I,
                        Try.Sigma = Try.Sigma,
-                       peakPos = ang,
-                       verbose = verbose)
+                       peakPos = ang)
     if(!is.na(p1)) {
         pk = c(pk, p1)
     }

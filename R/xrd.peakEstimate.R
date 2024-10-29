@@ -5,12 +5,10 @@
 #' in a data set. This is not a fit, just an
 #' estimate based on the data at hand.
 #' It returns the background (b0), the amplitude (A0), the
-#' peak position (th0), and the half-width sigma (s0). In
-#' order to learn more, turn on the *verbose* output.
+#' peak position (th0), and the half-width sigma (s0).
 #'
 #' @param TwoTheta vector of Bragg angle (2Theta)
 #' @param Intensity intensity
-#' @param verbose logical, if \code{TRUE}, prints a graph of the data and fit
 #'
 #' @returns
 #' 4 estimated parameters: background (b0), amplitude (A0), peak position (th0), and half-width (s0)
@@ -27,7 +25,7 @@
 #' @importFrom ggplot2 ggplot geom_point aes
 #'
 #' @export
-xrd.peakEstimate <- function(TwoTheta, Intensity = NULL, verbose=FALSE) {
+xrd.peakEstimate <- function(TwoTheta, Intensity = NULL) {
   dXRD <- check_dataXRD(TwoTheta, Intensity)
 
   TwoTheta <- dXRD$TwoTheta
@@ -49,17 +47,17 @@ xrd.peakEstimate <- function(TwoTheta, Intensity = NULL, verbose=FALSE) {
   ts0 <- +(q$y[peakNo + 2] - b0) / A0
   s0  <- -(q$x[peakNo + 2] - th0) / (sqrt(2)*log(ts0))
 
-  if (verbose) {
-    n1 <- data.frame(TwoTheta, I, tp='exp')
-    n2 <- data.frame(TwoTheta, I, tp='fit')
-    n2$I  <-  b0 + A0*exp(-(n2$TwoTheta-th0)^2/(2*s0*s0))
-
-    n <- rbind(n1,n2)
-
-    # ggplot(n, aes(TwoTheta, I,  col=.data$tp)) +
-    #   geom_point() -> g
-    # print(g)
-  }
+  # if (verbose) {
+  #   n1 <- data.frame(TwoTheta, I, tp='exp')
+  #   n2 <- data.frame(TwoTheta, I, tp='fit')
+  #   n2$I  <-  b0 + A0*exp(-(n2$TwoTheta-th0)^2/(2*s0*s0))
+  #
+  #   n <- rbind(n1,n2)
+  #
+  #   # ggplot(n, aes(TwoTheta, I,  col=.data$tp)) +
+  #   #   geom_point() -> g
+  #   # print(g)
+  # }
 
 
   list(b0=b0, A0=A0, th0=th0, s0=s0)

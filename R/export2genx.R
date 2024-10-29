@@ -36,16 +36,6 @@ export2genx <- function(dataXRD, exportPath = NULL,
 
   dataXRD <- as.data.frame(dataXRD)
   max_Intensity <- max(dataXRD$I)
-  #export
-  # dataXRD %>%
-  #   dplyr::select(TwoTheta, I) %>%
-  #   dplyr::filter(TwoTheta > minTheta) %>%
-  #   dplyr::filter(TwoTheta < maxTheta) %>%
-  #   dplyr::mutate(I = I/max_Intensity) %>%
-  #   write.table(file=fileExport,
-  #               sep = '\t',
-  #             row.names = FALSE,
-  #             col.names = FALSE)
 
   df <- data.frame(
     TwoTheta = dataXRD$TwoTheta,

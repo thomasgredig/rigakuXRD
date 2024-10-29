@@ -8,8 +8,7 @@ xrd.get.PeakStats(
   TwoTheta,
   Intensity = NULL,
   peakPos,
-  Try.Sigma = c(0.2, 0.1, 0.05, 0.3),
-  verbose = FALSE
+  Try.Sigma = c(0.2, 0.1, 0.05, 0.3)
 )
 }
 \arguments{
@@ -20,9 +19,6 @@ xrd.get.PeakStats(
 \item{peakPos}{specific 2Theta angle of peak position}
 
 \item{Try.Sigma}{vector with peak widths used to start fitting}
-
-\item{verbose}{logical, if \code{TRUE} output additional information
-x}
 }
 \value{
 background, amplitude, position, width + 4 std. errors

@@ -9,8 +9,7 @@ xrd.find.Peak(
   Intensity = NULL,
   peakPos = NA,
   Try.Sigma = c(0.1, 0.4, 0.2, 0.15),
-  thetaDelta = 5,
-  verbose = FALSE
+  thetaDelta = 5
 )
 }
 \arguments{
@@ -23,8 +22,6 @@ xrd.find.Peak(
 \item{Try.Sigma}{vector with peak widths used to start fitting}
 
 \item{thetaDelta}{width of angle to search peak}
-
-\item{verbose}{logical, if \code{TRUE} provides extra information}
 }
 \value{
 peak position angle obtained from fit

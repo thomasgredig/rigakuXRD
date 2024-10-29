@@ -17,7 +17,9 @@ Suggests:
     roxygen2,
     testthat (>= 2.1.0)
 Imports:
+    cli,
     dplyr,
+    glue,
     ggplot2,
     graphics,
     rlang,

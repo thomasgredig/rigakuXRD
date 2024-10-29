@@ -9,8 +9,7 @@ xrd.get.AllPeaks(
   min.Prominence = 5,
   Try.Sigma = c(0.2, 0.1, 0.05, 0.3),
   deltaTheta = 5,
-  Range = c(0, 90),
-  verbose = FALSE
+  Range = c(0, 90)
 )
 }
 \arguments{
@@ -23,8 +22,6 @@ xrd.get.AllPeaks(
 \item{deltaTheta}{search area around main peak}
 
 \item{Range}{range to search for peaks (optional)}
-
-\item{verbose}{logical, if \code{TRUE} outputs additional info}
 }
 \value{
 vector with peak positions

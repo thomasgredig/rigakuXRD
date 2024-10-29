@@ -10,8 +10,7 @@
 #' @param Intensity vector of XRD intensities
 #' @param peakPos specific 2Theta angle of peak position
 #' @param Try.Sigma vector with peak widths used to start fitting
-#' @param verbose logical, if \code{TRUE} output additional information
-#'x
+#'
 #' @return background, amplitude, position, width + 4 std. errors
 #' @examples
 #' filename = xrd.getSampleFiles(fileExt='asc')
@@ -24,8 +23,7 @@
 xrd.get.PeakStats <- function(TwoTheta,
                               Intensity = NULL,
                               peakPos,
-                              Try.Sigma = c(0.2,0.1,0.05,0.3),
-                              verbose = FALSE) {
+                              Try.Sigma = c(0.2,0.1,0.05,0.3)) {
   d <- check_dataXRD(TwoTheta, Intensity)
   for(pw in Try.Sigma) {
 
@@ -33,10 +31,8 @@ xrd.get.PeakStats <- function(TwoTheta,
     fit <- NULL
     n1 = subset(d, TwoTheta > (peakPos-deltaPeak) &
                   TwoTheta < (peakPos+deltaPeak))
-    if (verbose) plot(n1)
-    if (verbose) cat("Fit from 2theta =",
-                             min(n1$TwoTheta), "to",
-                             max(n1$TwoTheta),"\n")
+
+    xrd_inform("Fit from 2theta = {min(n1$TwoTheta)} to {max(n1$TwoTheta)}.")
     if(nrow(n1)>5) {
       q = xrd.peakEstimate(n1$TwoTheta, n1$I)
       background = ceiling(q$b0)
@@ -44,12 +40,9 @@ xrd.get.PeakStats <- function(TwoTheta,
       p1 = q$th0
       peak.width = pw
 
-      if (verbose) {
-        cat("background=",background,
-                    " A=",A1,
-                    " t0=",p1,
-                    " sigma=",peak.width,"\n")
-      }
+
+      xrd_inform("background= {background}, A= {A1}, t0= {p1}, sigma= {peak.width}")
+
       try(fit <-
             nls(data = n1,
                 I ~ b + A*exp(-(TwoTheta-th1)^2/(2*sigma*sigma)),
@@ -59,12 +52,12 @@ xrd.get.PeakStats <- function(TwoTheta,
       if (!is.null(fit)) break
     }
   }
-  if (verbose) {
-    if (!is.null(fit)) {
-      plot(n1)
-      lines(n1$TwoTheta, predict(fit),col='red')
-    }
-  }
+  # if (verbose) {
+  #   if (!is.null(fit)) {
+  #     plot(n1)
+  #     lines(n1$TwoTheta, predict(fit),col='red')
+  #   }
+  # }
 
   if(is.null(fit)) { return(NA) }
   summary(fit)$coeff[1:8]

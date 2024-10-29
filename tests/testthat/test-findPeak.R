@@ -12,7 +12,7 @@ test_that("Test Peak Width Fit", {
 })
 
 test_that("Test Peak Position Fit", {
-  q <- xrd.get.PeakStats(d$TwoTheta, d$I, 38.1, verbose=FALSE)
+  q <- xrd.get.PeakStats(d$TwoTheta, d$I, 38.1 )
   expect_equal(q[3], 38.21774, Try.Sigma = 0.3, tolerance=1e-4)
 })
 
@@ -27,11 +27,11 @@ test_that("No peak at 42 or 72, but warning", {
   d = xrd.read.ASC(filename)
 
   # there is no peak in this data
-  expect_warning(xrd.find.Peak(d$TwoTheta, d$I,
-                               42, thetaDelta=5))
+  expect_warning(xrd.find.Peak(d$TwoTheta, d$I,42, thetaDelta=5),
+                 "No Gaussian width.")
 
   # peak is partial on the left
-  expect_warning(xrd.find.Peak(d$TwoTheta, d$I, 72,
-                               thetaDelta=5, verbose=TRUE))
+  expect_warning(xrd.find.Peak(d$TwoTheta, d$I, 72, thetaDelta=5 ),
+                 "Peak leftwards.")
 })
 

@@ -1,3 +1,24 @@
 template:
   bootstrap: 5
   bootswatch: materia
+
+reference:
+- title: "XRD Import"
+  desc: >
+    Functions for importing XRD data
+  contents:
+  - xrd.import
+  - xrd.getSampleFiles
+- title: "XRD Import and Analysis"
+  desc: >
+    Functions for analyzing XRD data
+  contents:
+  - -xrd.import
+  - starts_with("xrd")
+- title: "xrd Object"
+  contents:
+  - as.data.frame.xrd
+  - create_xrd
+  - export2genx
+  - plot.xrd
+  - print.xrd

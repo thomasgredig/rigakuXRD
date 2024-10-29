@@ -7,7 +7,6 @@
 #' @param peakPos approximate angle (2Theta) of peak position
 #' @param Try.Sigma vector with peak widths used to start fitting
 #' @param thetaDelta width of angle to search peak
-#' @param verbose logical, if \code{TRUE} provides extra information
 #'
 #' @return peak position angle obtained from fit
 #' @examples
@@ -18,26 +17,26 @@
 #' abline(v=peak.pos,col='blue')
 #'
 #' @importFrom stats nls
+#' @importFrom cli cli_warn
 #' @export
 xrd.find.Peak <- function(TwoTheta,
                           Intensity = NULL,
                           peakPos = NA,
                           Try.Sigma = c(0.1,0.4,0.2,0.15),
-                          thetaDelta = 5,
-                          verbose=FALSE
+                          thetaDelta = 5
                           ) {
   d <- check_dataXRD(TwoTheta, Intensity)
 
   if (!is.na(peakPos)) d <- xrd_filter(d, peakPos - thetaDelta/2, peakPos + thetaDelta/2)
 
-  p = xrd.peakEstimate(d$TwoTheta, d$I, verbose)
-  if (sd(d$I) > p$A0) { warning("Amplitude drowned in noise."); return(NA) }
-  if (is.na(p$s0)) { warning("No Gaussian width."); return(NA) }
+  p = xrd.peakEstimate(d$TwoTheta, d$I)
+  if (sd(d$I) > p$A0) { cli_warn("Amplitude drowned in noise."); return(NA) }
+  if (is.na(p$s0)) { cli_warn("No Gaussian width."); return(NA) }
 
   # if peak is partial, it appears all the way on the left or right
-  if (min(d$TwoTheta) == p$th0) { warning("Peak leftwards."); return(NA) }
-  if (max(d$TwoTheta) == p$th0) { warning("Peak rightwards."); return(NA) }
-  if (p$s0>(thetaDelta/4)) { warning("Gaussian width too large, increase thetaDelta."); return(NA) }
+  if (min(d$TwoTheta) == p$th0) { cli_warn("Peak leftwards."); return(NA) }
+  if (max(d$TwoTheta) == p$th0) { cli_warn("Peak rightwards."); return(NA) }
+  if (p$s0>(thetaDelta/4)) { cli_warn("Gaussian width too large, increase thetaDelta."); return(NA) }
 
   fit <- NULL
 

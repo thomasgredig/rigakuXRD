@@ -14,13 +14,15 @@ as.data.frame.xrd <- function(x, ...) {
 #' @param x xrd S3 class
 #' @param th_min minimum theta angle
 #' @param th_max maximum theta angle
+#'
 #' @importFrom dplyr "%>%" filter
 #' @importFrom rlang .data
+#' @importFrom cli cli_warn
 #' @export
 xrd_filter <- function(x, th_min, th_max) {
   if(th_max <= th_min) {
     temp <- th_max; th_max = th_min; th_min = temp
-    warning("max theta is smaller than min theta.")
+    cli_warn("max theta is smaller than min theta.")
   }
   isXRD <- inherits(x, "xrd")
   x <- as.data.frame(x)
@@ -29,23 +31,6 @@ xrd_filter <- function(x, th_min, th_max) {
   x
 }
 
-#' Check whether we have a xrd S3 class object or vectors
-#' @param TwoTheta either an xrd S3 object or a vector with two theta data
-#' @param Intensity \code{NULL} if xrd S3 object, otherwise intensity vector
-#' @noRd
-check_dataXRD <- function(TwoTheta, Intensity=NULL) {
-  if(inherits(TwoTheta,"xrd")) {
-    d = data.frame(TwoTheta = TwoTheta$TwoTheta, I = TwoTheta$I)
-  } else {
-    if(inherits(TwoTheta, "data.frame")) {
-      d = data.frame(TwoTheta = TwoTheta$TwoTheta, I = TwoTheta$I)
-    } else {
-      if (length(Intensity) != length(TwoTheta)) warning("TwoTheta and Intensity must have same length.")
-      d = data.frame(TwoTheta = TwoTheta, I = Intensity)
-    }
-  }
-  d
-}
 
 
 
@@ -72,13 +57,15 @@ create_xrd <- function(TwoTheta, I, I.meas, loop) {
   return(obj)
 }
 
+
 #' Print xrd object
 #'
 #' @param x xrd object
 #' @param ... dots
 #' @export
 print.xrd <- function(x, ...) {
-  cat("xrd object:\n")
+  message("xrd object:\n")
   df_x <- as.data.frame(x)
   print(df_x, row.names=FALSE)
 }
+

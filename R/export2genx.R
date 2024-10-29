@@ -17,12 +17,6 @@
 #' @importFrom utils write.table
 #'
 #' @seealso [xrd.import()]
-#' @examples
-#' filename = xrd.getSampleFiles(fileExt='asc')
-#' d = xrd.import(filename, xrd=TRUE)
-#' peak.pos = xrd.find.Peak(d, peakPos = 38.2)
-#' plot(d)
-#' abline(v=peak.pos,col='blue')
 #'
 #' @export
 export2genx <- function(dataXRD, exportPath = NULL,

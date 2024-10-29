@@ -33,14 +33,6 @@ x-ray reflectivity data, so that it can be imported with the GenX
 code. The data is saved to a text file. More details are found at:
 https://doi.org/10.1107/S1600576722006653
 }
-\examples{
-filename = xrd.getSampleFiles(fileExt='asc')
-d = xrd.import(filename, xrd=TRUE)
-peak.pos = xrd.find.Peak(d, peakPos = 38.2)
-plot(d)
-abline(v=peak.pos,col='blue')
-
-}
 \seealso{
 [xrd.import()]
 }

@@ -7,7 +7,11 @@ check_dataXRD <- function(TwoTheta, Intensity=NULL) {
     d = data.frame(TwoTheta = TwoTheta$TwoTheta, I = TwoTheta$I)
   } else {
     if(inherits(TwoTheta, "data.frame")) {
-      d = data.frame(TwoTheta = TwoTheta$TwoTheta, I = TwoTheta$I)
+      if("theta" %in% names(TwoTheta)) {
+        d = data.frame(TwoTheta = TwoTheta$theta, I = TwoTheta$I)
+      } else {
+        d = data.frame(TwoTheta = TwoTheta$TwoTheta, I = TwoTheta$I)
+      }
     } else {
       if (length(Intensity) != length(TwoTheta)) warning("TwoTheta and Intensity must have same length.")
       d = data.frame(TwoTheta = TwoTheta, I = Intensity)

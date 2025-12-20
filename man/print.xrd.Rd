@@ -2,7 +2,7 @@
 % Please edit documentation in R/xrd_object.R
 \name{print.xrd}
 \alias{print.xrd}
-\title{Print xrd object as table}
+\title{Print an 'xrd' object as a data frame}
 \usage{
 \method{print}{xrd}(x, ...)
 }
@@ -11,6 +11,9 @@
 
 \item{...}{further arguments passed to or from other methods.}
 }
+\value{
+outputs an 'xrd' object as a data frame
+}
 \description{
-Print xrd object as table
+Print an 'xrd' object as a data frame
 }

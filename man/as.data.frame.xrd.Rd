@@ -2,15 +2,19 @@
 % Please edit documentation in R/xrd_object.R
 \name{as.data.frame.xrd}
 \alias{as.data.frame.xrd}
-\title{Convert xrd data to a data frame}
+\title{S3 method to convert class 'xrd' to a data frame}
 \usage{
 \method{as.data.frame}{xrd}(x, ...)
 }
 \arguments{
-\item{x}{xrd S3 class}
+\item{x}{xrd object}
 
 \item{...}{additional arguments passed to as.data.frame}
 }
+\value{
+as.data.frame returns a data frame for xrd object
+  and includes columns with the diffraction angle \code{TwoTheta} and \code{Intensity}
+}
 \description{
-Convert xrd data to a data frame
+S3 method to convert class 'xrd' to a data frame
 }

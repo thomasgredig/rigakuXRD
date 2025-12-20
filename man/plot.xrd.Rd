@@ -2,7 +2,7 @@
 % Please edit documentation in R/xrd.import.R
 \name{plot.xrd}
 \alias{plot.xrd}
-\title{Plots xrd class}
+\title{\Code{plot} method for 'xrd' objects}
 \usage{
 \method{plot}{xrd}(x, ...)
 }
@@ -11,6 +11,9 @@
 
 \item{...}{Optional graphical parameters to adjust different components of the performance plot}
 }
+\value{
+none
+}
 \description{
-Plots xrd class
+\Code{plot} method for 'xrd' objects
 }

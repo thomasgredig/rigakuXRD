@@ -11,9 +11,9 @@
 #' @return peak position angle obtained from fit
 #' @examples
 #' filename = xrd.getSampleFiles(fileExt='asc')
-#' d = xrd.import(filename)
+#' d = xrd.import(filename, xrd=TRUE)
 #' peak.pos = xrd.find.Peak(d$TwoTheta, d$I, 38.2)
-#' plot(d$TwoTheta,d$I,log='y',col='red')
+#' plot(d)
 #' abline(v=peak.pos,col='blue')
 #'
 #' @importFrom stats nls

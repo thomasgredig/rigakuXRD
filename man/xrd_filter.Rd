@@ -2,17 +2,20 @@
 % Please edit documentation in R/xrd_object.R
 \name{xrd_filter}
 \alias{xrd_filter}
-\title{Filters XRD data}
+\title{Filters XRD data by diffraction angle}
 \usage{
 xrd_filter(x, th_min, th_max)
 }
 \arguments{
-\item{x}{xrd S3 class}
+\item{x}{'xrd' S3 class}
 
 \item{th_min}{minimum theta angle}
 
 \item{th_max}{maximum theta angle}
 }
+\value{
+'xrd' object with angle-truncated data set
+}
 \description{
-Filters XRD data
+Filters XRD data by diffraction angle
 }

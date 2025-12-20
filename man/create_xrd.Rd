@@ -2,7 +2,7 @@
 % Please edit documentation in R/xrd_object.R
 \name{create_xrd}
 \alias{create_xrd}
-\title{Create an xrd S3 object}
+\title{Create an 'xrd' S3 class}
 \usage{
 create_xrd(TwoTheta, I, I.meas, loop)
 }
@@ -11,10 +11,13 @@ create_xrd(TwoTheta, I, I.meas, loop)
 
 \item{I}{intensity (counts per second)}
 
-\item{I.meas}{measured intentisty}
+\item{I.meas}{measured intensity}
 
 \item{loop}{integer of a specific loop}
 }
+\value{
+'xrd' object with diffraction data containing angle and intensity
+}
 \description{
-Create an xrd S3 object
+Create an 'xrd' S3 class
 }

@@ -29,4 +29,4 @@ Imports:
     tools,
     utils
 BugReports: https://github.com/thomasgredig/rigakuXRD/issues
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3

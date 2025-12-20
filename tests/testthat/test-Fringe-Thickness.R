@@ -20,7 +20,7 @@ test_that("XRD All Peak Search", {
   d42 = xrd_filter(d, 42.0, 42.8) # not enough coverage
   expect_warning(xrd.get.AllPeaks(d42),"XRD data has insufficient angular range.")
 
-  expect_warning(xrd_filter(d42, 10,8), "max theta is smaller than min theta.")
+  expect_warning(xrd_filter(d42, 10,8), "Maximum theta is smaller than minimum theta.")
 })
 
 test_that("xrd object creation", {

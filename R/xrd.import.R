@@ -46,10 +46,11 @@ check_file_exists <- function(filename) {
   }
 }
 
-#' Plots xrd class
+#' \Code{plot} method for 'xrd' objects
 #'
 #' @param x xrd S3 object
 #' @param ... Optional graphical parameters to adjust different components of the performance plot
+#' @returns none
 #' @export
 plot.xrd <- function(x, ...) {
   plot(x$TwoTheta, x$I, log='y', col='red', xlab='2q', ylab="log I (cps)", ...)

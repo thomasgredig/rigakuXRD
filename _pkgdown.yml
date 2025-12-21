@@ -7,13 +7,13 @@ reference:
   desc: >
     Functions for importing XRD data
   contents:
-  - xrd.import
-  - xrd.getSampleFiles
+  - xrd_import
+  - xrd_sample_files
 - title: "XRD Import and Analysis"
   desc: >
     Functions for analyzing XRD data
   contents:
-  - starts_with("xrd.[a-hj-zF]")
+  - starts_with("xrd_[a-hj-zF]")
 - title: "xrd Object"
   contents:
   - as.data.frame.xrd

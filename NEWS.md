@@ -1,3 +1,9 @@
+# rigakuXRD 0.4.1
+
+* update documentation for functions
+* standardize function names with lower snake case naming convention
+* more tests
+
 # rigakuXRD 0.4.0
 
 * clean up documentation, functions

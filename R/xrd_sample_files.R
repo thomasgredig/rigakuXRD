@@ -11,14 +11,22 @@
 #'
 #' @author Thomas Gredig
 #' @examples
-#' file.list = xrd.getSampleFiles()
-#' basename(file.list)
+#' file_list = xrd_sample_files()
+#' basename(file_list)
 #'
 #' @export
-xrd.getSampleFiles <- function(fileExt = NULL) {
+xrd_sample_files <- function(fileExt = NULL) {
   pfad = system.file("extdata",package="rigakuXRD")
   file.list = dir(pfad)
   if (!is.null(fileExt)) file.list = file.list[grep(paste0(fileExt,"$"), file.list)]
   file.path(pfad, file.list)
+}
+
+
+#' @rdname xrd_sample_files
+#' @export
+xrd.getSampleFiles <- function(fileExt = NULL) {
+  .Deprecated("xrd_sample_files", package = "rigakuXRD")
+  xrd_sample_files(fileExt = fileExt)
 }
 

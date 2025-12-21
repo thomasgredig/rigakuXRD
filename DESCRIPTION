@@ -1,7 +1,7 @@
 Package: rigakuXRD
 Type: Package
 Title: X-Ray Diffraction Data Import and Analysis 
-Version: 0.4.0
+Version: 0.4.1
 Authors@R: person("Thomas", "Gredig", email = "tgredig@csulb.edu",
                   role = c("aut", "cre","cph"),
                   comment = c(ORCID = "0000-0002-5824-7626"))
@@ -21,7 +21,6 @@ Imports:
     dplyr,
     glue,
     ggplot2,
-    graphics,
     rlang,
     stats,
     stringr,

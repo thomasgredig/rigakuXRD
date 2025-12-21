@@ -1,11 +1,11 @@
 test_that("Estimate Peak Positions", {
-  filename  <-  xrd.getSampleFiles(fileExt = 'asc')
-  d <- xrd.import(filename, xrd = TRUE)
+  filename  <-  xrd_sample_files(fileExt = 'asc')
+  d <- xrd_import(filename, xrd = TRUE)
 
   peakPos <- c()
   for(j in 1:7) {
     d1 <- xrd_filter(d, (j-1)*10+2, j*10+2)
-    p <- xrd.peakEstimate(d1)
+    p <- xrd_peak_estimate(d1)
     peakPos <- c(peakPos, p$th0)
   }
 

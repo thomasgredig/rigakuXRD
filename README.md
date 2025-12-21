@@ -19,12 +19,12 @@ devtools::install_github("thomasgredig/rigakuXRD")
 
 # Import XRD Data
 
-The package comes with several sample data files, which can be found with the function `xrd.getSampleFiles()`. The data file extensions are .ASC, .RAS or .RASX. X-ray diffraction data can be imported from different data formats using `xrd.import()`, which uses the file extension to implement the corresponding data loader. An example of loading a sample x-ray diffraction (XRD) file:
+The package includes several sample X-ray diffraction (XRD) data files, which can be located using the function `xrd_sample_files()`. These files are provided in the `.ASC`, `.RAS`, and `.RASX` formats. XRD data may be imported from these and other supported formats using `xrd.import()`, which automatically selects the appropriate reader based on the file extension. The following example demonstrates how to load a sample XRD data file:
 
 ``` r
 library(rigakuXRD)
-filename = xrd.getSampleFiles('asc')
-dXRD = xrd.import(filename, xrd = TRUE)
+filename = xrd_sample_files('asc')
+dXRD = xrd_import(filename, xrd = TRUE)
 ```
 
 If `xrd` is TRUE, then an `xrd S3 object` is returned, otherwise a data frame with the same data. In the case, of the xrd S3 object, it is more convenient to graph the data quickly on a logarithmic scale:
@@ -42,23 +42,23 @@ plot(df$TwoTheta, df$I, log='y')
 
 # Peak Finder
 
-The largest peak in a sub data set is found with the `xrd.peakEstimate()` function. It is not a fit, but an estimate to find the parameters of the largest peak in the data set.
+The largest peak in a sub data set is found with the `xrd_peak_estimate()` function. It is not a fit, but an estimate to find the parameters of the largest peak in the data set.
 
-Finding the precise peak position, you need to provide a starting angle (see `xrd.peakEstimate()`). The `xrd.find.Peak()` function attempts to fit a Gaussian function to the main peak. Here is an example:
+Finding the precise peak position, you need to provide a starting angle (see `xrd_peak_estimate()`). The `xrd_find_peak()` function attempts to fit a Gaussian function to the main peak. Here is an example:
 
 ``` r
-# select the data range from 2theta = 10 - 60o
+# select the data range from 2theta = 10 - 60 deg
 dXRD_60 = xrd_filter(dXRD, 10,60)
-p = xrd.peakEstimate(dXRD_60)
+p = xrd_peak_estimate(dXRD_60)
 # fit the main peak between 10 deg and 60 deg
-xrd.find.Peak(dXRD_60, p$th0)
+xrd_find_peak(dXRD_60, p$th0)
 plot(dXRD_60)
 abline(v=p$th0)
 
 # find exact position of the peak
 dXRD_40 = xrd_filter(dXRD, 40,50)
 plot(dXRD_40)
-peakPos = xrd.find.Peak(dXRD_40, p$th0)
+peakPos = xrd_find_peak(dXRD_40, p$th0)
 abline(v=peakPos)
 ```
 
@@ -74,8 +74,8 @@ After finding the peaks, the peak amplitude is compared to the background to che
 
 ``` r
 dXRD_35 = xrd_filter(dXRD, 35,40)
-peak_stats = xrd.get.PeakStats(dXRD_35, peakPos = 38.217)
-peak_prom = xrd.get.PeakProminence(peak_stats)
+peak_stats = xrd_peak_stats(dXRD_35, peakPos = 38.217)
+peak_prom = xrd_peak_prominence(peak_stats)
 paste0("Peak prominence: ",signif(peak_prom,3),"%.")
 ```
 

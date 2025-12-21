@@ -191,7 +191,7 @@ xrd_read_ASC <- function(filename) {
 #' @return data frame with XRD header
 #'
 #' @export
-xrd.readHeader.ASC <- function(filename) {
+xrd_readHeader_ASC <- function(filename) {
   check_file_exists(filename)
   data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
 

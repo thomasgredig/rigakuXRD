@@ -54,7 +54,7 @@ robustness. If the fit fails, a warning is issued.
 }
 \examples{
 filename <- xrd_sample_files(fileExt = "asc")
-d <- xrd.import(filename, xrd = TRUE)
+d <- xrd_import(filename, xrd = TRUE)
 peak.pos <- xrd_find_peak(d$TwoTheta, d$I, peakPos = 38.2)
 plot(d)
 abline(v = peak.pos, col = "blue")

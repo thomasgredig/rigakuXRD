@@ -1,4 +1,4 @@
-test_that("xrd.import: Load XRD sample file data", {
+test_that("xrd_import: Load XRD sample file data", {
   sel.Files=c(1,3)
   file.list = xrd_sample_files()[sel.Files]
   nLen=c()
@@ -10,7 +10,7 @@ test_that("xrd.import: Load XRD sample file data", {
 })
 
 
-test_that("xrd.import: check for uniformity of data columns", {
+test_that("xrd_import: check for uniformity of data columns", {
   sel.Files=c(1,3,4)
   file.list = xrd_sample_files()[sel.Files]
   nLen=c()
@@ -28,7 +28,7 @@ test_that("Load XRD sample file data", {
   fname = xrd_sample_files('asc')
   expect_true(grepl('asc$',fname))
 
-  data.header = xrd.readHeader.ASC(fname)
+  data.header = xrd_readHeader_ASC(fname)
   expect_equal(nrow(data.header), 74)
 
   expect_equal(data.header$val[grep('scan mode', data.header$name)],"  2theta/theta")

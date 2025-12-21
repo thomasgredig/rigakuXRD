@@ -19,7 +19,10 @@ devtools::install_github("thomasgredig/rigakuXRD")
 
 # Import XRD Data
 
-The package includes several sample X-ray diffraction (XRD) data files, which can be located using the function `xrd_sample_files()`. These files are provided in the `.ASC`, `.RAS`, and `.RASX` formats. XRD data may be imported from these and other supported formats using `xrd.import()`, which automatically selects the appropriate reader based on the file extension. The following example demonstrates how to load a sample XRD data file:
+The package includes several sample X-ray diffraction (XRD) data files, which can be 
+located using the function `xrd_sample_files()`. These files are provided i
+n the `.ASC`, `.RAS`, and `.RASX` formats. XRD data may be imported from these and other supported 
+formats using `xrd_import()`, which automatically selects the appropriate reader based on the file extension. The following example demonstrates how to load a sample XRD data file:
 
 ``` r
 library(rigakuXRD)
@@ -36,7 +39,7 @@ plot(dXRD)
 Alternatively, the data frame can also be graphed using the **TwoTheta** and **I** columns.
 
 ``` r
-df = xrd.import(filename)
+df = xrd_import(filename)
 plot(df$TwoTheta, df$I, log='y')
 ```
 
@@ -47,14 +50,6 @@ The largest peak in a sub data set is found with the `xrd_peak_estimate()` funct
 Finding the precise peak position, you need to provide a starting angle (see `xrd_peak_estimate()`). The `xrd_find_peak()` function attempts to fit a Gaussian function to the main peak. Here is an example:
 
 ``` r
-# select the data range from 2theta = 10 - 60 deg
-dXRD_60 = xrd_filter(dXRD, 10,60)
-p = xrd_peak_estimate(dXRD_60)
-# fit the main peak between 10 deg and 60 deg
-xrd_find_peak(dXRD_60, p$th0)
-plot(dXRD_60)
-abline(v=p$th0)
-
 # find exact position of the peak
 dXRD_40 = xrd_filter(dXRD, 40,50)
 plot(dXRD_40)

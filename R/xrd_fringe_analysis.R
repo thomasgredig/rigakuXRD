@@ -20,7 +20,7 @@
 #'
 #' @examples
 #' filename <- xrd_sample_files("ras")
-#' data <- xrd.import(filename, xrd = TRUE)
+#' data <- xrd_import(filename, xrd = TRUE)
 #' data_5 <- xrd_filter(data, 5, 10)
 #' analysis <- xrd_fringe_analysis(data_5)
 #' analysis$t.nm

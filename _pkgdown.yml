@@ -2,6 +2,8 @@ template:
   bootstrap: 5
   bootswatch: materia
 
+url: https://github.com/thomasgredig/rigakuXRD
+
 reference:
 - title: "XRD Import"
   desc: >
@@ -13,7 +15,7 @@ reference:
   desc: >
     Functions for analyzing XRD data
   contents:
-  - starts_with("xrd_[a-hj-zF]")
+  - starts_with("xrd_[a-hj-zFD]")
 - title: "xrd Object"
   contents:
   - as.data.frame.xrd

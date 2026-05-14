@@ -1,7 +1,7 @@
 Package: rigakuXRD
 Type: Package
 Title: X-Ray Diffraction Data Import and Analysis 
-Version: 0.4.1
+Version: 0.5.0
 Authors@R: person("Thomas", "Gredig", email = "tgredig@csulb.edu",
                   role = c("aut", "cre","cph"),
                   comment = c(ORCID = "0000-0002-5824-7626"))
@@ -26,6 +26,7 @@ Imports:
     stringr,
     tidyr,
     tools,
-    utils
+    utils,
+    xml2
 BugReports: https://github.com/thomasgredig/rigakuXRD/issues
-RoxygenNote: 7.3.3
+Config/roxygen2/version: 8.0.0

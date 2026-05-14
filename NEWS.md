@@ -1,3 +1,5 @@
+# rigakuXRD 0.5.0
+
 # rigakuXRD 0.4.1
 
 * update documentation for functions

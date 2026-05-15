@@ -1,5 +1,8 @@
 # rigakuXRD 0.5.0
 
+* major fix to RASX import to account for attenuation
+* add measurement conditions from RASX file to properly scale intensities
+
 # rigakuXRD 0.4.1
 
 * update documentation for functions

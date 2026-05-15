@@ -6,3 +6,5 @@
 _*.R
 inst/doc
 /docs
+.positai
+/man

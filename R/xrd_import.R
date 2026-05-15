@@ -363,16 +363,168 @@ xrd_read_RASX <- function(filename) {
   unzip(filename, exdir=pTemp)
   dataFile = file.path(pTemp, 'Data0', 'Profile0.txt')
 
+  # read data
   data = read.csv(file=dataFile, sep='\t', stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
-  names(data) = c('TwoTheta','I.meas','num')
+  names(data) = c('TwoTheta','I.meas','factor')
+
+  # read XML file
+  conditionFile = file.path(pTemp, 'Data0', "MesurementConditions0.xml")
+  rCond <- xrd.readMeasurementConditions(conditionFile)
+  if (!rCond$speed_unit == "deg/min") warning(paste("Expected scanning speed in units of deg/min, but instead ",rCond$speed_unit))
+  speed_secPerStep  = rCond$step_2theta / rCond$speed * 60
 
   # change columns
   data = data.frame(
     TwoTheta = data$TwoTheta,
-    I = data$I.meas,
-    I.meas = data$I.meas,
-    loop = data$num
+    I = data$I.meas * data$factor / speed_secPerStep,
+    I.meas = data$I.meas * data$factor,
+    loop = 1L
   )
   data
 }
 
+#' Reads RASX header information
+#' @export
+xrd_read_RASX_header <- function(filename) {
+  check_file_exists(filename)
+  if (!grepl("\\.rasx$", filename, ignore.case = TRUE)) stop("`file` must have extension `.rasx`.", call. = FALSE)
+  pTemp = tempdir()
+  unzip(filename, exdir=pTemp)
+  # read XML file
+  conditionFile = file.path(pTemp, 'Data0', "MesurementConditions0.xml")
+  r <- xrd.readMeasurementConditions(conditionFile)
+  r$file = basename(filename)
+  r
+}
+
+
+#' Reads the XML file with the conditions of the XRD measurement
+#' @importFrom xml2 xml_text xml_find_first read_xml
+#' @noRd
+xrd.readMeasurementConditions <- function(file) {
+  if (missing(file) || is.null(file) || length(file) != 1L || !nzchar(file)) {
+    stop("`file` must be a single non-empty file path.", call. = FALSE)
+  }
+
+  if (!file.exists(file)) {
+    stop("File does not exist: ", file, call. = FALSE)
+  }
+
+  xml <- xml2::read_xml(file)
+
+  get_text <- function(xpath, default = NA_character_) {
+    node <- xml2::xml_find_first(xml, xpath)
+    if (inherits(node, "xml_missing")) return(default)
+
+    value <- xml2::xml_text(node)
+    if (is.null(value) || length(value) == 0L || !nzchar(value)) {
+      return(default)
+    }
+
+    value
+  }
+
+  get_num <- function(xpath, default = NA_real_) {
+    value <- get_text(xpath, default = NA_character_)
+    if (is.na(value)) return(default)
+
+    out <- suppressWarnings(as.numeric(value))
+    if (is.na(out)) default else out
+  }
+
+  get_logical <- function(xpath, default = NA) {
+    value <- get_text(xpath, default = NA_character_)
+    if (is.na(value)) return(default)
+
+    value <- tolower(trimws(value))
+
+    if (value %in% c("true", "t", "1", "yes", "y")) return(TRUE)
+    if (value %in% c("false", "f", "0", "no", "n")) return(FALSE)
+
+    default
+  }
+
+  get_axis_attr <- function(axis_name, attr, default = NA_character_) {
+    xpath <- sprintf(".//Axes/Axis[@Name='%s']", axis_name)
+    node <- xml2::xml_find_first(xml, xpath)
+
+    if (inherits(node, "xml_missing")) return(default)
+
+    value <- xml2::xml_attr(node, attr)
+    if (is.null(value) || length(value) == 0L || is.na(value) || !nzchar(value)) {
+      return(default)
+    }
+
+    value
+  }
+
+  get_category_unit <- function(category_name, default = NA_character_) {
+    xpath <- sprintf(".//HWConfigurations/Categories/Category[@Name='%s']",
+                     category_name)
+    node <- xml2::xml_find_first(xml, xpath)
+
+    if (inherits(node, "xml_missing")) return(default)
+
+    value <- xml2::xml_attr(node, "SelectedUnit")
+    if (is.null(value) || length(value) == 0L || is.na(value) || !nzchar(value)) {
+      return(default)
+    }
+
+    value
+  }
+
+  scan_axis <- get_text(".//ScanInformation/AxisName")
+
+  attenuator_position <- get_axis_attr("Attenuator", "Position")
+  attenuator_auto <- get_logical(".//ScanInformation/AttenuatorAutoMode")
+  attenuator_unit <- get_category_unit("ReceivingAttenuator")
+
+  attenuated <- NA
+  if (!is.na(attenuator_position)) {
+    attenuated <- !tolower(attenuator_position) %in% c(
+      "none", "no", "off", "open", "0", ""
+    )
+  }
+
+  data.frame(
+    file = basename(file),
+
+    sample_name = get_text(".//GeneralInformation/SampleName"),
+    memo = get_text(".//GeneralInformation/Memo"),
+    measurement_type = get_text(".//GeneralInformation/Type"),
+    system_name = get_text(".//GeneralInformation/SystemName"),
+
+    scan_axis = scan_axis,
+    scan_mode = get_text(".//ScanInformation/Mode"),
+
+    start_2theta = get_num(".//ScanInformation/Start"),
+    end_2theta = get_num(".//ScanInformation/Stop"),
+    step_2theta = get_num(".//ScanInformation/Step"),
+    speed = get_num(".//ScanInformation/Speed"),
+    speed_unit = get_text(".//ScanInformation/SpeedUnit"),
+    angle_unit = get_text(".//ScanInformation/PositionUnit"),
+
+    data_count = get_num(".//ScanInformation/DataCount"),
+    intensity_unit = get_text(".//ScanInformation/IntensityUnit"),
+
+    attenuated = attenuated,
+    attenuator_position = attenuator_position,
+    attenuator_auto_mode = attenuator_auto,
+    attenuator_selected_unit = attenuator_unit,
+
+    xray_target = get_text(".//HWConfigurations/XrayGenerator/TargetName"),
+    xray_wavetype = get_text(".//HWConfigurations/XrayGenerator/WaveType"),
+    voltage = get_num(".//HWConfigurations/XrayGenerator/Voltage"),
+    voltage_unit = get_text(".//HWConfigurations/XrayGenerator/VoltageUnit"),
+    current = get_num(".//HWConfigurations/XrayGenerator/Current"),
+    current_unit = get_text(".//HWConfigurations/XrayGenerator/CurrentUnit"),
+    wavelength_kalpha1 = get_num(".//HWConfigurations/XrayGenerator/WavelengthKalpha1"),
+    wavelength_kalpha2 = get_num(".//HWConfigurations/XrayGenerator/WavelengthKalpha2"),
+    wavelength_kbeta = get_num(".//HWConfigurations/XrayGenerator/WavelengthKbeta"),
+
+    start_time = get_text(".//ScanInformation/StartTime"),
+    end_time = get_text(".//ScanInformation/EndTime"),
+
+    stringsAsFactors = FALSE
+  )
+}

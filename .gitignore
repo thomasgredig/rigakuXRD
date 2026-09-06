@@ -2,9 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-.DS_Store
-_*.R
 inst/doc
+
+.github/
 /docs
-.positai
-/man

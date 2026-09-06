@@ -1,3 +1,7 @@
+# rigakuXRD 0.5.1
+
+* update documentation for functions and readme file
+
 # rigakuXRD 0.5.0
 
 * major fix to RASX import to account for attenuation

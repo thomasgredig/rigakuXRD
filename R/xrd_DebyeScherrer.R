@@ -45,7 +45,6 @@ xrd_DebyeScherrer <- function(peak_stats,
     stop("`K` must be a single positive numeric value.")
   }
 
-  # Expect: peak position at index 3 (2theta, degrees) and sigma at index 4 (degrees)
   two_theta_deg <- peak_stats[3]
   sigma_deg <- peak_stats[4]
 
@@ -53,10 +52,7 @@ xrd_DebyeScherrer <- function(peak_stats,
     stop("`peak_stats[3]` (2theta) must be finite and `peak_stats[4]` (sigma) must be a positive finite value.")
   }
 
-  # Convert Gaussian sigma -> FWHM (degrees), then to radians
   beta_rad <- (2.355 * sigma_deg) * pi / 180
-
-  # Bragg angle th = (2th)/2, converted to radians
   theta_rad <- (two_theta_deg / 2) * pi / 180
 
   K * lambda / (beta_rad * cos(theta_rad))

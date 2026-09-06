@@ -19,7 +19,6 @@ vector with path and filename to sample XRD data files
 Returns filenames with XRD sample data stored in different formats.
 These data sets help the user quickly get started with example codes
 for this package. It can also be used for testing and debugging purposes.
-d
 }
 \examples{
 file_list = xrd_sample_files()

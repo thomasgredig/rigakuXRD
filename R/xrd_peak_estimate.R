@@ -2,13 +2,13 @@
 #'
 #' @description
 #' Provides a simple, data-driven estimate of the most intense peak in a
-#' selected 2θ range. This function does not perform a nonlinear fit; it
+#' selected 2theta range. This function does not perform a nonlinear fit; it
 #' identifies the maximum intensity after a coarse interpolation and returns
 #' approximate peak parameters: background (\code{b0}), amplitude (\code{A0}),
 #' peak position (\code{th0}), and an estimated Gaussian width parameter
 #' (\code{s0}).
 #'
-#' @param TwoTheta Numeric vector of 2θ angles from an XRD spectrum, or an
+#' @param TwoTheta Numeric vector of 2theta angles from an XRD spectrum, or an
 #'   \code{xrd} S3 object.
 #' @param Intensity Numeric vector of intensities corresponding to
 #'   \code{TwoTheta}. If \code{NULL}, \code{TwoTheta} is assumed to contain the
@@ -26,7 +26,7 @@
 #' \describe{
 #'   \item{\code{b0}}{Estimated background intensity (minimum of interpolated data).}
 #'   \item{\code{A0}}{Estimated peak amplitude above background.}
-#'   \item{\code{th0}}{Estimated peak position (2θ, in degrees).}
+#'   \item{\code{th0}}{Estimated peak position (2theta, in degrees).}
 #'   \item{\code{s0}}{Estimated Gaussian width parameter (half-width proxy); may be \code{NA_real_}.}
 #' }
 #'
@@ -46,27 +46,22 @@ xrd_peak_estimate <- function(TwoTheta, Intensity = NULL) {
   tt <- dXRD$TwoTheta
   I  <- dXRD$I
 
-  # Coarse interpolation to reduce sensitivity to noise
   q <- approx(tt, I, n = 20)
   if (length(q$x) < 3L || all(!is.finite(q$y))) {
     return(list(b0 = NA_real_, A0 = NA_real_, th0 = NA_real_, s0 = NA_real_))
   }
 
-  # Dominant peak
   peakNo <- which.max(q$y)
   th0 <- q$x[peakNo]
 
-  # Background and amplitude
   b0 <- min(q$y, na.rm = TRUE)
   A0 <- max(q$y, na.rm = TRUE) - b0
 
-  # Width estimate (robust to boundary conditions / degenerate cases)
   s0 <- NA_real_
   idx <- peakNo + 2L
   if (is.finite(A0) && A0 > 0 && idx <= length(q$y)) {
     ts0 <- (q$y[idx] - b0) / A0
 
-    # Ensure the log argument is valid and non-degenerate
     if (is.finite(ts0) && ts0 > 0 && ts0 < 1) {
       dx <- q$x[idx] - th0
       if (is.finite(dx) && dx != 0) {

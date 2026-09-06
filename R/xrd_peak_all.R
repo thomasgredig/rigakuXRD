@@ -12,8 +12,8 @@
 #' @param try_sigma Numeric vector of starting guesses for Gaussian width
 #'   (\eqn{\sigma}) passed to \code{\link{xrd_find_peak}}.
 #' @param delta_theta Numeric scalar giving the half-width (in degrees) of
-#'   the local 2θ window used for fitting around each candidate.
-#' @param range Numeric length-2 vector giving the 2θ interval to search
+#'   the local 2theta window used for fitting around each candidate.
+#' @param range Numeric length-2 vector giving the 2theta interval to search
 #'   (degrees), e.g. \code{c(20, 80)}.
 #' @param step_size Numeric scalar giving the spacing (degrees) between
 #'   candidate peak locations used in the scan.
@@ -25,12 +25,12 @@
 #' data defined by \code{delta_theta}. Returned peaks are deduplicated and
 #' rounded to 0.01 degrees.
 #'
-#' @return Numeric vector of peak positions (2θ, degrees), sorted and unique,
+#' @return Numeric vector of peak positions (2theta, degrees), sorted and unique,
 #'   rounded to 0.01 degrees. Returns \code{numeric(0)} if no peaks are found.
 #'
 #' @seealso
 #' \code{\link{xrd_find_peak}} for refining a single peak location;
-#' \code{\link{xrd_filter}} for restricting an XRD spectrum to a 2θ range.
+#' \code{\link{xrd_filter}} for restricting an XRD spectrum to a 2theta range.
 #'
 #' @examples
 #' filename <- xrd_sample_files("asc")
@@ -44,7 +44,6 @@ xrd_peak_all <- function(data,
                          delta_theta = 5,
                          range = c(0, 90),
                          step_size = 2) {
-  # Normalize/validate input
   data_xrd <- check_dataXRD(data)
 
   if (!is.numeric(range) || length(range) != 2L || any(!is.finite(range))) {
@@ -64,7 +63,6 @@ xrd_peak_all <- function(data,
   # (If you later implement it, do so after peak refinement.)
   invisible(min_prominence)
 
-  # Filter to requested search interval
   d <- xrd_filter(data_xrd, range[1], range[2])
   if (is.null(d) || nrow(d) < 3L) return(numeric(0))
 
@@ -76,7 +74,6 @@ xrd_peak_all <- function(data,
     return(numeric(0))
   }
 
-  # Interleaved candidate grids
   cand1 <- seq(from = theta_min, to = theta_max, by = step_size)
   cand2 <- seq(from = theta_min + step_size / 2, to = theta_max - step_size / 2, by = step_size)
   candidates <- sort(unique(c(cand1, cand2)))

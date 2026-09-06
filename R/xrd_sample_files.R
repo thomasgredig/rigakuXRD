@@ -4,7 +4,6 @@
 #' Returns filenames with XRD sample data stored in different formats.
 #' These data sets help the user quickly get started with example codes
 #' for this package. It can also be used for testing and debugging purposes.
-#'d
 #'
 #' @param fileExt XRD filename extension: "asc", "txt", "ras", "rasx"
 #' @return vector with path and filename to sample XRD data files

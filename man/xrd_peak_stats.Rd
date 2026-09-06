@@ -20,14 +20,14 @@ xrd.get.PeakStats(
 )
 }
 \arguments{
-\item{TwoTheta}{Numeric vector of 2θ angles from an XRD spectrum, or an
+\item{TwoTheta}{Numeric vector of 2theta angles from an XRD spectrum, or an
 \code{xrd} S3 object.}
 
 \item{Intensity}{Numeric vector of intensities corresponding to
 \code{TwoTheta}. If \code{NULL}, \code{TwoTheta} is assumed to contain the
 intensity data (e.g., via an \code{xrd} object).}
 
-\item{peakPos}{Numeric scalar giving an approximate peak position (2θ, degrees).}
+\item{peakPos}{Numeric scalar giving an approximate peak position (2theta, degrees).}
 
 \item{try_sigma}{Numeric vector of initial guesses for the Gaussian width
 parameter \eqn{\sigma} (degrees) used to initialize the nonlinear fit.}
@@ -40,7 +40,7 @@ standard errors in the following order:
 \describe{
   \item{\code{b}}{Background estimate.}
   \item{\code{A}}{Amplitude estimate.}
-  \item{\code{th1}}{Peak position (2θ, degrees).}
+  \item{\code{th1}}{Peak position (2theta, degrees).}
   \item{\code{sigma}}{Gaussian width parameter \eqn{\sigma} (degrees).}
   \item{\code{b.se}}{Standard error of \code{b}.}
   \item{\code{A.se}}{Standard error of \code{A}.}

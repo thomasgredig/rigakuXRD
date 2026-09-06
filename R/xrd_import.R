@@ -14,7 +14,7 @@
 #' @details
 #' The returned data contain at least the following columns:
 #' \describe{
-#'   \item{\code{TwoTheta}}{Diffraction angle (2θ, in degrees).}
+#'   \item{\code{TwoTheta}}{Diffraction angle (2theta, in degrees).}
 #'   \item{\code{I}}{Intensity normalized by measurement time.}
 #'   \item{\code{I.meas}}{Raw measured intensity counts.}
 #' }
@@ -85,17 +85,20 @@ check_file_exists <- function(filename) {
 #' Plot method for \code{xrd} objects
 #'
 #' Produces a logarithmic-intensity XRD diffraction plot from an
-#' \code{xrd} S3 object. It is generally created with xrd.import()
+#' \code{xrd} S3 object. It is generally created with \code{xrd_import()}
 #'
 #' @param x An \code{xrd} S3 object containing \code{TwoTheta} and
 #'   intensity data.
 #' @param ... Additional graphical parameters passed to
 #'   \code{\link[graphics]{plot}}.
 #'
-#' @seealso \code{\link{xrd.import}} for reading XRD data files into
+#' @seealso \code{\link{xrd_import}} for reading XRD data files into
 #'   \code{xrd} objects using \code{xrd=TRUE}.
 #'
-#' @return Invisibly returns \code{NULL}.
+#' @return No return value; the XRD spectrum is plotted for its side effect.
+#'   The method draws a logarithmic-intensity plot from the \code{TwoTheta}
+#'   and \code{I} columns and passes additional graphical arguments to
+#'   \code{\link[graphics]{plot}}.
 #'
 #' @export
 plot.xrd <- function(x, ...) {
@@ -109,11 +112,6 @@ plot.xrd <- function(x, ...) {
     ...
   )
 }
-
-
-# ==========================
-# ASC XRD Reader: preferred
-# ==========================
 
 
 #' Reads the ASC Rigaku XRD file with a Header
@@ -153,15 +151,12 @@ xrd_read_ASC <- function(filename) {
   str_extract_all(p, '\\*{1}START\t') -> angle
   which(angle=="*START\t") -> q
 
-  # Define a function to extract numeric values from the string
   extract_numeric <- function(p, q, seq) {
     as.numeric(unlist(strsplit(p[q], '='))[seq])
   }
 
-  # Initialize sequence
   seq <- 1:(length(q)) * 2
 
-  # Extract values using the function
   theta.start <- extract_numeric(p, q, seq)
   q <- q + 1
   theta.stop <- extract_numeric(p, q, seq)
@@ -170,7 +165,6 @@ xrd_read_ASC <- function(filename) {
   q <- q + 2
   theta.speed <- extract_numeric(p, q, seq)
 
-  # Assign theta.speed to norm
   norm <- theta.speed
 
   data <- data.frame()
@@ -195,7 +189,6 @@ xrd_readHeader_ASC <- function(filename) {
   check_file_exists(filename)
   data = read.csv(file=filename, stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
 
-  # get data only
   con.File = file(filename, "r")
   hdata = readLines(con.File)
   close(con.File)
@@ -213,12 +206,6 @@ xrd_readHeader_ASC <- function(filename) {
 
   d
 }
-
-
-# ==========================
-# RAS XRD Reader
-# ==========================
-
 
 
 #' Reads the RAS Rigaku XRD data
@@ -273,12 +260,6 @@ xrd_read_RAS <- function(filename) {
 }
 
 
-# ==========================
-# TXT XRD Reader
-# ==========================
-
-
-
 #' Reads the TXT Rigaku XRD file with a Header
 #' @param filename filename including path
 #' @return data frame with XRD data
@@ -292,7 +273,6 @@ xrd_read_TXT <- function(filename) {
   p[grep('^\\*',p)] -> d.header
   strsplit(gsub('^\\*','',d.header),'\t') -> p1
   secondValue <- function(x) { if(length(x)==2){x[[2]]}else{""} }
-  # this is the header of the file
   q1 = data.frame(
     name = unlist(lapply(p1,'[[',1)),
     value = unlist(lapply(p1, secondValue))
@@ -342,12 +322,6 @@ xrd_read_TXTnoheader <- function(filename) {
 
 
 
-# ==========================
-# RASX XRD Reader
-# ==========================
-
-
-
 #' Reads the RASX Rigaku XRD data
 #' @param filename filename including path
 #' @return data frame with XRD data
@@ -363,17 +337,14 @@ xrd_read_RASX <- function(filename) {
   unzip(filename, exdir=pTemp)
   dataFile = file.path(pTemp, 'Data0', 'Profile0.txt')
 
-  # read data
   data = read.csv(file=dataFile, sep='\t', stringsAsFactors=FALSE, row.names=NULL, header=FALSE)
   names(data) = c('TwoTheta','I.meas','factor')
 
-  # read XML file
   conditionFile = file.path(pTemp, 'Data0', "MesurementConditions0.xml")
   rCond <- xrd.readMeasurementConditions(conditionFile)
   if (!rCond$speed_unit == "deg/min") warning(paste("Expected scanning speed in units of deg/min, but instead ",rCond$speed_unit))
   speed_secPerStep  = rCond$step_2theta / rCond$speed * 60
 
-  # change columns
   data = data.frame(
     TwoTheta = data$TwoTheta,
     I = data$I.meas * data$factor / speed_secPerStep,
@@ -384,13 +355,13 @@ xrd_read_RASX <- function(filename) {
 }
 
 #' Reads RASX header information
+#' @param filename Character string giving the path to a RASX file.
 #' @export
 xrd_read_RASX_header <- function(filename) {
   check_file_exists(filename)
   if (!grepl("\\.rasx$", filename, ignore.case = TRUE)) stop("`file` must have extension `.rasx`.", call. = FALSE)
   pTemp = tempdir()
   unzip(filename, exdir=pTemp)
-  # read XML file
   conditionFile = file.path(pTemp, 'Data0', "MesurementConditions0.xml")
   r <- xrd.readMeasurementConditions(conditionFile)
   r$file = basename(filename)

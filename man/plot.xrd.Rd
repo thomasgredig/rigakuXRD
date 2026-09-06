@@ -14,13 +14,16 @@ intensity data.}
 \code{\link[graphics]{plot}}.}
 }
 \value{
-Invisibly returns \code{NULL}.
+No return value; the XRD spectrum is plotted for its side effect.
+  The method draws a logarithmic-intensity plot from the \code{TwoTheta}
+  and \code{I} columns and passes additional graphical arguments to
+  \code{\link[graphics]{plot}}.
 }
 \description{
 Produces a logarithmic-intensity XRD diffraction plot from an
-\code{xrd} S3 object. It is generally created with xrd.import()
+\code{xrd} S3 object. It is generally created with \code{xrd_import()}
 }
 \seealso{
-\code{\link{xrd.import}} for reading XRD data files into
+\code{\link{xrd_import}} for reading XRD data files into
   \code{xrd} objects using \code{xrd=TRUE}.
 }

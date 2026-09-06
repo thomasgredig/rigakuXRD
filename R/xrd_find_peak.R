@@ -4,16 +4,16 @@
 #' returns the refined peak position. The fit is performed locally
 #' around an approximate peak position.
 #'
-#' @param TwoTheta Numeric vector of 2θ angles from an XRD spectrum.
+#' @param TwoTheta Numeric vector of 2theta angles from an XRD spectrum.
 #' @param Intensity Numeric vector of intensities corresponding to
 #'   \code{TwoTheta}. If \code{NULL}, \code{TwoTheta} is assumed to be
 #'   part of an XRD S3 object.
-#' @param peakPos Numeric scalar giving an approximate 2θ position of
+#' @param peakPos Numeric scalar giving an approximate 2theta position of
 #'   the peak to be fitted.
 #' @param Try.Sigma Numeric vector of initial guesses for the Gaussian
 #'   peak width (\eqn{\sigma}) used to initialize the nonlinear fit.
 #' @param thetaDelta Numeric scalar giving the half-width (in degrees)
-#'   of the 2θ window centered on \code{peakPos} used for fitting.
+#'   of the 2theta window centered on \code{peakPos} used for fitting.
 #'
 #' @details
 #' The function subsets the XRD spectrum to a window defined by
@@ -22,7 +22,7 @@
 #' starting values for the peak width are attempted to improve
 #' robustness. If the fit fails, a warning is issued.
 #'
-#' @return Numeric scalar giving the fitted peak position (2θ, in degrees).
+#' @return Numeric scalar giving the fitted peak position (2theta, in degrees).
 #'
 #' @examples
 #' filename <- xrd_sample_files(fileExt = "asc")
@@ -48,7 +48,6 @@ xrd_find_peak <- function(TwoTheta,
   if (sd(d$I) > p$A0) { cli_warn("Amplitude drowned in noise."); return(NA) }
   if (is.na(p$s0)) { cli_warn("No Gaussian width."); return(NA) }
 
-  # if peak is partial, it appears all the way on the left or right
   if (min(d$TwoTheta) == p$th0) { cli_warn("Peak leftwards."); return(NA) }
   if (max(d$TwoTheta) == p$th0) { cli_warn("Peak rightwards."); return(NA) }
   if (p$s0>(thetaDelta/4)) { cli_warn("Gaussian width too large, increase thetaDelta."); return(NA) }
@@ -87,4 +86,3 @@ xrd.find.Peak <- function(TwoTheta,
     thetaDelta = thetaDelta
   )
 }
-

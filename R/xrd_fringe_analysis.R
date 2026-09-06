@@ -6,7 +6,7 @@
 #' diagnostic plots.
 #'
 #' @param dataXRD A data frame or \code{xrd} object containing \code{TwoTheta}
-#'   (2θ, in degrees) and intensity values (\code{I}).
+#'   (2theta, in degrees) and intensity values (\code{I}).
 #'
 #' @return A list with the following components:
 #' \describe{
@@ -32,11 +32,9 @@
 #' @export
 xrd_fringe_analysis <- function(dataXRD) {
   df <- check_dataXRD(dataXRD)
-  # smoothen function
   lo <- loess(data = df,
               I ~ TwoTheta,
               span = round(20/nrow(df),2))
-  # find derivative
   df$dI.lo = c(0, diff(predict(lo)))
   df$peak.loc = c(0, diff(sign(df$dI.lo)))
 
@@ -63,7 +61,6 @@ xrd_fringe_analysis <- function(dataXRD) {
     xlab("n") + ylab('Peak 2\U03B8 (\U00B0)') +
     theme_bw()
 
-  # find thicknesses
   t.nm = c()
   for(n in 1:(nrow(df.peak)-1)) {
     t.nm = c(t.nm, xrd_fringe_thickness(df.peak$th.pos[n]/2,df.peak$th.pos[n+1]/2)/10)

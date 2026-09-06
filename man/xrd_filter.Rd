@@ -14,7 +14,12 @@ xrd_filter(x, th_min, th_max)
 \item{th_max}{maximum theta angle}
 }
 \value{
-'xrd' object with angle-truncated data set
+A filtered object containing rows whose \code{TwoTheta} values
+  fall between \code{th_min} and \code{th_max}, inclusive. If \code{x}
+  inherits from \code{xrd}, the result is a class \code{xrd} data frame;
+  otherwise it is a class \code{data.frame} object. The columns retain
+  the XRD representation, including \code{TwoTheta}, \code{I},
+  \code{I.meas}, and \code{loop}.
 }
 \description{
 Filters XRD data by diffraction angle

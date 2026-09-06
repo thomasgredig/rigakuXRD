@@ -5,12 +5,12 @@
 #' background, amplitude, peak position, and width (sigma), along with their
 #' standard errors.
 #'
-#' @param TwoTheta Numeric vector of 2θ angles from an XRD spectrum, or an
+#' @param TwoTheta Numeric vector of 2theta angles from an XRD spectrum, or an
 #'   \code{xrd} S3 object.
 #' @param Intensity Numeric vector of intensities corresponding to
 #'   \code{TwoTheta}. If \code{NULL}, \code{TwoTheta} is assumed to contain the
 #'   intensity data (e.g., via an \code{xrd} object).
-#' @param peakPos Numeric scalar giving an approximate peak position (2θ, degrees).
+#' @param peakPos Numeric scalar giving an approximate peak position (2theta, degrees).
 #' @param try_sigma Numeric vector of initial guesses for the Gaussian width
 #'   parameter \eqn{\sigma} (degrees) used to initialize the nonlinear fit.
 #'
@@ -26,7 +26,7 @@
 #' \describe{
 #'   \item{\code{b}}{Background estimate.}
 #'   \item{\code{A}}{Amplitude estimate.}
-#'   \item{\code{th1}}{Peak position (2θ, degrees).}
+#'   \item{\code{th1}}{Peak position (2theta, degrees).}
 #'   \item{\code{sigma}}{Gaussian width parameter \eqn{\sigma} (degrees).}
 #'   \item{\code{b.se}}{Standard error of \code{b}.}
 #'   \item{\code{A.se}}{Standard error of \code{A}.}
@@ -65,7 +65,6 @@ xrd_peak_stats <- function(TwoTheta,
     A1 <- q$A0
     p1 <- q$th0
 
-    # Attempt fit; do not stop on error
     fit_try <- try(
       nls(
         data = n1,

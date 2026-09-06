@@ -12,8 +12,11 @@
 \item{...}{additional arguments passed to as.data.frame}
 }
 \value{
-as.data.frame returns a data frame for xrd object
-  and includes columns with the diffraction angle \code{TwoTheta} and \code{Intensity}
+A data frame with the same number of rows as \code{x}. The
+  columns are \code{TwoTheta} (2theta angle in degrees), \code{I}
+  (normalized intensity), \code{I.meas} (measured intensity), and
+  \code{loop} (measurement loop identifier), plus any columns supplied
+  through \code{...}. The returned object has class \code{data.frame}.
 }
 \description{
 S3 method to convert class 'xrd' to a data frame

@@ -29,7 +29,7 @@ data frame or an \code{xrd} S3 object.
 \details{
 The returned data contain at least the following columns:
 \describe{
-  \item{\code{TwoTheta}}{Diffraction angle (2θ, in degrees).}
+  \item{\code{TwoTheta}}{Diffraction angle (2theta, in degrees).}
   \item{\code{I}}{Intensity normalized by measurement time.}
   \item{\code{I.meas}}{Raw measured intensity counts.}
 }

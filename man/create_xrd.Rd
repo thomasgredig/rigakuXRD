@@ -16,7 +16,10 @@ create_xrd(TwoTheta, I, I.meas, loop)
 \item{loop}{integer of a specific loop}
 }
 \value{
-'xrd' object with diffraction data containing angle and intensity
+A list with class \code{xrd} and components \code{TwoTheta},
+  \code{I}, \code{I.meas}, and \code{loop}. These contain, respectively,
+  the 2theta angles in degrees, normalized intensity, measured intensity,
+  and integer measurement-loop identifiers.
 }
 \description{
 Create an 'xrd' S3 class

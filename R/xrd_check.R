@@ -30,7 +30,6 @@ check_dataXRD <- function(TwoTheta, Intensity=NULL) {
 xrd_inform <- function(msg) {
   is_verbose_mode <- (getOption("verbose", default = FALSE) == TRUE)
   if (is_verbose_mode) {
-    # Evaluate the message within the calling environment
     eval_message <- glue::glue(msg, .envir = parent.frame())
     cli_inform(eval_message)
   }

@@ -22,23 +22,23 @@ xrd.find.Peak(
 )
 }
 \arguments{
-\item{TwoTheta}{Numeric vector of 2θ angles from an XRD spectrum.}
+\item{TwoTheta}{Numeric vector of 2theta angles from an XRD spectrum.}
 
 \item{Intensity}{Numeric vector of intensities corresponding to
 \code{TwoTheta}. If \code{NULL}, \code{TwoTheta} is assumed to be
 part of an XRD S3 object.}
 
-\item{peakPos}{Numeric scalar giving an approximate 2θ position of
+\item{peakPos}{Numeric scalar giving an approximate 2theta position of
 the peak to be fitted.}
 
 \item{Try.Sigma}{Numeric vector of initial guesses for the Gaussian
 peak width (\eqn{\sigma}) used to initialize the nonlinear fit.}
 
 \item{thetaDelta}{Numeric scalar giving the half-width (in degrees)
-of the 2θ window centered on \code{peakPos} used for fitting.}
+of the 2theta window centered on \code{peakPos} used for fitting.}
 }
 \value{
-Numeric scalar giving the fitted peak position (2θ, in degrees).
+Numeric scalar giving the fitted peak position (2theta, in degrees).
 }
 \description{
 Fits a Gaussian model to a diffraction peak in an XRD spectrum and

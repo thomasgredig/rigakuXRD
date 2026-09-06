@@ -20,10 +20,10 @@ containing XRD data.}
 output file will be written. If \code{NULL}, a temporary directory
 is used.}
 
-\item{minTheta}{Numeric scalar giving the minimum 2θ value to include
+\item{minTheta}{Numeric scalar giving the minimum 2theta value to include
 in the export.}
 
-\item{maxTheta}{Numeric scalar giving the maximum 2θ value to include
+\item{maxTheta}{Numeric scalar giving the maximum 2theta value to include
 in the export.}
 
 \item{GenX_filename}{Character string specifying the name of the
@@ -36,12 +36,12 @@ Character string giving the full path to the exported GenX text file.
 Exports X-ray diffraction (XRD) or reflectivity data to a plain-text
 format compatible with the GenX fitting program, which uses a
 differential evolution algorithm for model optimization. The data
-are normalized and filtered to a specified 2θ range before export.
+are normalized and filtered to a specified 2theta range before export.
 }
 \details{
 The intensity data are normalized by the maximum intensity value
 prior to export. The resulting file contains two tab-separated
-columns (2θ and normalized intensity) with no header, as expected by
+columns (2theta and normalized intensity) with no header, as expected by
 GenX.
 
 For details on the GenX method and file format, see

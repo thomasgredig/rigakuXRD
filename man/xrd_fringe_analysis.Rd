@@ -11,7 +11,7 @@ xrd.FringeAnalysis(dataXRD)
 }
 \arguments{
 \item{dataXRD}{A data frame or \code{xrd} object containing \code{TwoTheta}
-(2θ, in degrees) and intensity values (\code{I}).}
+(2theta, in degrees) and intensity values (\code{I}).}
 }
 \value{
 A list with the following components:

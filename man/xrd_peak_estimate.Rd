@@ -10,7 +10,7 @@ xrd_peak_estimate(TwoTheta, Intensity = NULL)
 xrd.peakEstimate(TwoTheta, Intensity = NULL)
 }
 \arguments{
-\item{TwoTheta}{Numeric vector of 2θ angles from an XRD spectrum, or an
+\item{TwoTheta}{Numeric vector of 2theta angles from an XRD spectrum, or an
 \code{xrd} S3 object.}
 
 \item{Intensity}{Numeric vector of intensities corresponding to
@@ -22,13 +22,13 @@ A named list with the following elements:
 \describe{
   \item{\code{b0}}{Estimated background intensity (minimum of interpolated data).}
   \item{\code{A0}}{Estimated peak amplitude above background.}
-  \item{\code{th0}}{Estimated peak position (2θ, in degrees).}
+  \item{\code{th0}}{Estimated peak position (2theta, in degrees).}
   \item{\code{s0}}{Estimated Gaussian width parameter (half-width proxy); may be \code{NA_real_}.}
 }
 }
 \description{
 Provides a simple, data-driven estimate of the most intense peak in a
-selected 2θ range. This function does not perform a nonlinear fit; it
+selected 2theta range. This function does not perform a nonlinear fit; it
 identifies the maximum intensity after a coarse interpolation and returns
 approximate peak parameters: background (\code{b0}), amplitude (\code{A0}),
 peak position (\code{th0}), and an estimated Gaussian width parameter

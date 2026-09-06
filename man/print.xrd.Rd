@@ -12,7 +12,10 @@
 \item{...}{further arguments passed to or from other methods.}
 }
 \value{
-outputs an 'xrd' object as a data frame
+The data-frame representation of \code{x}, returned invisibly
+  after printing. The display consists of an \code{"xrd object:"} label
+  followed by columns \code{TwoTheta}, \code{I}, \code{I.meas}, and
+  \code{loop}.
 }
 \description{
 Print an 'xrd' object as a data frame

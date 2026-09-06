@@ -33,9 +33,9 @@ not applied).}
 (\eqn{\sigma}) passed to \code{\link{xrd_find_peak}}.}
 
 \item{delta_theta}{Numeric scalar giving the half-width (in degrees) of
-the local 2θ window used for fitting around each candidate.}
+the local 2theta window used for fitting around each candidate.}
 
-\item{range}{Numeric length-2 vector giving the 2θ interval to search
+\item{range}{Numeric length-2 vector giving the 2theta interval to search
 (degrees), e.g. \code{c(20, 80)}.}
 
 \item{step_size}{Numeric scalar giving the spacing (degrees) between
@@ -50,7 +50,7 @@ candidate peak locations used in the scan.}
 \item{Range}{Legacy name for \code{range}.}
 }
 \value{
-Numeric vector of peak positions (2θ, degrees), sorted and unique,
+Numeric vector of peak positions (2theta, degrees), sorted and unique,
   rounded to 0.01 degrees. Returns \code{numeric(0)} if no peaks are found.
 }
 \description{
@@ -73,5 +73,5 @@ xrd_peak_all(d, delta_theta = 2, try_sigma = c(0.1), range = c(42, 46))
 }
 \seealso{
 \code{\link{xrd_find_peak}} for refining a single peak location;
-\code{\link{xrd_filter}} for restricting an XRD spectrum to a 2θ range.
+\code{\link{xrd_filter}} for restricting an XRD spectrum to a 2theta range.
 }

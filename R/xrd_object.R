@@ -3,8 +3,11 @@
 #' @param x xrd object
 #' @param ... additional arguments passed to as.data.frame
 #'
-#' @returns as.data.frame returns a data frame for xrd object
-#'   and includes columns with the diffraction angle \code{TwoTheta} and \code{Intensity}
+#' @return A data frame with the same number of rows as \code{x}. The
+#'   columns are \code{TwoTheta} (2theta angle in degrees), \code{I}
+#'   (normalized intensity), \code{I.meas} (measured intensity), and
+#'   \code{loop} (measurement loop identifier), plus any columns supplied
+#'   through \code{...}. The returned object has class \code{data.frame}.
 #' @export
 as.data.frame.xrd <- function(x,...) {
   data.frame(TwoTheta = x$TwoTheta,
@@ -19,7 +22,12 @@ as.data.frame.xrd <- function(x,...) {
 #' @param th_min minimum theta angle
 #' @param th_max maximum theta angle
 #'
-#' @returns 'xrd' object with angle-truncated data set
+#' @return A filtered object containing rows whose \code{TwoTheta} values
+#'   fall between \code{th_min} and \code{th_max}, inclusive. If \code{x}
+#'   inherits from \code{xrd}, the result is a class \code{xrd} data frame;
+#'   otherwise it is a class \code{data.frame} object. The columns retain
+#'   the XRD representation, including \code{TwoTheta}, \code{I},
+#'   \code{I.meas}, and \code{loop}.
 #'
 #' @importFrom dplyr "%>%" filter
 #' @importFrom rlang .data
@@ -47,20 +55,19 @@ xrd_filter <- function(x, th_min, th_max) {
 #' @param I.meas measured intensity
 #' @param loop integer of a specific loop
 #'
-#' @returns 'xrd' object with diffraction data containing angle and intensity
+#' @return A list with class \code{xrd} and components \code{TwoTheta},
+#'   \code{I}, \code{I.meas}, and \code{loop}. These contain, respectively,
+#'   the 2theta angles in degrees, normalized intensity, measured intensity,
+#'   and integer measurement-loop identifiers.
 #'
 #' @export
 create_xrd <- function(TwoTheta, I, I.meas, loop) {
-  # Ensure the parameters are of the correct type
   if (!is.numeric(TwoTheta)) stop("TwoTheta must be numeric")
   if (!is.numeric(I)) stop("I must be numeric")
   if (!is.numeric(I.meas)) stop("I.meas must be numeric")
   if (!is.integer(loop)) stop("loop must be integer")
 
-  # Create the object
   obj <- list(TwoTheta = TwoTheta, I = I, I.meas = I.meas, loop = loop)
-
-  # Assign the class name
   class(obj) <- "xrd"
 
   return(obj)
@@ -72,7 +79,10 @@ create_xrd <- function(TwoTheta, I, I.meas, loop) {
 #' @param x xrd object.
 #' @param ... further arguments passed to or from other methods.
 #'
-#' @returns outputs an 'xrd' object as a data frame
+#' @return The data-frame representation of \code{x}, returned invisibly
+#'   after printing. The display consists of an \code{"xrd object:"} label
+#'   followed by columns \code{TwoTheta}, \code{I}, \code{I.meas}, and
+#'   \code{loop}.
 #'
 #' @export
 print.xrd <- function(x, ...) {
@@ -80,4 +90,3 @@ print.xrd <- function(x, ...) {
   df_x <- as.data.frame(x)
   print(df_x, row.names=FALSE)
 }
-

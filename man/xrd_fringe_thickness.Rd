@@ -10,26 +10,26 @@ xrd_fringe_thickness(theta1, theta2, lambda = 1.5406)
 xrd.FringeThickness(theta1, theta2, lambda = 1.5406)
 }
 \arguments{
-\item{theta1}{Numeric scalar giving the first 2θ angle (in degrees).}
+\item{theta1}{Numeric scalar giving the first 2theta angle (in degrees).}
 
-\item{theta2}{Numeric scalar giving the second 2θ angle (in degrees).}
+\item{theta2}{Numeric scalar giving the second 2theta angle (in degrees).}
 
-\item{lambda}{Numeric scalar giving the X-ray wavelength (in Å).
-Defaults to Cu Kα radiation (\eqn{1.5406 \AA}).}
+\item{lambda}{Numeric scalar giving the X-ray wavelength (in Angstroms).
+Defaults to Cu K-alpha radiation (\eqn{1.5406 \AA}).}
 }
 \value{
-Numeric scalar giving the estimated film thickness in Å.
+Numeric scalar giving the estimated film thickness in Angstroms.
 }
 \description{
 Computes the film thickness from two adjacent interference fringe
-positions (2θ angles) and the X-ray wavelength.
+positions (2theta angles) and the X-ray wavelength.
 }
 \details{
 The calculation assumes consecutive interference fringes and uses
 the difference in the sine of the corresponding incident angles.
 }
 \examples{
-# Expected result: approximately 1116 Å (111.6 nm)
+# Expected result: approximately 1116 Angstroms (111.6 nm)
 xrd_fringe_thickness(66.22698, 66.32140)
 
 }

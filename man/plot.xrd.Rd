@@ -23,6 +23,11 @@ No return value; the XRD spectrum is plotted for its side effect.
 Produces a logarithmic-intensity XRD diffraction plot from an
 \code{xrd} S3 object. It is generally created with \code{xrd_import()}
 }
+\examples{
+d <- xrd_import(xrd_sample_files("asc"), xrd = TRUE)
+plot(d)
+
+}
 \seealso{
 \code{\link{xrd_import}} for reading XRD data files into
   \code{xrd} objects using \code{xrd=TRUE}.

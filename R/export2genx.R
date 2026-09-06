@@ -33,6 +33,11 @@
 #' @seealso
 #' \code{\link{xrd_import}} for importing XRD data files.
 #'
+#' @examples
+#' d <- xrd_import(xrd_sample_files("asc"))
+#' output <- export2genx(d, minTheta = 35, maxTheta = 40)
+#' file.exists(output)
+#'
 #' @importFrom utils write.table
 #' @export
 export2genx <- function(dataXRD, exportPath = NULL,

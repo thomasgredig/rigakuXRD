@@ -24,3 +24,8 @@ A filtered object containing rows whose \code{TwoTheta} values
 \description{
 Filters XRD data by diffraction angle
 }
+\examples{
+d <- xrd_import(xrd_sample_files("asc"), xrd = TRUE)
+xrd_filter(d, 35, 40)
+
+}

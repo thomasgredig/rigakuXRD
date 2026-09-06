@@ -7,7 +7,7 @@
 create_xrd(TwoTheta, I, I.meas, loop)
 }
 \arguments{
-\item{TwoTheta}{vector of two theta angles from xrd spectrum}
+\item{TwoTheta}{vector of two theta angles from XRD spectrum}
 
 \item{I}{intensity (counts per second)}
 
@@ -23,4 +23,8 @@ A list with class \code{xrd} and components \code{TwoTheta},
 }
 \description{
 Create an 'xrd' S3 class
+}
+\examples{
+create_xrd(c(20, 21), c(1, 2), c(10, 20), c(1L, 1L))
+
 }

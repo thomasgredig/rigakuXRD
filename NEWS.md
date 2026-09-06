@@ -1,6 +1,8 @@
 # rigakuXRD 0.5.1
 
 * update documentation for functions and readme file
+* add return values for all functions
+* add more examples
 
 # rigakuXRD 0.5.0
 
@@ -16,7 +18,7 @@
 # rigakuXRD 0.4.0
 
 * clean up documentation, functions
-* allow import to create either data frame or xrd class
+* allow import to create either data frame or XRD class
 * use `options(verbose = TRUE)` for functions to return verbose output
 
 # rigakuXRD 0.3.1

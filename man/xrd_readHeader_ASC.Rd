@@ -15,3 +15,7 @@ data frame with XRD header
 \description{
 Reads the header of an XRD ASC file
 }
+\examples{
+xrd_readHeader_ASC(xrd_sample_files("asc"))
+
+}

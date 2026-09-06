@@ -1,6 +1,6 @@
-#' Check whether we have a xrd S3 class object or vectors
-#' @param TwoTheta vector of two theta angles from xrd spectrum OR xrd object.
-#' @param Intensity \code{NULL} if xrd S3 object, otherwise xrd intensity vector
+#' Check whether we have a XRD S3 class object or vectors
+#' @param TwoTheta vector of two theta angles from XRD spectrum OR XRD object.
+#' @param Intensity \code{NULL} if XRD S3 object, otherwise XRD intensity vector
 #' @noRd
 check_dataXRD <- function(TwoTheta, Intensity=NULL) {
   if(inherits(TwoTheta,"xrd")) {

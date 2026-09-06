@@ -47,6 +47,12 @@ GenX.
 For details on the GenX method and file format, see
 \doi{10.1107/S1600576722006653}.
 }
+\examples{
+d <- xrd_import(xrd_sample_files("asc"))
+output <- export2genx(d, minTheta = 35, maxTheta = 40)
+file.exists(output)
+
+}
 \seealso{
 \code{\link{xrd_import}} for importing XRD data files.
 }

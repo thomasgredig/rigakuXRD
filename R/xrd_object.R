@@ -1,6 +1,6 @@
 #' S3 method to convert class 'xrd' to a data frame
 #'
-#' @param x xrd object
+#' @param x XRD object
 #' @param ... additional arguments passed to as.data.frame
 #'
 #' @return A data frame with the same number of rows as \code{x}. The
@@ -8,6 +8,10 @@
 #'   (normalized intensity), \code{I.meas} (measured intensity), and
 #'   \code{loop} (measurement loop identifier), plus any columns supplied
 #'   through \code{...}. The returned object has class \code{data.frame}.
+#'
+#' @examples
+#' d <- create_xrd(c(20, 21), c(1, 2), c(10, 20), c(1L, 1L))
+#' as.data.frame(d)
 #' @export
 as.data.frame.xrd <- function(x,...) {
   data.frame(TwoTheta = x$TwoTheta,
@@ -28,6 +32,10 @@ as.data.frame.xrd <- function(x,...) {
 #'   otherwise it is a class \code{data.frame} object. The columns retain
 #'   the XRD representation, including \code{TwoTheta}, \code{I},
 #'   \code{I.meas}, and \code{loop}.
+#'
+#' @examples
+#' d <- xrd_import(xrd_sample_files("asc"), xrd = TRUE)
+#' xrd_filter(d, 35, 40)
 #'
 #' @importFrom dplyr "%>%" filter
 #' @importFrom rlang .data
@@ -50,7 +58,7 @@ xrd_filter <- function(x, th_min, th_max) {
 
 #' Create an 'xrd' S3 class
 #'
-#' @param TwoTheta vector of two theta angles from xrd spectrum
+#' @param TwoTheta vector of two theta angles from XRD spectrum
 #' @param I intensity (counts per second)
 #' @param I.meas measured intensity
 #' @param loop integer of a specific loop
@@ -59,6 +67,9 @@ xrd_filter <- function(x, th_min, th_max) {
 #'   \code{I}, \code{I.meas}, and \code{loop}. These contain, respectively,
 #'   the 2theta angles in degrees, normalized intensity, measured intensity,
 #'   and integer measurement-loop identifiers.
+#'
+#' @examples
+#' create_xrd(c(20, 21), c(1, 2), c(10, 20), c(1L, 1L))
 #'
 #' @export
 create_xrd <- function(TwoTheta, I, I.meas, loop) {
@@ -83,6 +94,10 @@ create_xrd <- function(TwoTheta, I, I.meas, loop) {
 #'   after printing. The display consists of an \code{"xrd object:"} label
 #'   followed by columns \code{TwoTheta}, \code{I}, \code{I.meas}, and
 #'   \code{loop}.
+#'
+#' @examples
+#' d <- xrd_import(xrd_sample_files("asc"), xrd = TRUE)
+#' print(d)
 #'
 #' @export
 print.xrd <- function(x, ...) {

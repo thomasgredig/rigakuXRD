@@ -7,7 +7,7 @@
 \method{as.data.frame}{xrd}(x, ...)
 }
 \arguments{
-\item{x}{xrd object}
+\item{x}{XRD object}
 
 \item{...}{additional arguments passed to as.data.frame}
 }
@@ -20,4 +20,8 @@ A data frame with the same number of rows as \code{x}. The
 }
 \description{
 S3 method to convert class 'xrd' to a data frame
+}
+\examples{
+d <- create_xrd(c(20, 21), c(1, 2), c(10, 20), c(1L, 1L))
+as.data.frame(d)
 }

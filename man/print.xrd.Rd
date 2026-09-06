@@ -20,3 +20,8 @@ The data-frame representation of \code{x}, returned invisibly
 \description{
 Print an 'xrd' object as a data frame
 }
+\examples{
+d <- xrd_import(xrd_sample_files("asc"), xrd = TRUE)
+print(d)
+
+}

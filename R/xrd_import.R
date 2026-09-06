@@ -100,6 +100,10 @@ check_file_exists <- function(filename) {
 #'   and \code{I} columns and passes additional graphical arguments to
 #'   \code{\link[graphics]{plot}}.
 #'
+#' @examples
+#' d <- xrd_import(xrd_sample_files("asc"), xrd = TRUE)
+#' plot(d)
+#'
 #' @export
 plot.xrd <- function(x, ...) {
   plot(
@@ -183,6 +187,9 @@ xrd_read_ASC <- function(filename) {
 #' Reads the header of an XRD ASC file
 #' @param filename filename including path
 #' @return data frame with XRD header
+#'
+#' @examples
+#' xrd_readHeader_ASC(xrd_sample_files("asc"))
 #'
 #' @export
 xrd_readHeader_ASC <- function(filename) {
@@ -356,6 +363,12 @@ xrd_read_RASX <- function(filename) {
 
 #' Reads RASX header information
 #' @param filename Character string giving the path to a RASX file.
+#' @return A data frame containing RASX measurement conditions and the source
+#'   filename.
+#'
+#' @examples
+#' xrd_read_RASX_header(xrd_sample_files("rasx"))
+#'
 #' @export
 xrd_read_RASX_header <- function(filename) {
   check_file_exists(filename)

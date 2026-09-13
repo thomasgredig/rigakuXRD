@@ -39,13 +39,13 @@
 #' \code{\link{plot.xrd}} for visualization of imported XRD data;
 #' \code{\link{xrd_sample_files}} for accessing sample XRD data files.
 #'
-#' @importFrom tools file_ext
 #' @importFrom cli cli_warn
 #' @export
 xrd_import <- function(filename, xrd = FALSE) {
   check_file_exists(filename)
 
-  fileExtension <- tolower(tools::file_ext(filename))
+  # fileExtension <- tolower(tools::file_ext(filename))
+  fileExtension <- tolower(sub(".*\\.", "", filename))
 
   d <- switch(
     fileExtension,
@@ -122,7 +122,6 @@ plot.xrd <- function(x, ...) {
 #' @param filename filename including path
 #' @return data frame with XRD data
 #'
-#' @importFrom stringr str_extract_all
 #' @importFrom utils read.csv
 #' @importFrom stats na.omit
 #' @noRd
@@ -145,14 +144,16 @@ xrd_read_ASC <- function(filename) {
 
   as.vector(unlist(data))->p
 
-  str_extract_all(p, '\\*{1}COUNT\t') -> a
+  a <- regmatches(p, gregexpr("\\*{1}COUNT\t", p))
+  # str_extract_all(p, '\\*{1}COUNT\t') -> a
   which(a=="*COUNT\t") -> q
   as.numeric(gsub("\\D", "", p[q]))  -> b
 
   x.start = q+1
   x.end = q+b
 
-  str_extract_all(p, '\\*{1}START\t') -> angle
+  angle <- regmatches(p, gregexpr("\\*{1}START\t", p))
+  # str_extract_all(p, '\\*{1}START\t') -> angle
   which(angle=="*START\t") -> q
 
   extract_numeric <- function(p, q, seq) {

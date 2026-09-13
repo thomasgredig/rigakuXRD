@@ -59,9 +59,7 @@ importFrom(stats,
   predict,
   sd
 )
-importFrom(stringr,str_extract_all)
 importFrom(tidyr,separate_wider_delim)
-importFrom(tools,file_ext)
 importFrom(utils,
   read.csv,
   unzip,

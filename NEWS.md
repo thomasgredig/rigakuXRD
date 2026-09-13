@@ -1,3 +1,7 @@
+# rigakuXRD 0.5.2
+
+* remove stringr and tools package dependency
+
 # rigakuXRD 0.5.1
 
 * update documentation for functions and readme file
